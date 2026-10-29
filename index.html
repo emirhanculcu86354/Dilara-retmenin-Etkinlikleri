@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dilara Öğretmenin Etkinlikleri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@500;700;800&display=swap">
+<style>
+:root{
+  --bg:#E9F6FF; --bg2:#D3EDFF; --card:#FFFFFF; --ink:#1F2A55; --muted:#59658F; --line:#1F2A55;
+  --sun:#FFC933; --grass:#5DBB63; --coral:#FF6F61; --grape:#8A63D2; --sky:#4FB3F0;
+  --on:#1F2A55; --sk1:#8FD3FF; --sk2:#E4F6FF;
+  --head:"Baloo 2","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Trebuchet MS",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#131A3B; --bg2:#1B2557; --card:#1F2A5C; --ink:#F1F4FF; --muted:#A9B4DD; --line:#080C22;
+    --sk1:#1A2766; --sk2:#3A4C9F; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131A3B; --bg2:#1B2557; --card:#1F2A5C; --ink:#F1F4FF; --muted:#A9B4DD; --line:#080C22;
+  --sk1:#1A2766; --sk2:#3A4C9F; color-scheme:dark;
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:500 16px/1.5 var(--body);-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:25;background:var(--bg)}
+body.lock{overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--grape);outline-offset:2px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Açılış ---------- */
+#splash{position:fixed;inset:0;z-index:100;background:linear-gradient(var(--sk1),var(--sk2));display:grid;place-items:center;overflow:hidden;transition:opacity .5s ease;cursor:pointer}
+#splash.out{opacity:0;pointer-events:none}
+.sun{position:absolute;top:calc(env(safe-area-inset-top,0px) + 7vh);right:9vw;width:84px;height:84px;border-radius:50%;background:var(--sun);border:3px solid var(--line)}
+.sun::before{content:"";position:absolute;inset:-22px;border-radius:50%;border:7px dotted var(--sun);animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cloud{position:absolute;left:-180px;width:96px;height:30px;background:#fff;border:3px solid #1F2A55;border-radius:30px;animation:drift 46s linear infinite}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border:3px solid #1F2A55;border-radius:50%;border-bottom-color:transparent}
+.cloud::before{width:42px;height:42px;left:12px;top:-26px;border-right-color:transparent}
+.cloud::after{width:52px;height:52px;left:38px;top:-34px;border-left-color:transparent}
+.cloud.c1{top:12vh}
+.cloud.c2{top:26vh;transform:scale(.7);animation-duration:62s;animation-delay:-24s}
+.cloud.c3{top:40vh;transform:scale(.55);animation-duration:80s;animation-delay:-50s}
+@keyframes drift{to{translate:calc(100vw + 360px) 0}}
+.balloon{position:absolute;bottom:-90px;width:38px;height:48px;border-radius:50% 50% 48% 48%;background:var(--c);border:3px solid #1F2A55;animation:rise 18s linear infinite}
+.balloon::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:46px;background:#1F2A55}
+@keyframes rise{to{transform:translateY(-125vh)}}
+.scene{position:absolute;left:0;right:0;bottom:0;height:46vh;min-height:220px}
+.scene svg{width:100%;height:100%;display:block}
+.titlebox{position:relative;z-index:5;text-align:center;padding:0 24px;margin-top:-12vh}
+.line{display:flex;justify-content:center;gap:4px;margin:7px 0;--b:min(60px,calc((100vw - 92px) / 12))}
+.line.l1{--k:1.7}.line.l2{--k:1.2}.line.l3{--k:1}
+.blk{width:calc(var(--b)*var(--k));height:calc(var(--b)*var(--k));font:800 calc(var(--b)*var(--k)*.62)/1 var(--head);color:#1F2A55;background:var(--c);border:2.5px solid #1F2A55;border-radius:calc(var(--b)*var(--k)*.22);box-shadow:3px 3px 0 #1F2A55;display:grid;place-items:center;transform:rotate(var(--r));animation:drop 1s cubic-bezier(.25,.8,.3,1) both;animation-delay:calc(var(--i)*65ms + 250ms)}
+@keyframes drop{
+  0%{transform:translateY(-110vh) rotate(calc(var(--r)*6));opacity:0}
+  55%{transform:translateY(0) rotate(var(--r));opacity:1}
+  72%{transform:translateY(-16px) rotate(var(--r))}
+  88%{transform:translateY(0) rotate(var(--r))}
+  100%{transform:translateY(0) rotate(var(--r))}
+}
+.sub{margin:16px 0 0;font:700 1.05rem var(--head);color:#1F2A55;animation:fadeup .6s ease both;animation-delay:2.9s}
+#go{margin-top:16px;font:800 1.25rem var(--head);padding:10px 34px;background:var(--coral);color:#1F2A55;border:3px solid #1F2A55;border-radius:999px;box-shadow:4px 4px 0 #1F2A55;animation:fadeup .6s ease both;animation-delay:3.2s}
+#go:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #1F2A55}
+@keyframes fadeup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ---------- Üst çubuk ve gezinme ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:2.5px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
+.logo{width:42px;height:42px;display:grid;place-items:center;font-size:24px;background:var(--sun);border:2.5px solid var(--line);border-radius:14px 14px 14px 4px;box-shadow:2px 2px 0 var(--line)}
+.brand b{display:block;font:800 1.15rem/1.1 var(--head)}
+.brand small{display:block;color:var(--muted);font-weight:700;font-size:.8rem;line-height:1.1}
+.icon{width:44px;height:44px;border-radius:14px;border:2.5px solid var(--line);background:var(--card);box-shadow:2px 2px 0 var(--line);font:800 1.4rem/1 var(--head);display:grid;place-items:center;padding:0}
+.icon:active{transform:translate(2px,2px);box-shadow:none}
+#tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--card);border-top:2.5px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
+#tabs button{display:flex;flex-direction:column;align-items:center;gap:0;padding:5px 1px;border:2px solid transparent;border-radius:14px;background:none;font:700 .68rem/1.15 var(--body);text-align:center}
+#tabs button span.e{font-size:1.35rem;line-height:1.2}
+#tabs button.on{background:var(--sun);border-color:var(--line);color:#1F2A55}
+main{max-width:1040px;margin:0 auto;padding:18px 16px 120px}
+
+/* ---------- Ortak parçalar ---------- */
+.card{background:var(--card);border:2.5px solid var(--line);border-radius:22px;box-shadow:4px 4px 0 var(--line)}
+.datebar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.datebar .title{flex:1;text-align:center;font:800 1.2rem/1.2 var(--head)}
+.datebar .title small{display:block;color:var(--muted);font:700 .85rem var(--body)}
+.center{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.btn{font:800 1rem/1.2 var(--head);padding:10px 16px;border:2.5px solid var(--line);border-radius:16px;background:#fff;color:#1F2A55;box-shadow:3px 3px 0 var(--line);display:inline-flex;align-items:center;gap:8px}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.btn.primary{background:var(--coral)}
+.btn.ok{background:var(--grass)}
+.btn.warn{background:var(--sun)}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:2px 11px;border:2px solid var(--line);border-radius:999px;background:var(--cat,#fff);color:#1F2A55;font-weight:800;font-size:.84rem;line-height:1.5}
+.chip.w{background:#fff}
+.mini{color:var(--muted);font-weight:700;font-size:.85rem}
+.progress{margin:18px 0 0;padding:12px 16px}
+.progress p{margin:0 0 6px;font-weight:800}
+.bar{height:16px;border:2.5px solid var(--line);border-radius:999px;background:var(--bg2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--grass)}
+
+/* ---------- Etkinlik kartı ---------- */
+.hero{border-radius:30px;box-shadow:6px 6px 0 var(--line);overflow:hidden}
+.hero-top{background:var(--cat);padding:18px;display:flex;gap:16px;align-items:center;border-bottom:2.5px solid var(--line);color:#1F2A55}
+.badge{flex:none;width:86px;height:86px;border-radius:50%;background:#fff;border:2.5px solid var(--line);display:grid;place-items:center;font-size:46px;line-height:1}
+.hero-top h2{margin:0 0 6px;font:800 clamp(1.5rem,5.2vw,2.3rem)/1.1 var(--head)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.when{margin:0 0 8px;font-weight:800;color:#1F2A55;opacity:.8;font-size:.9rem}
+.hero-body{padding:18px;display:grid;gap:18px}
+.hero-body h3{margin:0 0 6px;font:800 1.15rem/1.2 var(--head)}
+.hero-body p{margin:0}
+.mats{display:flex;flex-wrap:wrap;gap:6px}
+.mats span{background:var(--bg2);border:2px solid var(--line);border-radius:12px;padding:2px 10px;font-weight:700;font-size:.92rem}
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0}
+ol.steps li{counter-increment:s;position:relative;padding-left:44px;margin:0 0 10px;min-height:32px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:-1px;width:32px;height:32px;border-radius:50%;background:var(--sun);border:2px solid var(--line);color:#1F2A55;font:800 1rem/1 var(--head);display:grid;place-items:center}
+.note{background:#FFF3C4;color:#5A4300;border:2px dashed #C99700;border-radius:14px;padding:9px 12px;font-weight:700}
+ul.q{margin:0;padding-left:20px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;padding:0 18px 18px}
+.state{text-align:center;padding:34px 20px}
+.state .big{font-size:64px;line-height:1.1}
+.state h2{margin:8px 0 6px;font:800 1.6rem var(--head)}
+.state p{margin:0 0 14px;color:var(--muted);font-weight:700}
+.state .center{margin:14px 0 0}
+
+/* ---------- Hafta ---------- */
+.rows{display:grid;gap:10px}
+.row{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 12px;background:var(--card);border:2.5px solid var(--line);border-radius:20px;box-shadow:3px 3px 0 var(--line)}
+.row:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.row.today{background:color-mix(in srgb,var(--sun) 35%,var(--card))}
+.dt{flex:none;width:58px;height:58px;border-radius:16px;border:2px solid var(--line);background:var(--bg2);display:grid;place-content:center;text-align:center;line-height:1.1}
+.dt small{font-weight:800;color:var(--muted)}
+.dt b{font:800 1.4rem/1 var(--head)}
+.row .em{flex:none;font-size:2rem}
+.rt{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0}
+.rt b{font:800 1.08rem/1.2 var(--head)}
+.tick{flex:none;width:30px;height:30px;border-radius:50%;background:var(--grass);border:2px solid var(--line);display:grid;place-items:center;font-weight:800;color:#1F2A55}
+
+/* ---------- Ay ---------- */
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.dow{text-align:center;font-weight:800;color:var(--muted);font-size:.85rem}
+.cell{min-height:78px;padding:5px;border:2px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--cat,var(--card)) 45%,var(--card));text-align:left;display:flex;flex-direction:column;gap:1px;overflow:hidden;position:relative;color:var(--ink)}
+.cell b{font:800 .85rem/1.1 var(--head)}
+.cell .em{font-size:1.45rem;line-height:1.15}
+.cell .nm{font-size:.7rem;line-height:1.15;font-weight:800;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cell.we{background:var(--bg2);opacity:.55;border-style:dashed}
+.cell.bf{background:var(--card);opacity:.6}
+.cell.ho{background:repeating-linear-gradient(135deg,var(--card) 0 8px,var(--bg2) 8px 16px)}
+.cell.today{outline:4px solid var(--sun);outline-offset:1px}
+.cell .tick{position:absolute;right:3px;top:3px;width:18px;height:18px;font-size:.7rem}
+.blank{min-height:1px}
+
+/* ---------- Liste ---------- */
+.search{width:100%;padding:12px 16px;border:2.5px solid var(--line);border-radius:18px;background:var(--card);color:var(--ink);font:700 1rem var(--body);margin-bottom:10px}
+.filters{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 10px;margin:0 -2px}
+.filters button{flex:none;border:2px solid var(--line);border-radius:999px;background:var(--card);padding:3px 12px;font-weight:800;font-size:.88rem;color:var(--ink)}
+.filters button.on{background:var(--cat,var(--sun));color:#1F2A55}
+.count{margin:2px 0 10px;color:var(--muted);font-weight:700}
+.grid{display:grid;gap:10px;grid-template-columns:1fr}
+.item{display:flex;align-items:center;gap:12px;text-align:left;width:100%;padding:10px 12px;background:var(--card);border:2.5px solid var(--line);border-left:12px solid var(--cat);border-radius:18px;box-shadow:3px 3px 0 var(--line)}
+.item:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.item .em{font-size:1.9rem;flex:none}
+.item .rt b span{color:var(--muted);font-weight:700;margin-right:4px}
+.empty{padding:28px;text-align:center;color:var(--muted);font-weight:700}
+
+/* ---------- Pencere ---------- */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(8,12,34,.55);display:flex;align-items:flex-end;justify-content:center}
+.sheet{position:relative;width:min(760px,100%);max-height:92vh;overflow:auto;background:var(--bg);border:2.5px solid var(--line);border-bottom:0;border-radius:28px 28px 0 0;padding:14px 14px calc(20px + env(safe-area-inset-bottom,0px));animation:up .25s ease}
+@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.sheet .x{position:sticky;top:0;margin:0 0 8px auto;display:grid;z-index:2}
+.sheet h2.st{margin:0 0 10px;font:800 1.4rem var(--head)}
+.field{display:grid;gap:6px;margin:0 0 16px}
+.field label{font-weight:800}
+.field input[type=date]{padding:10px 12px;border:2.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:700 1rem var(--body);max-width:260px}
+.field p{margin:0;color:var(--muted);font-weight:700;font-size:.92rem}
+.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:80;background:#1F2A55;color:#fff;border:2px solid #fff;border-radius:14px;padding:9px 16px;font-weight:800;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:calc(100vw - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (min-width:860px){
+  #tabs{position:static;border:0;background:none;padding:0;display:flex;gap:6px}
+  #tabs button{flex-direction:row;gap:6px;padding:7px 14px;font:800 .95rem var(--head);white-space:nowrap}
+  #tabs button span.e{font-size:1.1rem}
+  .top{padding:12px 28px}
+  main{padding:26px 28px 48px}
+  .hero-body{grid-template-columns:1fr 1.25fr;gap:26px;padding:24px}
+  .actions{padding:0 24px 24px}
+  .hero-top{padding:24px}
+  .badge{width:104px;height:104px;font-size:56px}
+  .cell{min-height:108px;padding:8px}
+  .cell .nm{font-size:.82rem}
+  .cell .em{font-size:1.8rem}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .modal{align-items:center}
+  .sheet{border-bottom:2.5px solid var(--line);border-radius:28px;padding-bottom:20px}
+  .toast{bottom:24px}
+}
+@media (min-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:520px){
+  .cell .nm{display:none}
+  .cell{min-height:64px;align-items:flex-start}
+  .cell .em{font-size:1.5rem}
+  .cal{gap:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* ---------- Yazdırma sayfası ---------- */
+#printSheet{display:none}
+@page{size:A4;margin:12mm}
+@media print{
+  html,body{background:#fff!important;padding:0!important}
+  body::before{display:none!important}
+  body>*:not(#printSheet){display:none!important}
+  #printSheet{display:block!important;color:#1F2A55;font-family:"Nunito",Arial,sans-serif;font-size:10.5pt;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ps-top{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #1F2A55;padding-bottom:6px;margin-bottom:12px;font-weight:800}
+  .ps-brand{font-family:"Baloo 2","Arial Rounded MT Bold",Arial,sans-serif;font-size:14pt}
+  .ps-hero{display:flex;gap:14px;align-items:center;background:var(--cat);border:3px solid #1F2A55;border-radius:18px;padding:12px 16px;margin-bottom:12px}
+  .ps-emoji{flex:none;width:30mm;height:30mm;border-radius:50%;background:#fff;border:3px solid #1F2A55;display:grid;place-items:center;font-size:54pt;line-height:1}
+  .ps-hero h1{margin:0 0 6px;font-family:"Baloo 2","Arial Rounded MT Bold",Arial,sans-serif;font-size:24pt;line-height:1.1}
+  .ps-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .ps-chips span{background:#fff;border:2px solid #1F2A55;border-radius:999px;padding:1px 10px;font-weight:800;font-size:10pt}
+  .ps-cols{display:grid;grid-template-columns:1fr 1.25fr;gap:14px}
+  #printSheet h2{margin:10px 0 4px;font-family:"Baloo 2","Arial Rounded MT Bold",Arial,sans-serif;font-size:13pt;border-bottom:2px dotted #1F2A55}
+  #printSheet h2:first-child{margin-top:0}
+  #printSheet p{margin:0}
+  .ps-check{list-style:none;margin:0;padding:0}
+  .ps-check li{padding-left:22px;position:relative;margin:2px 0}
+  .ps-check li::before{content:"";position:absolute;left:0;top:3px;width:12px;height:12px;border:2px solid #1F2A55;border-radius:3px}
+  .ps-steps{margin:0;padding-left:22px}
+  .ps-steps li{margin:0 0 5px;padding-left:2px}
+  .ps-q{margin:0;padding-left:18px}
+  .ps-boxes{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:12px}
+  .ps-draw,.ps-notes{border:2.5px dashed #1F2A55;border-radius:14px;height:52mm;padding:6px 10px;font-weight:800}
+  .ps-notes i{display:block;border-bottom:1.5px solid #1F2A55;height:9mm}
+  .ps-note-caution{background:#FFF3C4;border:2px dashed #C99700;border-radius:8px;padding:4px 8px;font-weight:700}
+}
+
+/* ---------- Formlar, sınıf, uyarılar ---------- */
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.inp{width:100%;padding:10px 12px;border:2.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:700 1rem var(--body)}
+.ta{min-height:86px;resize:vertical;font-weight:600}
+.form{display:grid;gap:12px}
+.fld{display:grid;gap:4px}
+.fld>label,.field>label,fieldset.al legend{font-weight:800}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+fieldset.al{border:2.5px solid var(--line);border-radius:14px;padding:8px 12px 10px;margin:0}
+.ck{display:flex;align-items:center;gap:8px;padding:3px 0;font-weight:700}
+.ck input{width:20px;height:20px;flex:none;accent-color:var(--grass)}
+.alset{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0 12px}
+.alert{background:#FFE3E0;color:#6B1209;border:2px solid #C0392B;border-radius:14px;padding:9px 12px;font-weight:800}
+.chip.red{background:#FF9AA2}
+.stu{padding:14px;display:grid;gap:8px;align-content:start}
+.stu h3{margin:0;font:800 1.2rem/1.2 var(--head)}
+.stu a{color:inherit;font-weight:800}
+.mlist{padding:14px 16px;margin-top:16px}
+.mlist h3{margin:0 0 4px;font:800 1.15rem var(--head)}
+.mlist ul{list-style:none;margin:8px 0 0;padding:0;columns:2 230px;column-gap:18px}
+.mlist li{break-inside:avoid}
+.mlist small{color:var(--muted);font-weight:700}
+.mlist input:checked+span{text-decoration:line-through;opacity:.6}
+.item .btn{margin-left:auto;flex:none;padding:8px 12px}
+@media (max-width:520px){.two{grid-template-columns:1fr}}
+@media print{
+  .ps-title{margin:0 0 6px;font-family:"Baloo 2","Arial Rounded MT Bold",Arial,sans-serif;font-size:20pt;line-height:1.15}
+  .ps-table{width:100%;border-collapse:collapse;margin-top:8px}
+  .ps-table th,.ps-table td{border:2px solid #1F2A55;padding:5px 8px;vertical-align:top;text-align:left}
+  .ps-table th{background:#FFC933;font-family:"Baloo 2","Arial Rounded MT Bold",Arial,sans-serif}
+  .ps-table tr{page-break-inside:avoid}
+  .ps-table small{font-weight:600}
+  .ps-warnt{font-weight:800;color:#8E1B10}
+  .ps-warn{border:2.5px solid #C0392B;background:#FFE3E0;border-radius:10px;padding:5px 10px;font-weight:800;color:#6B1209}
+  .ps-two{columns:2;column-gap:16px}
+  .ps-big li{font-size:14pt;margin:5px 0}
+  .ps-big li::before{top:5px;width:15px;height:15px}
+  .ps-big{padding-left:0}
+  .ps-al{margin:10px 0 0;padding-left:22px}
+  .ps-al li{font-size:13pt;margin:0 0 10px}
+}
+</style>
+</head>
+<body>
+
+<div id="splash" role="button" tabindex="0" aria-label="Uygulamaya gir">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="cloud c1" aria-hidden="true"></div>
+  <div class="cloud c2" aria-hidden="true"></div>
+  <div class="cloud c3" aria-hidden="true"></div>
+  <div class="balloon" style="--c:#FF6F61;left:8%;animation-delay:-3s;animation-duration:19s" aria-hidden="true"></div>
+  <div class="balloon" style="--c:#FFC933;left:78%;animation-delay:-9s;animation-duration:22s" aria-hidden="true"></div>
+  <div class="balloon" style="--c:#8A63D2;left:42%;animation-delay:-14s;animation-duration:17s" aria-hidden="true"></div>
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 800 320" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 190 Q200 110 420 170 T800 150 V320 H0Z" fill="#8EDB7E"/>
+      <path d="M0 250 Q250 190 480 240 T800 220 V320 H0Z" fill="#5DBB63"/>
+      <g transform="translate(540 112)" stroke="#1F2A55" stroke-width="4" stroke-linejoin="round">
+        <rect x="0" y="62" width="150" height="112" rx="8" fill="#FF8A5B"/>
+        <polygon points="-12,66 75,2 162,66" fill="#8A63D2"/>
+        <line x1="75" y1="2" x2="75" y2="-26"/>
+        <polygon points="75,-26 102,-18 75,-10" fill="#FF6F61"/>
+        <rect x="58" y="110" width="34" height="64" rx="17" fill="#FFC933"/>
+        <rect x="14" y="88" width="30" height="30" rx="6" fill="#CDEBFB"/>
+        <rect x="106" y="88" width="30" height="30" rx="6" fill="#CDEBFB"/>
+        <rect x="42" y="68" width="66" height="20" rx="7" fill="#fff"/>
+        <text x="75" y="83" text-anchor="middle" font-family="Baloo 2,Arial Rounded MT Bold,Arial,sans-serif" font-weight="800" font-size="14" fill="#1F2A55" stroke="none">Kreş</text>
+      </g>
+      <g stroke="#1F2A55" stroke-width="4">
+        <rect x="124" y="150" width="14" height="80" fill="#8A5A3C"/>
+        <circle cx="131" cy="130" r="48" fill="#3FA652"/>
+      </g>
+      <g stroke="#1F2A55" stroke-width="2.5">
+        <circle cx="250" cy="262" r="7" fill="#fff"/><circle cx="292" cy="270" r="7" fill="#FF8FA3"/>
+        <circle cx="340" cy="262" r="7" fill="#FFC933"/><circle cx="388" cy="272" r="7" fill="#fff"/>
+        <circle cx="432" cy="266" r="7" fill="#FF8FA3"/><circle cx="740" cy="270" r="7" fill="#FFC933"/>
+      </g>
+    </svg>
+  </div>
+  <div class="titlebox">
+    <h1 class="vh">Dilara Öğretmenin Etkinlikleri</h1>
+    <div id="blocks" aria-hidden="true"></div>
+    <p class="sub">3 yaş etkinlik programı</p>
+    <button id="go" type="button">Başla</button>
+  </div>
+</div>
+
+<div id="app" hidden>
+  <header class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">🌈</div>
+      <div><b>Dilara Öğretmen</b><small>Etkinlikler</small></div>
+    </div>
+    <nav id="tabs" aria-label="Bölümler">
+      <button type="button" data-a="tab" data-t="bugun"><span class="e">🌞</span><span>Bugün</span></button>
+      <button type="button" data-a="tab" data-t="hafta"><span class="e">📅</span><span>Hafta</span></button>
+      <button type="button" data-a="tab" data-t="ay"><span class="e">🗓️</span><span>Ay</span></button>
+      <button type="button" data-a="tab" data-t="liste"><span class="e">📚</span><span>Tüm etkinlikler</span></button>
+      <button type="button" data-a="tab" data-t="sinif"><span class="e">🧒</span><span>Sınıf</span></button>
+    </nav>
+    <button class="icon" type="button" data-a="settings" aria-label="Ayarlar">⚙️</button>
+  </header>
+  <main id="view" tabindex="-1"></main>
+</div>
+
+<div id="modal" class="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Ayrıntı">
+    <button class="icon x" type="button" data-a="close" aria-label="Kapat">✕</button>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="printSheet" aria-hidden="true"></div>
+
+<script>
+(function(){
+"use strict";
+const DATA=[{"id":1,"n":"Parmakla Yağmur Damlaları","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Parmak boyası (zehirsiz), mavi karton","how":"Çocuk parmağını mavi boyaya batırıp kartonda damla izleri bırakır; “şıp şıp” sesleri taklit edilir.","skill":"İnce kas, renk tanıma, serbest ifade","caution":"Boya ağza götürülmesin; zehirsiz boya kullanın.","e":"🌧️","al":["boya"]},{"id":2,"n":"Sünger Baskı Resmi","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Sünger parçaları, guaj boya, tepsi, kâğıt","how":"Sünger boyaya batırılıp kâğıda bastırılır; farklı renklerle desen oluşturulur.","skill":"El-göz koordinasyonu, renk ve şekil farkındalığı","caution":"Önlük giydirin; zehirsiz boya kullanın.","e":"🧽","al":["boya"]},{"id":3,"n":"Yırtılmış Kâğıtlarla Kolaj","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Renkli kâğıtlar, çocuk yapıştırıcısı, fon kartonu","how":"Çocuklar kâğıtları parmaklarıyla yırtar ve kartona yapıştırarak kendi resmini oluşturur.","skill":"İnce kas gelişimi, yaratıcılık","caution":"Zehirsiz, suda çözünen yapıştırıcı kullanın.","e":"🗞️","al":["boya"]},{"id":4,"n":"Oyun Hamuru Atölyesi","cat":"Sanat","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Oyun hamuru, plastik kalıplar, merdane","how":"Hamur yuvarlanır, ezilir, kalıplarla kesilir; “yılan”, “top”, “kurabiye” yapılır.","skill":"El kası, hayal gücü","caution":"Hamur ağza alınmasın; küçük kalıplara dikkat.","e":"🍪","al":["gluten"]},{"id":5,"n":"Pamuktan Bulutlar","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Mavi fon kartonu, pamuk, yapıştırıcı","how":"Pamuk parçaları mavi kartona yapıştırılarak gökyüzü ve bulutlar yapılır.","skill":"İnce kas, gökyüzü ve hava kavramı","caution":"Pamuk ağza alınmasın.","e":"☁️","al":["boya"]},{"id":6,"n":"El İzinden Balık","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Guaj boya, fırça, beyaz kâğıt, kâğıt havlu","how":"Çocuğun eline boya sürülüp kâğıda basılır; el izi balığa veya kuşa dönüştürülür.","skill":"Beden farkındalığı, yaratıcılık","caution":"Zehirsiz boya; sonrasında el yıkama.","e":"🐟","al":["boya"]},{"id":7,"n":"Müzikle Büyük Karalama","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Orta","mat":"Büyük kâğıt rulosu, mum boyalar, müzik","how":"Yere serilen kâğıtta müziğe göre çizgiler çizilir; hızlı müzikte hızlı, yavaş müzikte yavaş çizilir.","skill":"Hız kavramı, serbest çizim, ritim","caution":"Mum boyalar ağza alınmasın.","e":"🖍️","al":[]},{"id":8,"n":"Yaprak Frotaj","cat":"Sanat","dur":15,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Yapraklar, ince kâğıt, mum boya","how":"Yaprak kâğıdın altına konur; mum boya yan tarafıyla sürülünce yaprağın izi ortaya çıkar.","skill":"Doğa gözlemi, ince kas","caution":"Yaprakları temiz yerden toplayın.","e":"🍂","al":[]},{"id":9,"n":"Renk Karıştırma Sihri","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Kırmızı/sarı/mavi gıda boyası, şeffaf bardaklar, damlalık","how":"Kırmızı ve sarı karıştırılıp turuncu elde edilir; çocuklar renklerin değiştiğini izler.","skill":"Renk bilgisi, neden-sonuç","caution":"Sıvılar içilmesin; zemini kuru tutun.","e":"🧪","al":["boya"]},{"id":10,"n":"Kâğıt Tabak Hayvan Yüzü","cat":"Sanat","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Kâğıt tabak, renkli kâğıt, yapıştırıcı, hazır göz çıkartması","how":"Tabak kedi veya aslan yüzüne dönüştürülür; göz, kulak, bıyık yapıştırılır.","skill":"Yüz bölümleri, yaratıcılık","caution":"Küçük parçalar ağza alınmasın.","e":"🐱","al":["boya"]},{"id":11,"n":"Ritim Çalgıları Orkestrası","cat":"Müzik ve Ritim","dur":15,"place":"Sınıf","energy":"Orta","mat":"Mini davul, marakas, tef, çıngırak","how":"Çocuklar çalgıları seçer; öğretmenin işaretiyle çalıp durur.","skill":"Ritim, dinleme, kurallara uyma","caution":"Ses seviyesini kontrol edin.","e":"🥁","al":[]},{"id":12,"n":"Kendi Marakasını Yap","cat":"Müzik ve Ritim","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Küçük plastik şişe, pirinç veya mercimek, bant","how":"Şişeye pirinç doldurulur (kapağı öğretmen yapıştırır); çocuklar süsler ve çalar.","skill":"Ses-şekil ilişkisi, yaratıcılık","caution":"Kapağı mutlaka yapıştırıp bantlayın; içindekiler yutulmasın.","e":"🎶","al":[]},{"id":13,"n":"Hızlı-Yavaş Yürüyüş","cat":"Müzik ve Ritim","dur":10,"place":"Salon/Sınıf","energy":"Hareketli","mat":"Müzik çalar","how":"Müzik hızlandığında hızlı, yavaşladığında yavaş yürünür.","skill":"Hız kavramı, dinleme, denge","caution":"Çarpışmayı önlemek için geniş alan açın.","e":"🚶","al":[]},{"id":14,"n":"Müzik Durunca Heykel Ol","cat":"Müzik ve Ritim","dur":10,"place":"Salon/Sınıf","energy":"Hareketli","mat":"Müzik çalar","how":"Müzik çalarken dans edilir, müzik durunca heykel gibi donulur.","skill":"Dikkat, denge, kendini kontrol","caution":"Geniş alan açın.","e":"🗿","al":[]},{"id":15,"n":"Parmak Oyunu Şarkıları","cat":"Müzik ve Ritim","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Yok","how":"“Parmak Ailesi” gibi parmak hareketli şarkılar söylenir.","skill":"Dil gelişimi, ince kas, hafıza","caution":"Yetişkin gözetiminde yapılır.","e":"🖐️","al":[]},{"id":16,"n":"Mutfak Orkestrası","cat":"Müzik ve Ritim","dur":15,"place":"Sınıf","energy":"Orta","mat":"Plastik kaplar, tahta kaşıklar, tencere kapağı","how":"Ters çevrilen kaplar davul olur; farklı sesler denenir.","skill":"Ses farkı, ritim","caution":"Cam ve keskin kenarlı malzeme kullanmayın.","e":"🍳","al":[]},{"id":17,"n":"Eşarp Dansı","cat":"Müzik ve Ritim","dur":15,"place":"Salon/Sınıf","energy":"Hareketli","mat":"Hafif eşarplar, müzik","how":"Eşarplar müziğe göre havaya atılır, sallanır, yere bırakılır.","skill":"Büyük kas, ritim, ifade","caution":"Eşarp boyna dolanmasın.","e":"💃","al":[]},{"id":18,"n":"Bu Ses Ne?","cat":"Müzik ve Ritim","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Zil, kaşık, su bardağı, kâğıt","how":"Çocuk gözünü kapatır, çıkan sesin ne olduğunu tahmin eder.","skill":"İşitsel algı, dikkat","caution":"Yetişkin gözetiminde yapılır.","e":"👂","al":[]},{"id":19,"n":"Hayvan Seslerinden Şarkı","cat":"Müzik ve Ritim","dur":10,"place":"Sınıf","energy":"Orta","mat":"Hayvan resim kartları","how":"Kart gösterilir, çocuklar hayvanın sesini ve hareketini taklit eder; şarkıya eklenir.","skill":"Dil gelişimi, taklit","caution":"Yetişkin gözetiminde yapılır.","e":"🐮","al":[]},{"id":20,"n":"Sınıf Korosu","cat":"Müzik ve Ritim","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Yok","how":"Bilinen kısa şarkılar el hareketleriyle birlikte söylenir.","skill":"Konuşma, hafıza, grup uyumu","caution":"Yetişkin gözetiminde yapılır.","e":"🎤","al":[]},{"id":21,"n":"Minderli Engel Parkuru","cat":"Hareket ve Oyun","dur":20,"place":"Salon","energy":"Hareketli","mat":"Minder, yastık, tünel","how":"Çocuklar engellerin üzerinden geçer, altından sürünür, yanından dolanır.","skill":"Büyük kas, denge, yön kavramı","caution":"Minderler kaymasın; yakın gözetim.","e":"🏃","al":[]},{"id":22,"n":"Balon Oyunu","cat":"Hareket ve Oyun","dur":10,"place":"Salon","energy":"Hareketli","mat":"Büyük balon veya hafif plastik top","how":"Balon yere düşürülmeden havada tutulmaya çalışılır.","skill":"El-göz koordinasyonu","caution":"Patlak balon parçaları ağza alınmasın; hafif plastik top tercih edilebilir.","e":"🎈","al":["lateks"]},{"id":23,"n":"Çizgi Üzerinde Yürüyüş","cat":"Hareket ve Oyun","dur":10,"place":"Salon","energy":"Orta","mat":"Koli bandı","how":"Yerdeki çizgide ileri, yan ve ayak ucunda yürünür.","skill":"Denge, vücut kontrolü","caution":"Yetişkin gözetiminde yapılır.","e":"🤸","al":[]},{"id":24,"n":"Kutuya Top At","cat":"Hareket ve Oyun","dur":15,"place":"Salon/Bahçe","energy":"Hareketli","mat":"Yumuşak toplar, kova veya kutu","how":"Çocuklar hedefe top atar; mesafe yavaş yavaş artırılır.","skill":"El-göz koordinasyonu, sayma","caution":"Yetişkin gözetiminde yapılır.","e":"🏀","al":[]},{"id":25,"n":"Hayvan Yürüyüşleri","cat":"Hareket ve Oyun","dur":10,"place":"Salon/Bahçe","energy":"Hareketli","mat":"Yok","how":"Çocuklar tavşan gibi zıplar, ördek gibi yürür, fil gibi ağır adımlarla ilerler.","skill":"Büyük kas, hayal gücü","caution":"Yetişkin gözetiminde yapılır.","e":"🐰","al":[]},{"id":26,"n":"Çemberden Çembere","cat":"Hareket ve Oyun","dur":15,"place":"Salon/Bahçe","energy":"Hareketli","mat":"Yere konan çemberler (hula-hop)","how":"Çemberlere sırayla zıplanır; renk söylenince o çembere gidilir.","skill":"Zıplama, renk bilgisi","caution":"Yetişkin gözetiminde yapılır.","e":"⭕","al":[]},{"id":27,"n":"Yastık Dağı Tırmanışı","cat":"Hareket ve Oyun","dur":15,"place":"Salon","energy":"Hareketli","mat":"Büyük yastıklar, minder","how":"Yastıklardan oluşan alçak tepeye tırmanılır, kayılır.","skill":"Tırmanma, denge, cesaret","caution":"Yığını alçak tutun; zemini minderle kaplayın.","e":"⛰️","al":[]},{"id":28,"n":"Öğretmen Der Ki","cat":"Hareket ve Oyun","dur":10,"place":"Sınıf","energy":"Orta","mat":"Yok","how":"“Elini başına koy”, “ayağını yere vur” gibi basit komutlar uygulanır.","skill":"Dinleme, yönerge izleme, beden bölümleri","caution":"Yetişkin gözetiminde yapılır.","e":"🙋","al":[]},{"id":29,"n":"Sabun Köpüğü Avı","cat":"Hareket ve Oyun","dur":15,"place":"Bahçe","energy":"Hareketli","mat":"Baloncuk sıvısı, üfleme çubuğu","how":"Öğretmen baloncuk üfler; çocuklar yakalar, patlatır.","skill":"Takip, el-göz koordinasyonu","caution":"Gözlere kaçmasın; kaygan zemine dikkat.","e":"🌬️","al":["sabun"]},{"id":30,"n":"Ayna Oyunu","cat":"Hareket ve Oyun","dur":10,"place":"Sınıf","energy":"Orta","mat":"Yok","how":"Öğretmen bir hareket yapar, çocuklar ayna gibi taklit eder.","skill":"Taklit, dikkat, beden farkındalığı","caution":"Yetişkin gözetiminde yapılır.","e":"👯","al":[]},{"id":31,"n":"Su Aktarma Oyunu","cat":"Duyusal Oyun","dur":20,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Leğen, kepçe, bardaklar, havlu","how":"Bardaktan bardağa su aktarılır; kepçe ve süzgeçle denenir.","skill":"Doldurma-boşaltma, el koordinasyonu","caution":"Kayma riski; zemini silin, derin su kullanmayın.","e":"💧","al":[]},{"id":32,"n":"Pirinç Duyu Kutusu","cat":"Duyusal Oyun","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Pirinç, geniş kap, kaşık, küçük kaplar","how":"Pirinç içinde elle ve kaşıkla oyun oynanır; doldurma-boşaltma yapılır.","skill":"Dokunma duyusu, ince kas","caution":"Ağza atılmasın; dökülen pirinç kaydırır.","e":"🍚","al":["pirinc"]},{"id":33,"n":"Köpüklü Oyuncak Yıkama","cat":"Duyusal Oyun","dur":20,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Leğen, çocuk sabunu köpüğü, plastik oyuncaklar","how":"Plastik oyuncaklar köpüklü suda yıkanır, kurulanır.","skill":"Temizlik alışkanlığı, duyusal deneyim","caution":"Köpük göze ve ağza kaçmasın.","e":"🛁","al":["sabun"]},{"id":34,"n":"Kum Havuzu Keşfi","cat":"Duyusal Oyun","dur":20,"place":"Bahçe","energy":"Sakin","mat":"Kum, kova, kürek, kalıplar","how":"Kumdan kale ve kurabiyeler yapılır; kuru ve nemli kum karşılaştırılır.","skill":"Duyusal gelişim, hayal gücü","caution":"Kum göze ve ağza gitmesin.","e":"🏖️","al":[]},{"id":35,"n":"Gizemli Torba","cat":"Duyusal Oyun","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Kumaş torba, tanıdık nesneler","how":"Torbaya elini sokan çocuk dokunarak nesneyi tahmin eder.","skill":"Dokunma duyusu, kelime dağarcığı","caution":"Sivri veya çok küçük nesne koymayın.","e":"👜","al":[]},{"id":36,"n":"Mısır Nişastası Hamuru","cat":"Duyusal Oyun","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Mısır nişastası, su, tepsi","how":"Nişasta ve su karıştırılır; hamurun hem sıvı hem katı hali keşfedilir.","skill":"Duyusal keşif, neden-sonuç","caution":"Ağza götürülmesin; zemin kayabilir.","e":"🥣","al":["misir"]},{"id":37,"n":"Koku Kavanozları","cat":"Duyusal Oyun","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Kapaklı kavanoz, pamuk, nane, limon, tarçın","how":"Çocuk kokuyu koklar ve neye benzediğini söyler.","skill":"Koku duyusu, kelime dağarcığı","caution":"Alerjisi olan çocuk var mı kontrol edin; yenmesin.","e":"👃","al":["koku"]},{"id":38,"n":"Dokulu Patika","cat":"Duyusal Oyun","dur":15,"place":"Salon","energy":"Orta","mat":"Halı parçası, kumaş, sünger, plastik mat","how":"Çıplak ayakla farklı yüzeylerde yürünür; yumuşak-sert söylenir.","skill":"Dokunma, zıt kavramlar","caution":"Zeminin kaymaz olmasına dikkat.","e":"🦶","al":[]},{"id":39,"n":"Buz Eritme Deneyi","cat":"Duyusal Oyun","dur":15,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Buz küpleri, tuz, ılık su, plastik oyuncak","how":"Buzlara dokunulur, üzerine tuz ve ılık su dökülerek erimesi izlenir.","skill":"Soğuk-sıcak, neden-sonuç","caution":"Temas kısa tutulsun; buz ağza alınmasın.","e":"🧊","al":[]},{"id":40,"n":"Fener ve Gölge","cat":"Duyusal Oyun","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Fener, oyuncaklar, beyaz duvar/perde","how":"Karartılan sınıfta oyuncak ve ellerle gölge yapılır.","skill":"Işık-gölge, hayal gücü","caution":"Fener gözlere tutulmasın.","e":"🔦","al":[]},{"id":41,"n":"Fasulye Ekimi","cat":"Fen ve Doğa","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Fasulye, pamuk, şeffaf bardak, su","how":"Fasulye ıslak pamuğa konur; her gün büyümesi izlenir.","skill":"Doğa bilinci, gözlem, sorumluluk","caution":"Tohumlar ağza alınmasın.","e":"🌱","al":["baklagil"]},{"id":42,"n":"Batar mı, Yüzer mi?","cat":"Fen ve Doğa","dur":15,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Leğen, su, top, taş, kaşık, mantar","how":"Çocuk tahmin eder, nesne suya bırakılır, sonuç konuşulur.","skill":"Tahmin, gözlem, neden-sonuç","caution":"Küçük nesneler yutulmasın.","e":"⚓","al":[]},{"id":43,"n":"Mıknatıs Keşfi","cat":"Fen ve Doğa","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Büyük mıknatıs, metal ve plastik nesneler","how":"Mıknatısın çektiği ve çekmediği nesneler ayrılır.","skill":"Gözlem, sınıflandırma","caution":"Küçük mıknatıs yutulabilir; yalnızca büyük mıknatıs kullanın.","e":"🧲","al":[]},{"id":44,"n":"Doğa Yürüyüşü ve Toplama","cat":"Fen ve Doğa","dur":25,"place":"Bahçe","energy":"Hareketli","mat":"Küçük torba veya sepet","how":"Bahçede yaprak, çiçek, çubuk toplanır; renk ve şekil farkı konuşulur.","skill":"Doğa gözlemi, kelime dağarcığı","caution":"Zararlı bitki ve böceklere dikkat.","e":"🌳","al":["polen"]},{"id":45,"n":"Çiçeklerimizi Sulayalım","cat":"Fen ve Doğa","dur":15,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Saksı, küçük sulama kabı","how":"Çocuklar sırayla bitkileri sular.","skill":"Sorumluluk, canlıları koruma","caution":"Yetişkin gözetiminde yapılır.","e":"🌷","al":[]},{"id":46,"n":"Bugün Hava Nasıl?","cat":"Fen ve Doğa","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Hava durumu panosu, güneş/bulut/yağmur kartları","how":"Pencereden bakılır, hava durumu kartı panoya asılır.","skill":"Gözlem, hava durumu kavramları","caution":"Yetişkin gözetiminde yapılır.","e":"⛅","al":[]},{"id":47,"n":"Böcek Dedektifleri","cat":"Fen ve Doğa","dur":20,"place":"Bahçe","energy":"Orta","mat":"Büyüteç","how":"Bahçede karınca ve kelebek aranır; izlenir, dokunulmaz.","skill":"Merak, dikkat","caution":"Arı vb. riskine karşı dokunmayın.","e":"🐞","al":[]},{"id":48,"n":"Rengi Değişen Çiçek","cat":"Fen ve Doğa","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Beyaz karanfil, gıda boyası, su, bardak","how":"Karanfil boyalı suya konur; ertesi gün çiçeğin rengi değişmiş olur.","skill":"Gözlem, zaman kavramı","caution":"Boyalı su içilmesin.","e":"🌸","al":["boya","polen"]},{"id":49,"n":"Nehir ve Baraj","cat":"Fen ve Doğa","dur":20,"place":"Bahçe","energy":"Hareketli","mat":"Kum, su, kova, küçük oluk","how":"Kumda nehir yatağı açılır, su dökülerek akması izlenir.","skill":"Neden-sonuç, duyusal keşif","caution":"Islanmaya karşı yedek kıyafet bulundurun.","e":"🏞️","al":[]},{"id":50,"n":"Hayvan ve Yuvaları","cat":"Fen ve Doğa","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Hayvan ve yuva kartları","how":"Kuş-yuva, balık-akvaryum, köpek-kulübe eşleştirilir.","skill":"Eşleştirme, canlı bilgisi","caution":"Yetişkin gözetiminde yapılır.","e":"🐦","al":[]},{"id":51,"n":"Resimli Kitap Saati","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Resimli çocuk kitabı","how":"Öğretmen okur, çocuklara “Bu ne?” diye sorar.","skill":"Dinleme, kelime dağarcığı","caution":"Yetişkin gözetiminde yapılır.","e":"📖","al":[]},{"id":52,"n":"Çorap Kukla Tiyatrosu","cat":"Dil ve Hikaye","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Eski çoraplar, sabit göz çıkartmaları","how":"Çorap kuklalar konuşturulur, çocuklar da kuklayla konuşur.","skill":"Konuşma cesareti, hayal gücü","caution":"Küçük gözler iyice sabitlenmeli.","e":"🧦","al":[]},{"id":53,"n":"Keçe Pano Hikayesi","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Keçe pano, keçeden şekiller","how":"Hikaye anlatılırken şekiller panoya yerleştirilir.","skill":"Dinleme, sıralama","caution":"Yetişkin gözetiminde yapılır.","e":"🧶","al":[]},{"id":54,"n":"Resim Kartı Eşleştirme","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Çift resim kartları","how":"Aynı iki resim bulunup eşleştirilir ve isimleri söylenir.","skill":"Kelime, görsel algı","caution":"Yetişkin gözetiminde yapılır.","e":"🃏","al":[]},{"id":55,"n":"Kutudan Ne Çıktı?","cat":"Dil ve Hikaye","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Karton kutu, tanıdık oyuncaklar","how":"Çocuk kutudan nesne çıkarır, adını ve rengini söyler.","skill":"Kelime, merak","caution":"Yetişkin gözetiminde yapılır.","e":"🎁","al":[]},{"id":56,"n":"Tekerleme Saati","cat":"Dil ve Hikaye","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Yok","how":"Kısa tekerlemeler birlikte tekrar edilir.","skill":"Telaffuz, hafıza","caution":"Yetişkin gözetiminde yapılır.","e":"🗣️","al":[]},{"id":57,"n":"Hikaye Küpü","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Orta","mat":"Resimli büyük küp (karton kutu)","how":"Küp atılır, gelen resimle bir cümle veya hikaye söylenir.","skill":"Hayal gücü, cümle kurma","caution":"Yetişkin gözetiminde yapılır.","e":"🎲","al":[]},{"id":58,"n":"Duygu Yüzleri","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Mutlu, üzgün, kızgın yüz kartları","how":"Kartlar gösterilir; “Ne zaman mutlu oluyorsun?” konuşulur.","skill":"Duygu tanıma, ifade","caution":"Yetişkin gözetiminde yapılır.","e":"😊","al":[]},{"id":59,"n":"Sabah Çemberi","cat":"Dil ve Hikaye","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Takvim, günün kartı","how":"Günaydın şarkısı söylenir, hava durumu ve günün adı konuşulur.","skill":"Gün kavramı, grup bilinci","caution":"Yetişkin gözetiminde yapılır.","e":"🌞","al":[]},{"id":60,"n":"Hikayeyi Birlikte Tamamlayalım","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Orta","mat":"Yok","how":"Öğretmen “Bir varmış bir yokmuş…” diye başlar; çocuklar sorulara cevap verir.","skill":"Hayal gücü, ifade","caution":"Yetişkin gözetiminde yapılır.","e":"📚","al":[]},{"id":61,"n":"Renklere Göre Ayır","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Renkli toplar veya bloklar, 3 kova","how":"Nesneler renklerine göre kovalara ayrılır.","skill":"Sınıflandırma, renk bilgisi","caution":"Yetişkin gözetiminde yapılır.","e":"🔴","al":[]},{"id":62,"n":"Büyük ve Küçük","cat":"Matematik Öncesi","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Büyük/küçük toplar, kapaklar, kutular","how":"Büyük ve küçük nesneler ayrı yerlere konur.","skill":"Boyut kavramı","caution":"Yetişkin gözetiminde yapılır.","e":"🐘","al":[]},{"id":63,"n":"Blok Kulesi","cat":"Matematik Öncesi","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Büyük plastik veya ahşap bloklar","how":"Kule yapılır, kaç blok olduğu sayılır, sonra yıkılır.","skill":"Denge, sayma, el-göz","caution":"Yetişkin gözetiminde yapılır.","e":"🧱","al":[]},{"id":64,"n":"Parmaklarla 1-2-3","cat":"Matematik Öncesi","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Yok","how":"Parmakla bir, iki, üç gösterilir; sayı şarkısı söylenir.","skill":"Sayı kavramı","caution":"Yetişkin gözetiminde yapılır.","e":"☝️","al":[]},{"id":65,"n":"Şekil Avı","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Orta","mat":"Karton daire, kare, üçgen","how":"Sınıfta daireye veya kareye benzeyen eşyalar aranır.","skill":"Şekil tanıma, gözlem","caution":"Yetişkin gözetiminde yapılır.","e":"🔷","al":[]},{"id":66,"n":"Çorap Eşleştirme","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Farklı renkli çoraplar","how":"Aynı olan çoraplar eşleştirilir.","skill":"Eşleştirme, görsel algı","caution":"Yetişkin gözetiminde yapılır.","e":"🔗","al":[]},{"id":67,"n":"Uzun ve Kısa","cat":"Matematik Öncesi","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Farklı boyda ip, çubuk, şerit","how":"Uzun ve kısa nesneler karşılaştırılır.","skill":"Karşılaştırma","caution":"İp boğulma riski; kısa ve gözetim altında kullanın.","e":"📏","al":[]},{"id":68,"n":"Kutu ve Kapak","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Farklı boyda kutu ve kapaklar","how":"Kapaklar doğru kutuyla eşleştirilir.","skill":"Boyut, şekil, deneme-yanılma","caution":"Yetişkin gözetiminde yapılır.","e":"📦","al":[]},{"id":69,"n":"Basit Yapboz","cat":"Matematik Öncesi","dur":20,"place":"Sınıf","energy":"Sakin","mat":"4-6 parçalı iri yapboz","how":"Parçalar birleştirilir.","skill":"Problem çözme, görsel algı","caution":"Büyük parçalı yapboz seçin.","e":"🧩","al":[]},{"id":70,"n":"Altında, Üstünde, Yanında","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Orta","mat":"Kutu, oyuncak","how":"Oyuncak kutunun altına, üstüne veya yanına konur.","skill":"Konum kavramı","caution":"Yetişkin gözetiminde yapılır.","e":"📍","al":[]},{"id":71,"n":"Market Oyunu","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"Boş kutular, oyuncak para, sepet","how":"Satıcı ve müşteri rolleri oynanır.","skill":"Sosyal beceri, konuşma","caution":"Yetişkin gözetiminde yapılır.","e":"🛒","al":[]},{"id":72,"n":"Doktor Muayenehanesi","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"Oyuncak doktor seti, bebekler","how":"Oyuncak hastalar muayene edilir.","skill":"Empati, rol yapma","caution":"Gerçek tıbbi malzeme kullanmayın.","e":"🩺","al":[]},{"id":73,"n":"Çay Partisi","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Oyuncak tabak ve bardaklar, bebekler","how":"Misafirlere çay ikram edilir.","skill":"Paylaşma, nezaket","caution":"Yetişkin gözetiminde yapılır.","e":"☕","al":[]},{"id":74,"n":"Bebek Bakımı","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Bebek, battaniye, biberon","how":"Bebek uyutulur, beslenir, giydirilir.","skill":"Şefkat, günlük yaşam","caution":"Yetişkin gözetiminde yapılır.","e":"👶","al":[]},{"id":75,"n":"Kuaför Oyunu","cat":"Rol Yapma","dur":15,"place":"Sınıf","energy":"Orta","mat":"Tarak, oyuncak saç tokası","how":"Çocuklar bebek ya da arkadaşlarının saçını tarar.","skill":"Rol yapma, ince kas","caution":"Gerçek makas veya sivri tarak kullanmayın.","e":"💇","al":[]},{"id":76,"n":"Çiftlik Oyunu","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"Oyuncak hayvanlar, ahır kutusu","how":"Hayvanlar beslenir, sesleri taklit edilir.","skill":"Hayal gücü, kelime dağarcığı","caution":"Yetişkin gözetiminde yapılır.","e":"🐄","al":[]},{"id":77,"n":"Meslek Giysileri Günü","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"İtfaiyeci, aşçı, polis kıyafetleri","how":"Çocuklar giyip rol yapar; “Ne iş yapıyorum?” konuşulur.","skill":"Meslek bilgisi, hayal gücü","caution":"Yetişkin gözetiminde yapılır.","e":"🚒","al":[]},{"id":78,"n":"Sınıfta Piknik","cat":"Rol Yapma","dur":20,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Örtü, oyuncak yiyecekler, sepet","how":"Piknik örtüsü serilir, yemekler paylaşılır.","skill":"Paylaşma, sosyal oyun","caution":"Yetişkin gözetiminde yapılır.","e":"🧺","al":[]},{"id":79,"n":"Battaniye Çadır","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"Battaniye, sandalye, fener","how":"Battaniyeden çadır yapılır; içinde kamp hikayesi anlatılır.","skill":"Hayal gücü, iş birliği","caution":"Sandalyeler devrilmesin.","e":"⛺","al":[]},{"id":80,"n":"Minder Yolunda Araba Sürüş","cat":"Rol Yapma","dur":15,"place":"Salon","energy":"Orta","mat":"Minder, oyuncak arabalar","how":"Minderlerden yol yapılır; trafik ışıkları öğretilir.","skill":"Kurallar, hayal gücü","caution":"Yetişkin gözetiminde yapılır.","e":"🚗","al":[]},{"id":81,"n":"Muz Dilimleme","cat":"Günlük Yaşam ve Mutfak","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Muz, plastik bıçak, tabak","how":"Çocuklar plastik bıçakla muzu keser ve yer.","skill":"İnce kas, öz bakım","caution":"Alerji kontrolü; yakın gözetim.","e":"🍌","al":["meyve"]},{"id":82,"n":"Kendi Sandviçini Yap","cat":"Günlük Yaşam ve Mutfak","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Ekmek, peynir, plastik bıçak","how":"Ekmeğe peynir sürülür, dilimlenir.","skill":"Öz bakım, ince kas","caution":"Alerji kontrolü; el hijyeni.","e":"🥪","al":["gluten","sut"]},{"id":83,"n":"Meyve Salatası","cat":"Günlük Yaşam ve Mutfak","dur":25,"place":"Sınıf","energy":"Sakin","mat":"Muz, elma, çilek, kâse, kaşık","how":"Öğretmen meyveleri küçük parçalar halinde keser; çocuklar karıştırır.","skill":"Beslenme, paylaşma","caution":"Üzüm gibi yuvarlak meyveleri uzunlamasına kesin; alerji kontrolü.","e":"🍓","al":["meyve"]},{"id":84,"n":"Hamur Yoğurma","cat":"Günlük Yaşam ve Mutfak","dur":25,"place":"Sınıf","energy":"Sakin","mat":"Un, su, tuz, merdane","how":"Hamur yoğrulur, yuvarlanır, açılır.","skill":"Duyusal gelişim, ince kas","caution":"Çiğ hamur yenmez; gluten alerjisi kontrolü.","e":"🍞","al":["gluten"]},{"id":85,"n":"El Yıkama Şarkısı","cat":"Günlük Yaşam ve Mutfak","dur":10,"place":"Lavabo","energy":"Orta","mat":"Sabun, havlu","how":"El yıkama adımları şarkıyla öğretilir.","skill":"Hijyen, sıralama","caution":"Zemin kayabilir.","e":"🧼","al":[]},{"id":86,"n":"Giyinme Pratiği","cat":"Günlük Yaşam ve Mutfak","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Önlük, mont, düğmeli ve fermuarlı kıyafet","how":"Çocuk kıyafet giymeyi ve fermuar çekmeyi dener.","skill":"Öz bakım, bağımsızlık","caution":"Yetişkin gözetiminde yapılır.","e":"🧥","al":[]},{"id":87,"n":"Masayı Hazırlayalım","cat":"Günlük Yaşam ve Mutfak","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Plastik tabak, peçete, kaşık","how":"Çocuklar masaya tabak ve peçete koyar.","skill":"Sorumluluk, sayma","caution":"Yetişkin gözetiminde yapılır.","e":"🍽️","al":[]},{"id":88,"n":"Toplama Şarkısı","cat":"Günlük Yaşam ve Mutfak","dur":10,"place":"Sınıf","energy":"Orta","mat":"Oyuncak kutuları","how":"Şarkı eşliğinde oyuncaklar kutusuna toplanır.","skill":"Düzen, sorumluluk","caution":"Yetişkin gözetiminde yapılır.","e":"🧸","al":[]},{"id":89,"n":"Yoğurtlu Meyve Bardağı","cat":"Günlük Yaşam ve Mutfak","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Yoğurt, meyve parçaları, plastik bardak","how":"Bardağa yoğurt ve meyve katmanları konur.","skill":"Sıralama, beslenme","caution":"Süt ürünü alerjisi kontrolü.","e":"🥛","al":["sut","meyve"]},{"id":90,"n":"Meyve Suyu Servisi","cat":"Günlük Yaşam ve Mutfak","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Küçük sürahi, plastik bardaklar, su","how":"Sürahiden bardağa su dökülür.","skill":"Dökme becerisi, nezaket","caution":"Silme bezi hazır olsun.","e":"🧃","al":[]},{"id":91,"n":"Mandal Güneşi","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Sarı karton daire, çamaşır mandalı","how":"Mandallar karton çevresine takılır, güneş ışınları olur.","skill":"El kasları","caution":"Mandal parmağı sıkıştırmasın.","e":"☀️","al":[]},{"id":92,"n":"Makarna Dizme","cat":"İnce Kas Becerileri","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Kalın makarna, kalın bağcık","how":"Makarnalar ipe dizilir.","skill":"İnce kas, el-göz koordinasyonu","caution":"İp kısa olsun (yaklaşık 30 cm); makarna ağza alınmasın.","e":"🍝","al":["gluten"]},{"id":93,"n":"Kâğıt Buruşturma ve Yırtma","cat":"İnce Kas Becerileri","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Eski gazete veya kâğıt","how":"Kâğıtlar buruşturulup kutuya atılır.","skill":"El kası","caution":"Yetişkin gözetiminde yapılır.","e":"📰","al":[]},{"id":94,"n":"Maşa ile Pompon Taşıma","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Büyük pomponlar, çocuk maşası, kaseler","how":"Pomponlar maşayla bir kaseden diğerine taşınır.","skill":"Pens tutuş, ince kas","caution":"Pomponlar ağza alınmasın.","e":"🥢","al":[]},{"id":95,"n":"Delikli Karton Dikiş","cat":"İnce Kas Becerileri","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Delikli kalın karton, kalın bağcık","how":"Bağcık deliklerden geçirilir.","skill":"El-göz koordinasyonu, odaklanma","caution":"Uçlu iğne kullanmayın.","e":"🧵","al":[]},{"id":96,"n":"Kapak Çevirme","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Farklı şişe ve kapaklar","how":"Kapaklar doğru şişelere vidalanır.","skill":"Bilek kası, eşleştirme","caution":"Küçük kapaklar yutulabilir; büyük kapak seçin.","e":"🍾","al":[]},{"id":97,"n":"Etiket Soyma ve Yapıştırma","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Büyük çıkartmalar, kâğıt","how":"Çıkartmalar soyulup kâğıda yapıştırılır.","skill":"Parmak kasları","caution":"Çıkartma ağza alınmasın.","e":"⭐","al":[]},{"id":98,"n":"Kâğıt Şeridi Kesme","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Çocuk makası (ucu yuvarlak), kâğıt şeritler","how":"Öğretmen çizgiler çizer; çocuk makasla kısa şeritleri keser.","skill":"Makas hazırlığı, el-göz","caution":"Makas yakın gözetimde kullanılır.","e":"✂️","al":[]},{"id":99,"n":"Düğme ve Fermuar Panosu","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Bezden yapılmış beceri panosu","how":"Düğme iliklenir, fermuar çekilir, bağcık bağlanır.","skill":"Öz bakım, ince kas","caution":"Yetişkin gözetiminde yapılır.","e":"🔘","al":[]},{"id":100,"n":"Delikten At","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Delikli karton kutu, büyük kapaklar veya pomponlar","how":"Çocuk nesneleri delikten kutuya atar.","skill":"El-göz koordinasyonu, sayma","caution":"Küçük nesneler ağza alınmasın.","e":"🎯","al":[]}];
+const ORDER=[1,61,21,31,81,41,71,91,51,11,22,82,12,52,62,42,2,32,72,92,83,63,43,33,13,23,53,93,3,73,44,34,74,84,4,24,94,14,64,54,75,35,15,85,95,55,65,5,45,25,56,26,96,46,36,6,86,76,66,16,97,37,27,87,57,17,47,7,77,67,58,48,28,8,88,38,18,78,68,98,9,69,19,59,29,39,99,49,89,79,100,90,20,30,40,10,70,80,60,50];
+const KEY="dilara.etkinlik.v1";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const MONTHS=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+const DAYS=["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"];
+const DS=["Pzt","Sal","Çar","Per","Cum","Cmt","Paz"];
+const CATS=[
+ {n:"Sanat",e:"🎨",c:"#FF8FA3"},{n:"Müzik ve Ritim",e:"🎵",c:"#9B8CFF"},{n:"Hareket ve Oyun",e:"🤸",c:"#FFA94D"},
+ {n:"Duyusal Oyun",e:"✋",c:"#5CC8F2"},{n:"Fen ve Doğa",e:"🔬",c:"#7AD16F"},{n:"Dil ve Hikaye",e:"📚",c:"#E58CFF"},
+ {n:"Matematik Öncesi",e:"🔢",c:"#FFD43B"},{n:"Rol Yapma",e:"🎭",c:"#FF7A6B"},{n:"Günlük Yaşam ve Mutfak",e:"🍎",c:"#4FD1B5"},
+ {n:"İnce Kas Becerileri",e:"🧵",c:"#D8A66B"}
+];
+const CI={};CATS.forEach(c=>CI[c.n]=c);
+const AL=[["sut","Süt ürünü"],["gluten","Gluten (un, ekmek, makarna)"],["yumurta","Yumurta"],["kuruyemis","Kuruyemiş"],["meyve","Meyve"],["misir","Mısır"],["baklagil","Baklagil"],["pirinc","Pirinç"],["koku","Güçlü koku"],["polen","Polen, bitki"],["lateks","Lateks (balon)"],["boya","Boya, yapıştırıcı"],["sabun","Sabun, köpük"]];
+const ALN={};AL.forEach(x=>ALN[x[0]]=x[1]);
+const PLACES=["Sınıf","Salon","Bahçe","Sınıf/Bahçe","Salon/Sınıf","Salon/Bahçe","Lavabo"];
+const ENERGY=["Sakin","Orta","Hareketli"];
+const QUESTIONS={
+ "Sanat":["Hangi renkleri kullandın?","Resminde neler var?","En çok hangi kısmını sevdin?"],
+ "Müzik ve Ritim":["Ses hızlı mıydı, yavaş mıydı?","En çok hangi sesi sevdin?","Bu şarkıyı hangi hareketle söyleyelim?"],
+ "Hareket ve Oyun":["Bedenin hangi kısmı çok çalıştı?","En çok neresi eğlenceliydi?","Nefes alıp verelim; kalbin nasıl atıyor?"],
+ "Duyusal Oyun":["Dokununca ne hissettin: yumuşak mı, sert mi?","Neye benziyordu?","Hangi duyunla keşfettin?"],
+ "Fen ve Doğa":["Sence ne olacak?","Neler gördük?","Sence neden böyle oldu?"],
+ "Dil ve Hikaye":["Kimler vardı?","En çok kim hoşuna gitti?","Sen olsan ne yapardın?"],
+ "Matematik Öncesi":["Kaç tane var?","Hangisi daha büyük ya da daha uzun?","Hangileri aynı?"],
+ "Rol Yapma":["Sen kimdin?","Neler yaptın?","Bir dahaki sefere kim olmak istersin?"],
+ "Günlük Yaşam ve Mutfak":["Ellerimizi neden yıkıyoruz?","Bugün neyi kendin yaptın?","Yaptığın şeyin tadı ya da kokusu nasıldı?"],
+ "İnce Kas Becerileri":["Parmaklarınla neler yaptın?","Hangisi zordu, hangisi kolaydı?","Bir daha denemek ister misin?"]
+};
+const BASE={};DATA.forEach(a=>BASE[a.id]=a);
+
+/* ---------- Tarih yardımcıları ---------- */
+const pad=n=>String(n).padStart(2,"0");
+const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const parse=s=>{const p=s.split("-").map(Number);return new Date(p[0],p[1]-1,p[2],12)};
+const addDays=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n,12);
+const dow=d=>(d.getDay()+6)%7;
+const mondayOf=d=>addDays(d,-dow(d));
+const fmtLong=d=>DAYS[dow(d)]+", "+d.getDate()+" "+MONTHS[d.getMonth()]+" "+d.getFullYear();
+const fmtShort=s=>{const d=parse(s);return d.getDate()+" "+MONTHS[d.getMonth()]+" "+DAYS[dow(d)]};
+const fmtD=s=>{const p=s.split("-");return p[2]+"."+p[1]+"."+p[0]};
+const cap=x=>x.replace(/\p{L}/u,m=>m.toLocaleUpperCase("tr-TR"));
+const DATE_RE=/^\d{4}-\d{2}-\d{2}$/;
+const todayISO=()=>iso(new Date());
+function ageText(b){
+  if(!b||!DATE_RE.test(b))return"";
+  const d=parse(b),n=new Date();let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth();
+  if(n.getDate()<d.getDate())m--;
+  if(m<0){y--;m+=12}
+  if(y<0)return"";
+  return y+" yaş"+(m?" "+m+" ay":"");
+}
+
+/* ---------- Kayıt ---------- */
+function sanitizeAct(o){
+  const cat=CI[o.cat]?o.cat:"Sanat";
+  return{id:Number(o.id),n:String(o.n||"").slice(0,120),cat:cat,dur:Math.max(5,Math.min(90,Math.round(Number(o.dur))||15)),
+    place:String(o.place||"Sınıf").slice(0,40),energy:ENERGY.indexOf(o.energy)>=0?o.energy:"Sakin",
+    mat:String(o.mat||"").slice(0,600),how:String(o.how||"").slice(0,1500),skill:String(o.skill||"").slice(0,300),
+    caution:String(o.caution||"").slice(0,400),e:(String(o.e||"").trim().slice(0,8))||CI[cat].e,
+    al:Array.isArray(o.al)?o.al.filter(k=>ALN[k]):[]};
+}
+function sanStudent(s){
+  return{id:Number(s.id)||0,n:String(s.n||"").slice(0,80),b:DATE_RE.test(s.b||"")?s.b:"",v:String(s.v||"").slice(0,80),
+    t:String(s.t||"").slice(0,30),al:Array.isArray(s.al)?s.al.filter(k=>ALN[k]):[],ao:String(s.ao||"").slice(0,160),note:String(s.note||"").slice(0,300)};
+}
+function loadFrom(j){
+  const Q={start:"2026-10-26",holidays:[],done:[],students:[],custom:[],edits:{},swap:{},got:{},cls:"",sid:1};
+  if(!j||typeof j!=="object")return Q;
+  if(typeof j.start==="string"&&DATE_RE.test(j.start))Q.start=j.start;
+  if(Array.isArray(j.holidays))Q.holidays=j.holidays.filter(x=>typeof x==="string"&&DATE_RE.test(x));
+  if(Array.isArray(j.done))Q.done=j.done.filter(x=>typeof x==="string"&&DATE_RE.test(x));
+  if(Array.isArray(j.students))Q.students=j.students.filter(s=>s&&typeof s.n==="string").map(sanStudent);
+  if(Array.isArray(j.custom))Q.custom=j.custom.filter(c=>c&&Number(c.id)>100).map(sanitizeAct);
+  if(j.edits&&typeof j.edits==="object")for(const k in j.edits){if(BASE[k])Q.edits[k]=sanitizeAct(Object.assign({},j.edits[k],{id:Number(k)}))}
+  if(j.swap&&typeof j.swap==="object")for(const k in j.swap){const v=Number(j.swap[k]);if(/^\d+$/.test(k)&&Number.isFinite(v))Q.swap[k]=v}
+  if(j.got&&typeof j.got==="object")for(const k in j.got){if(j.got[k]===true)Q.got[k]=true}
+  if(typeof j.cls==="string")Q.cls=j.cls.slice(0,60);
+  let mx=1;Q.students.forEach((s,i)=>{if(!s.id)s.id=i+1;mx=Math.max(mx,s.id+1)});
+  Q.sid=Math.max(Number(j.sid)||1,mx);
+  return Q;
+}
+let P;
+try{P=loadFrom(JSON.parse(localStorage.getItem(KEY)||"null"))}catch(e){P=loadFrom(null)}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}};
+
+/* ---------- Etkinlikler ---------- */
+function getAct(id){
+  const c=P.custom.find(x=>x.id===id);if(c)return c;
+  const b=BASE[id];if(!b)return null;
+  const e=P.edits[id];
+  return e?Object.assign({},b,e,{id:b.id}):b;
+}
+const allIds=()=>ORDER.concat(P.custom.map(c=>c.id));
+const allActs=()=>allIds().map(getAct);
+const total=()=>ORDER.length+P.custom.length;
+
+/* ---------- Program hesabı ---------- */
+let idxMap=new Map(),dates=[];
+function rebuild(){
+  idxMap=new Map();dates=[];
+  const hol=new Set(P.holidays);let d=parse(P.start),n=0;
+  for(let i=0;i<3000;i++){
+    const s=iso(d);
+    if(dow(d)<5&&!hol.has(s)){idxMap.set(s,n);dates[n]=s;n++}
+    d=addDays(d,1);
+  }
+}
+function actIdAt(i){
+  const s=P.swap[i];
+  if(s!==undefined&&getAct(s))return s;
+  return allIds()[i%total()];
+}
+function info(s){
+  const d=parse(s);
+  if(dow(d)>=5)return{k:"weekend"};
+  if(P.holidays.includes(s))return{k:"holiday"};
+  if(d<parse(P.start))return{k:"before"};
+  const i=idxMap.get(s);
+  if(i===undefined)return{k:"far"};
+  const N=total(),p=i%N,id=actIdAt(i);
+  return{k:"day",act:getAct(id),idx:i,no:p+1,round:Math.floor(i/N)+1,week:Math.floor(p/5)+1,swapped:id!==allIds()[p]};
+}
+function nextSchool(s){
+  for(let i=1;i<500;i++){const t=iso(addDays(parse(s),i));if(info(t).k==="day")return t}
+  return null;
+}
+function firstDate(id){
+  const N=total();
+  for(let k=0;k<N;k++){if(actIdAt(k)===id)return dates[k]}
+  return null;
+}
+function swapAct(date,newId){
+  const r=info(date);if(r.k!=="day")return null;
+  const N=total(),ids=allIds(),i=r.idx,cur=actIdAt(i),round=Math.floor(i/N);
+  let i2=-1;
+  for(let k=round*N;k<round*N+N;k++){if(k!==i&&actIdAt(k)===newId){i2=k;break}}
+  P.swap[i]=newId;
+  if(i2>=0)P.swap[i2]=cur;
+  [i,i2].forEach(k=>{if(k>=0&&P.swap[k]===ids[k%N])delete P.swap[k]});
+  return i2>=0?dates[i2]:null;
+}
+
+/* ---------- Alerji ---------- */
+const alList=s=>s.al.map(k=>ALN[k]).concat(s.ao?[s.ao]:[]).join(", ");
+function hits(a){
+  const out=[];
+  P.students.forEach(st=>{
+    const why=[];
+    (a.al||[]).forEach(k=>{if(st.al.indexOf(k)>=0)why.push(ALN[k])});
+    if(st.ao){
+      const hay=(a.n+" "+a.mat+" "+a.how).toLocaleLowerCase("tr-TR");
+      st.ao.split(/[,;]/).map(x=>x.trim().toLocaleLowerCase("tr-TR")).filter(x=>x.length>=3).forEach(x=>{if(hay.indexOf(x)>=0)why.push(x)});
+    }
+    if(why.length)out.push({name:st.n,why:why.filter((x,i)=>why.indexOf(x)===i)});
+  });
+  return out;
+}
+const hitText=h=>h.name+" ("+h.why.join(", ")+")";
+
+/* ---------- Durum ---------- */
+const S={tab:"bugun",date:todayISO(),wk:todayISO(),mon:{y:new Date().getFullYear(),m:new Date().getMonth()},q:"",cat:"Tümü"};
+let modalCtx=null;
+
+/* ---------- Etkinlik parçaları ---------- */
+function steps(a){
+  const parts=a.how.split(/[.;]\s*/).map(x=>x.trim()).filter(Boolean).map(x=>cap(x)+".");
+  return["Malzemeleri hazırlayın ve etkinliği çocuklara kısaca anlatın.",...parts,"Etkinlik bitince birlikte toplayın ve çocukları alkışlayın."];
+}
+function mats(a){
+  const t=a.mat.trim();
+  if(!t||t.toLowerCase()==="yok")return["Malzeme gerekmez"];
+  return t.split(",").map(x=>cap(x.trim())).filter(Boolean);
+}
+function actCard(a,ctx){
+  ctx=ctx||{};
+  const c=CI[a.cat],hs=hits(a);
+  let when="";
+  if(ctx.date)when='<p class="when">'+esc(fmtLong(parse(ctx.date)))+" · Gün "+ctx.no+" / "+total()+" · Hafta "+ctx.week+(ctx.round>1?" · "+ctx.round+". tur":"")+"</p>";
+  else if(ctx.first)when='<p class="when">Programda ilk kez: '+esc(fmtShort(ctx.first))+"</p>";
+  const done=ctx.date&&P.done.indexOf(ctx.date)>=0;
+  let tags="";
+  if(ctx.swapped)tags+='<span class="chip w">↔ Değiştirildi</span>';
+  if(a.id>100)tags+='<span class="chip w">Yeni</span>';
+  else if(P.edits[a.id])tags+='<span class="chip w">Düzenlendi</span>';
+  let btns='<button class="btn primary" type="button" data-a="print" data-id="'+a.id+'" data-date="'+(ctx.date||"")+'">🖨️ Etkinliği yazdır</button>';
+  if(ctx.date)btns+='<button class="btn '+(done?"ok":"")+'" type="button" data-a="done" data-date="'+ctx.date+'">'+(done?"✓ Yaptık":"Yaptık")+"</button>";
+  btns+='<button class="btn" type="button" data-a="copy" data-id="'+a.id+'" data-date="'+(ctx.date||"")+'">📋 Metni kopyala</button>';
+  if(ctx.date)btns+='<button class="btn" type="button" data-a="swap" data-date="'+ctx.date+'">🌦️ Hava durumuna göre değiştir</button>';
+  btns+='<button class="btn" type="button" data-a="editAct" data-id="'+a.id+'">✏️ Düzenle</button>';
+  if(ctx.date)btns+='<button class="btn warn" type="button" data-a="holiday" data-date="'+ctx.date+'">Tatil yap</button>';
+  if(ctx.first)btns+='<button class="btn" type="button" data-a="goDate" data-date="'+ctx.first+'">Gününe git</button>';
+  return '<article class="card hero" style="--cat:'+c.c+'">'
+   +'<div class="hero-top"><div class="badge" aria-hidden="true">'+esc(a.e)+'</div><div>'+when
+   +"<h2>"+esc(a.n)+'</h2><div class="chips"><span class="chip w">'+c.e+" "+esc(a.cat)+'</span><span class="chip w">⏱️ '+a.dur+' dk</span><span class="chip w">📍 '+esc(a.place)+'</span><span class="chip w">⚡ '+esc(a.energy)+"</span>"+tags+"</div></div></div>"
+   +'<div class="hero-body"><div>'
+   +(hs.length?'<div class="alert" style="margin-bottom:16px">⚠️ Alerji uyarısı: '+esc(hs.map(hitText).join("; "))+"</div>":"")
+   +"<h3>Malzemeler</h3><div class=\"mats\">"+mats(a).map(m=>"<span>"+esc(m)+"</span>").join("")+"</div>"
+   +(a.al&&a.al.length?'<p class="mini" style="margin-top:8px">İçerebilir: '+esc(a.al.map(k=>ALN[k]).join(", "))+"</p>":"")
+   +'<h3 style="margin-top:16px">Kazanım</h3><p>'+esc(a.skill)+"</p>"
+   +'<h3 style="margin-top:16px">Dikkat</h3><p class="note">'+esc(a.caution)+"</p>"
+   +'<h3 style="margin-top:16px">Çocuklara soralım</h3><ul class="q">'+QUESTIONS[a.cat].map(q=>"<li>"+esc(q)+"</li>").join("")+"</ul>"
+   +'</div><div><h3>Nasıl yapılır</h3><ol class="steps">'+steps(a).map(s=>"<li>"+esc(s)+"</li>").join("")+"</ol></div></div>"
+   +'<div class="actions">'+btns+"</div></article>";
+}
+function stateCard(r,s){
+  const nx=nextSchool(s),ni=nx?info(nx):null;
+  const nxTxt=ni&&ni.k==="day"?"Sıradaki etkinlik: "+fmtShort(nx)+" · "+ni.act.n:"";
+  let e="🌿",t="Hafta sonu, kreş yok",p=nxTxt,b="";
+  if(r.k==="holiday"){e="🏖️";t="Tatil günü";p="Bu gün programa sayılmıyor; etkinlikler bir gün kaydı."+(nxTxt?" "+nxTxt:"");b='<button class="btn warn" type="button" data-a="holiday" data-date="'+s+'">Tatili kaldır</button>'}
+  else if(r.k==="before"){e="🌱";t="Program "+fmtLong(parse(P.start))+" tarihinde başlıyor";p=nxTxt;b='<button class="btn" type="button" data-a="settings">Başlangıç tarihini değiştir</button>'}
+  else if(r.k==="far"){e="🔭";t="Bu tarih için program yok";p="Başlangıç tarihinden çok uzak bir günü açtınız."}
+  if(nx&&r.k!=="far")b+='<button class="btn primary" type="button" data-a="goDate" data-date="'+nx+'">Etkinliğe git</button>';
+  return '<div class="card state"><div class="big" aria-hidden="true">'+e+"</div><h2>"+esc(t)+"</h2>"+(p?"<p>"+esc(p)+"</p>":"")+(b?'<div class="center">'+b+"</div>":"")+"</div>";
+}
+function dayHTML(s){
+  const r=info(s);
+  return r.k==="day"?actCard(r.act,{date:s,no:r.no,week:r.week,round:r.round,swapped:r.swapped}):stateCard(r,s);
+}
+
+/* ---------- Haftalık malzeme ---------- */
+function weekMats(mon){
+  const map=new Map();
+  for(let i=0;i<5;i++){
+    const r=info(iso(addDays(mon,i)));
+    if(r.k!=="day")continue;
+    mats(r.act).forEach(m=>{
+      if(m==="Malzeme gerekmez")return;
+      const key=m.toLocaleLowerCase("tr-TR");
+      if(!map.has(key))map.set(key,{key:key,name:m,days:[]});
+      const e=map.get(key);if(e.days.indexOf(DS[i])<0)e.days.push(DS[i]);
+    });
+  }
+  return Array.from(map.values()).sort((a,b)=>a.name.localeCompare(b.name,"tr"));
+}
+
+/* ---------- Ekranlar ---------- */
+function bar(prev,title,next,sub,resetA,resetLabel){
+  return '<div class="datebar"><button class="icon" type="button" data-a="'+prev+'" aria-label="Önceki">‹</button><div class="title">'+esc(title)+(sub?"<small>"+esc(sub)+"</small>":"")+'</div><button class="icon" type="button" data-a="'+next+'" aria-label="Sonraki">›</button></div>'
+   +(resetA?'<div class="center"><button class="btn" type="button" data-a="'+resetA+'">'+resetLabel+"</button></div>":"");
+}
+function progress(){
+  const n=P.done.length,N=total(),pc=Math.min(100,Math.round(n*100/N));
+  return '<div class="card progress"><p>Tamamlanan etkinlik: '+n+" / "+N+'</p><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="'+N+'" aria-valuenow="'+Math.min(n,N)+'"><i style="width:'+pc+'%"></i></div></div>';
+}
+function viewToday(){
+  const t=todayISO();
+  return bar("prevDay",fmtLong(parse(S.date)),"nextDay",S.date===t?"Bugün":"",S.date===t?"":"today","Bugün")+dayHTML(S.date)+progress();
+}
+function weekRange(mon){
+  const fri=addDays(mon,4);
+  return mon.getMonth()===fri.getMonth()?mon.getDate()+" – "+fri.getDate()+" "+MONTHS[fri.getMonth()]+" "+fri.getFullYear():mon.getDate()+" "+MONTHS[mon.getMonth()]+" – "+fri.getDate()+" "+MONTHS[fri.getMonth()]+" "+fri.getFullYear();
+}
+function viewWeek(){
+  const mon=mondayOf(parse(S.wk)),t=todayISO(),wk=iso(mon);
+  const isThis=wk===iso(mondayOf(parse(t)));
+  let h=bar("prevWeek",weekRange(mon),"nextWeek","",isThis?"":"thisWeek","Bu hafta");
+  h+='<div class="rows">';
+  for(let i=0;i<5;i++){
+    const d=addDays(mon,i),s=iso(d),r=info(s);let mid;
+    if(r.k==="day"){
+      const c=CI[r.act.cat],nh=hits(r.act).length;
+      mid='<span class="em" aria-hidden="true">'+esc(r.act.e)+'</span><span class="rt"><b>'+esc(r.act.n)+'</b><span><span class="chip" style="--cat:'+c.c+'">'+c.e+" "+esc(r.act.cat)+'</span> <span class="mini">'+r.act.dur+" dk · "+esc(r.act.place)+"</span>"+(nh?' <span class="chip red">⚠️ alerji: '+nh+"</span>":"")+(r.swapped?' <span class="chip w">↔</span>':"")+"</span></span>";
+    }else{
+      mid='<span class="em" aria-hidden="true">'+(r.k==="holiday"?"🏖️":"🌱")+'</span><span class="rt"><b>'+(r.k==="holiday"?"Tatil günü":r.k==="before"?"Program başlamadı":"Program dışı")+"</b></span>";
+    }
+    h+='<button class="row'+(s===t?" today":"")+'" type="button" data-a="openDay" data-date="'+s+'"><span class="dt"><small>'+DS[i]+"</small><b>"+d.getDate()+"</b></span>"+mid+(P.done.indexOf(s)>=0?'<span class="tick" aria-label="Yapıldı">✓</span>':"")+"</button>";
+  }
+  h+="</div>";
+  const items=weekMats(mon);
+  h+='<div class="card mlist"><h3>Bu haftanın malzemeleri</h3>';
+  if(items.length){
+    h+="<ul>"+items.map(m=>'<li><label class="ck"><input type="checkbox" data-a="got" data-k="'+esc(wk+"|"+m.key)+'"'+(P.got[wk+"|"+m.key]?" checked":"")+"><span>"+esc(m.name)+"</span> <small>"+m.days.join(", ")+"</small></label></li>").join("")+"</ul>";
+  }else h+='<p class="mini">Bu hafta için malzeme listesi yok.</p>';
+  h+="</div>";
+  h+='<div class="btnrow"><button class="btn primary" type="button" data-a="printWeek" data-date="'+wk+'">🖨️ Haftalık planı yazdır</button><button class="btn" type="button" data-a="printMats" data-date="'+wk+'">🖨️ Malzeme listesini yazdır</button></div>';
+  return h;
+}
+function viewMonth(){
+  const y=S.mon.y,m=S.mon.m,t=todayISO(),now=new Date();
+  const isThis=y===now.getFullYear()&&m===now.getMonth();
+  let h=bar("prevMonth",MONTHS[m]+" "+y,"nextMonth","",isThis?"":"thisMonth","Bu ay");
+  h+='<div class="cal">'+DS.map(x=>'<div class="dow">'+x+"</div>").join("");
+  const first=new Date(y,m,1,12),n=new Date(y,m+1,0,12).getDate();
+  for(let i=0;i<dow(first);i++)h+='<div class="blank"></div>';
+  for(let day=1;day<=n;day++){
+    const d=new Date(y,m,day,12),s=iso(d),r=info(s),isT=s===t;
+    if(r.k==="weekend"){h+='<div class="cell we'+(isT?" today":"")+'"><b>'+day+"</b></div>";continue}
+    let cls="cell",inner="<b>"+day+"</b>",st="";
+    if(r.k==="day"){const c=CI[r.act.cat];st=' style="--cat:'+c.c+'"';inner+='<span class="em" aria-hidden="true">'+esc(r.act.e)+'</span><span class="nm">'+esc(r.act.n)+"</span>"}
+    else if(r.k==="holiday"){cls+=" ho";inner+='<span class="nm">Tatil</span>'}
+    else cls+=" bf";
+    if(isT)cls+=" today";
+    if(P.done.indexOf(s)>=0)inner+='<span class="tick" aria-label="Yapıldı">✓</span>';
+    h+='<button type="button" class="'+cls+'"'+st+' data-a="openDay" data-date="'+s+'" aria-label="'+esc(fmtShort(s)+(r.k==="day"?": "+r.act.n:""))+'">'+inner+"</button>";
+  }
+  return h+"</div>";
+}
+function viewList(){
+  return '<div class="btnrow" style="margin-top:0"><button class="btn primary" type="button" data-a="newAct">＋ Yeni etkinlik</button></div>'
+   +'<input class="search" id="q" type="search" placeholder="Etkinlik ara: boya, su, hamur…" value="'+esc(S.q)+'" aria-label="Etkinlik ara" autocomplete="off">'
+   +'<div class="filters" id="filters"></div><div class="count" id="count"></div><div class="grid" id="results"></div>';
+}
+function drawList(){
+  const f=$("#filters");
+  f.innerHTML='<button type="button" data-a="cat" data-c="Tümü" class="'+(S.cat==="Tümü"?"on":"")+'">Tümü</button>'+CATS.map(c=>'<button type="button" data-a="cat" data-c="'+esc(c.n)+'" class="'+(S.cat===c.n?"on":"")+'" style="--cat:'+c.c+'">'+c.e+" "+esc(c.n)+"</button>").join("");
+  const q=S.q.toLocaleLowerCase("tr-TR").trim();
+  const L=allActs().filter(a=>(S.cat==="Tümü"||a.cat===S.cat)&&(!q||(a.n+" "+a.cat+" "+a.mat+" "+a.skill+" "+a.how).toLocaleLowerCase("tr-TR").indexOf(q)>=0));
+  $("#count").textContent=L.length+" etkinlik";
+  $("#results").innerHTML=L.length?L.map(a=>'<button type="button" class="item" style="--cat:'+CI[a.cat].c+'" data-a="openAct" data-id="'+a.id+'"><span class="em" aria-hidden="true">'+esc(a.e)+'</span><span class="rt"><b><span>'+(a.id>100?"+":a.id+".")+"</span>"+esc(a.n)+'</b><span class="mini">'+esc(a.cat)+" · "+a.dur+" dk · "+esc(a.place)+(a.id>100?" · Yeni":P.edits[a.id]?" · Düzenlendi":"")+"</span></span></button>").join(""):'<div class="empty">Bu aramaya uyan etkinlik yok. Başka bir kelime deneyin ya da kategori filtresini kaldırın.</div>';
+}
+function viewClass(){
+  const n=P.students.length,na=P.students.filter(s=>s.al.length||s.ao).length;
+  let h='<div class="field"><label for="clsName">Sınıf adı</label><input class="inp" id="clsName" type="text" maxlength="60" placeholder="Örn. Papatyalar Sınıfı" value="'+esc(P.cls)+'" style="max-width:360px"><p>Yazdırılan sayfaların başlığında görünür.</p></div>';
+  h+='<div class="btnrow" style="margin-top:0"><button class="btn primary" type="button" data-a="newStu">＋ Öğrenci ekle</button><button class="btn" type="button" data-a="printClass">🖨️ Sınıf listesini yazdır</button><button class="btn" type="button" data-a="printAllergy">🖨️ Alerji listesini yazdır</button></div>';
+  h+='<div class="count">'+n+" öğrenci · "+na+" öğrencide alerji bilgisi var</div>";
+  if(!n){
+    h+='<div class="card state"><div class="big" aria-hidden="true">🧒</div><h2>Henüz öğrenci eklenmedi</h2><p>Öğrencileri ekleyin; alerjisi olan bir çocuk için gıda içeren etkinliklerde uyarı görürsünüz.</p></div>';
+  }else{
+    h+='<div class="grid">'+P.students.map(s=>{
+      const age=ageText(s.b),tel=s.t.replace(/[^\d+]/g,"");
+      return '<div class="card stu"><h3>'+esc(s.n)+(age?' <span class="mini">'+esc(age)+"</span>":"")+"</h3>"
+       +(s.v||s.t?'<p class="mini">Veli: '+esc(s.v)+(s.t?' · <a href="tel:'+esc(tel)+'">'+esc(s.t)+"</a>":"")+"</p>":"")
+       +(s.al.length||s.ao?'<div class="chips">'+s.al.map(k=>'<span class="chip red">'+esc(ALN[k])+"</span>").join("")+(s.ao?'<span class="chip red">'+esc(s.ao)+"</span>":"")+"</div>":"")
+       +(s.note?'<p class="mini">'+esc(s.note)+"</p>":"")
+       +'<div><button class="btn" type="button" data-a="editStu" data-id="'+s.id+'">✏️ Düzenle</button></div></div>';
+    }).join("")+"</div>";
+  }
+  h+='<p class="mini" style="margin-top:16px">Öğrenci bilgileri yalnızca bu cihazın tarayıcısında saklanır. Yalnızca gerekli bilgileri girin ve kreşinizin kişisel veri kurallarına uyun.</p>';
+  return h;
+}
+function render(){
+  const v=$("#view");
+  v.innerHTML=S.tab==="bugun"?viewToday():S.tab==="hafta"?viewWeek():S.tab==="ay"?viewMonth():S.tab==="sinif"?viewClass():viewList();
+  document.querySelectorAll("#tabs [data-t]").forEach(b=>{const on=b.dataset.t===S.tab;b.classList.toggle("on",on);b.setAttribute("aria-current",on?"page":"false")});
+  if(S.tab==="liste")drawList();
+}
+
+/* ---------- Formlar ---------- */
+const fld=(label,inner,id)=>'<div class="fld"><label'+(id?' for="'+id+'"':"")+">"+label+"</label>"+inner+"</div>";
+const sel=(id,opts,cur)=>'<select class="inp" id="'+id+'">'+opts.map(o=>"<option"+(o===cur?" selected":"")+">"+esc(o)+"</option>").join("")+"</select>";
+const alBoxes=chosen=>'<div class="alset">'+AL.map(x=>'<label class="ck"><input type="checkbox" data-al="'+x[0]+'"'+(chosen.indexOf(x[0])>=0?" checked":"")+"> "+esc(x[1])+"</label>").join("")+"</div>";
+function actFormHTML(id){
+  const a=id?getAct(id):{n:"",cat:"Sanat",dur:15,place:"Sınıf",energy:"Sakin",e:"",mat:"",how:"",skill:"",caution:"Yetişkin gözetiminde yapılır.",al:[]};
+  const places=PLACES.indexOf(a.place)>=0?PLACES:PLACES.concat([a.place]);
+  let extra="";
+  if(id>100)extra='<button class="btn" type="button" data-a="delAct" data-id="'+id+'">Etkinliği sil</button>';
+  else if(id&&P.edits[id])extra='<button class="btn" type="button" data-a="resetAct" data-id="'+id+'">Varsayılana dön</button>';
+  return '<h2 class="st">'+(id?"Etkinliği düzenle":"Yeni etkinlik")+'</h2><div class="form">'
+   +fld("Etkinlik adı",'<input class="inp" id="a_n" type="text" maxlength="120" value="'+esc(a.n)+'">',"a_n")
+   +'<div class="two">'+fld("Kategori",sel("a_cat",CATS.map(c=>c.n),a.cat),"a_cat")+fld("Simge (emoji)",'<input class="inp" id="a_e" type="text" maxlength="8" value="'+esc(id?a.e:"")+'" placeholder="boşsa kategori simgesi">',"a_e")+"</div>"
+   +'<div class="two">'+fld("Süre (dakika)",'<input class="inp" id="a_dur" type="number" min="5" max="90" value="'+a.dur+'">',"a_dur")+fld("Mekan",sel("a_place",places,a.place),"a_place")+"</div>"
+   +fld("Enerji düzeyi",sel("a_energy",ENERGY,a.energy),"a_energy")
+   +fld("Malzemeler (virgülle ayırın)",'<textarea class="inp ta" id="a_mat">'+esc(a.mat)+"</textarea>","a_mat")
+   +fld("Nasıl yapılır (cümleleri nokta ya da noktalı virgülle ayırın)",'<textarea class="inp ta" id="a_how">'+esc(a.how)+"</textarea>","a_how")
+   +fld("Kazanım",'<input class="inp" id="a_skill" type="text" maxlength="300" value="'+esc(a.skill)+'">',"a_skill")
+   +fld("Dikkat / güvenlik notu",'<input class="inp" id="a_caution" type="text" maxlength="400" value="'+esc(a.caution)+'">',"a_caution")
+   +'<fieldset class="al"><legend>Bu etkinlik şunları içerebilir (alerji uyarısı için)</legend>'+alBoxes(a.al||[])+"</fieldset>"
+   +'<div class="btnrow" style="margin:4px 0 0"><button class="btn ok" type="button" data-a="saveAct" data-id="'+(id||0)+'">Kaydet</button><button class="btn" type="button" data-a="close">Vazgeç</button>'+extra+"</div></div>";
+}
+function studentFormHTML(id){
+  const s=id?P.students.find(x=>x.id===id):{n:"",b:"",v:"",t:"",al:[],ao:"",note:""};
+  return '<h2 class="st">'+(id?"Öğrenciyi düzenle":"Öğrenci ekle")+'</h2><div class="form">'
+   +fld("Ad soyad",'<input class="inp" id="s_n" type="text" maxlength="80" value="'+esc(s.n)+'">',"s_n")
+   +'<div class="two">'+fld("Doğum tarihi",'<input class="inp" id="s_b" type="date" value="'+esc(s.b)+'">',"s_b")+fld("Veli telefonu",'<input class="inp" id="s_t" type="tel" maxlength="30" value="'+esc(s.t)+'">',"s_t")+"</div>"
+   +fld("Veli adı",'<input class="inp" id="s_v" type="text" maxlength="80" value="'+esc(s.v)+'">',"s_v")
+   +'<fieldset class="al"><legend>Alerjiler</legend>'+alBoxes(s.al)+"</fieldset>"
+   +fld("Diğer alerji (virgülle ayırın)",'<input class="inp" id="s_ao" type="text" maxlength="160" value="'+esc(s.ao)+'" placeholder="örn. çilek, balık">',"s_ao")
+   +fld("Not (ilaç, özel durum, servis…)",'<textarea class="inp ta" id="s_note" maxlength="300">'+esc(s.note)+"</textarea>","s_note")
+   +'<div class="btnrow" style="margin:4px 0 0"><button class="btn ok" type="button" data-a="saveStu" data-id="'+(id||0)+'">Kaydet</button><button class="btn" type="button" data-a="close">Vazgeç</button>'+(id?'<button class="btn" type="button" data-a="delStu" data-id="'+id+'">Öğrenciyi sil</button>':"")+"</div></div>";
+}
+function swapHTML(date,mode){
+  const r=info(date);if(r.k!=="day")return stateCard(r,date);
+  const cur=r.act;
+  const cands=allActs().filter(a=>a.id!==cur.id&&(mode==="bahce"?/Bahçe/.test(a.place):!/Bahçe/.test(a.place)));
+  const score=a=>(a.cat===cur.cat?0:2)+(a.energy===cur.energy?0:1);
+  cands.sort((x,y)=>score(x)-score(y)||x.id-y.id);
+  let h='<h2 class="st">Etkinliği değiştir</h2><p class="mini" style="margin:0 0 10px">'+esc(fmtShort(date))+": "+esc(cur.e)+" "+esc(cur.n)+" ("+esc(cur.place)+'). Seçtiğiniz etkinlik bu güne gelir, bu etkinlik de onun gününe geçer; böylece hiçbiri tekrar etmez.</p>';
+  h+='<div class="btnrow" style="margin-top:0"><button class="btn '+(mode==="ic"?"warn":"")+'" type="button" data-a="swapMode" data-date="'+date+'" data-mode="ic">🌧️ Hava kötü: içeride yap</button><button class="btn '+(mode==="bahce"?"warn":"")+'" type="button" data-a="swapMode" data-date="'+date+'" data-mode="bahce">☀️ Hava güzel: bahçede yap</button></div>';
+  h+='<div class="grid" style="grid-template-columns:1fr">'+cands.slice(0,8).map(a=>{
+    const nh=hits(a).length;
+    return '<div class="item" style="--cat:'+CI[a.cat].c+'"><span class="em" aria-hidden="true">'+esc(a.e)+'</span><span class="rt"><b>'+esc(a.n)+'</b><span class="mini">'+esc(a.cat)+" · "+a.dur+" dk · "+esc(a.place)+"</span>"+(nh?'<span class="chip red">⚠️ alerji: '+nh+"</span>":"")+'</span><button class="btn" type="button" data-a="doSwap" data-date="'+date+'" data-id="'+a.id+'">Değiştir</button></div>';
+  }).join("")+"</div>";
+  if(!cands.length)h+='<div class="empty">Bu seçenekte uygun etkinlik yok.</div>';
+  if(r.swapped){const bid=allIds()[r.idx%total()];h+='<div class="btnrow"><button class="btn" type="button" data-a="doSwap" data-date="'+date+'" data-id="'+bid+'">↩︎ Eski haline getir</button></div>'}
+  return h;
+}
+function settingsHTML(){
+  return '<h2 class="st">Ayarlar</h2>'
+   +'<div class="field"><label for="startInput">Program başlangıç tarihi</label><input class="inp" type="date" id="startInput" value="'+P.start+'" style="max-width:260px"><p>Program bu tarihten itibaren her iş gününe bir etkinlik koyar.</p><div><button class="btn ok" type="button" data-a="saveStart">Kaydet</button></div></div>'
+   +'<div class="field"><label>Tatil günleri</label><p>'+P.holidays.length+" gün tatil işaretli.</p><div><button class=\"btn\" type=\"button\" data-a=\"clearHolidays\">Tatilleri temizle</button></div></div>"
+   +'<div class="field"><label>İlerleme</label><p>'+P.done.length+" etkinlik tamamlandı olarak işaretli.</p><div><button class=\"btn\" type=\"button\" data-a=\"resetDone\">İlerlemeyi sıfırla</button></div></div>"
+   +'<div class="field"><label for="backupBox">Yedek (telefon ve bilgisayar arasında taşımak için)</label><p>Yedek; öğrenci listesini, düzenlediğiniz etkinlikleri, tatilleri ve ilerlemeyi içerir. Öğrenci bilgisi içerdiği için güvenli saklayın.</p><textarea class="inp ta" id="backupBox" placeholder="Başka cihazdan kopyaladığınız yedeği buraya yapıştırın"></textarea><div class="btnrow" style="margin:6px 0 0"><button class="btn" type="button" data-a="copyBackup">📋 Yedeği kopyala</button><button class="btn" type="button" data-a="importBackup">Yedeği yükle</button></div></div>'
+   +'<div class="field"><p>Bu ayarlar yalnızca bu cihazda saklanır.</p></div>';
+}
+
+/* ---------- Pencere ---------- */
+function modalHTML(){
+  if(!modalCtx)return"";
+  const m=modalCtx;
+  if(m.type==="day")return dayHTML(m.date);
+  if(m.type==="act"){const a=getAct(m.id);return a?actCard(a,{first:firstDate(a.id)}):""}
+  if(m.type==="settings")return settingsHTML();
+  if(m.type==="edit")return actFormHTML(m.id);
+  if(m.type==="stu")return studentFormHTML(m.id);
+  if(m.type==="swap")return swapHTML(m.date,m.mode);
+  return"";
+}
+function openModal(ctx){modalCtx=ctx;$("#sheetBody").innerHTML=modalHTML();$("#modal").hidden=false;document.body.classList.add("lock");$(".sheet").scrollTop=0}
+function refreshModal(){if(modalCtx&&!$("#modal").hidden)$("#sheetBody").innerHTML=modalHTML()}
+function closeModal(){$("#modal").hidden=true;document.body.classList.remove("lock");modalCtx=null}
+let tt=null;
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2800)}
+function refreshAll(){render();refreshModal()}
+
+/* ---------- Yazdırma ---------- */
+function psHead(title){
+  return '<div class="ps-top"><div class="ps-brand">🌈 Dilara Öğretmenin Etkinlikleri</div><div>'+esc(P.cls||"")+'</div></div><h1 class="ps-title">'+esc(title)+"</h1>";
+}
+function printHTML(a,date){
+  const c=CI[a.cat],hs=hits(a);
+  return '<div style="--cat:'+c.c+'"><div class="ps-top"><div class="ps-brand">🌈 Dilara Öğretmenin Etkinlikleri</div><div>'+(date?esc(fmtLong(parse(date))):esc(P.cls||""))+"</div></div>"
+   +'<div class="ps-hero"><div class="ps-emoji">'+esc(a.e)+"</div><div><h1>"+esc(a.n)+'</h1><div class="ps-chips"><span>'+c.e+" "+esc(a.cat)+"</span><span>⏱️ "+a.dur+" dk</span><span>📍 "+esc(a.place)+"</span><span>⚡ "+esc(a.energy)+"</span></div></div></div>"
+   +(hs.length?'<p class="ps-warn" style="margin-bottom:10px">⚠️ Alerji uyarısı: '+esc(hs.map(hitText).join("; "))+"</p>":"")
+   +'<div class="ps-cols"><div><h2>Malzemeler</h2><ul class="ps-check">'+mats(a).map(m=>"<li>"+esc(m)+"</li>").join("")+"</ul>"
+   +"<h2>Kazanım</h2><p>"+esc(a.skill)+'</p><h2>Dikkat</h2><p class="ps-note-caution">'+esc(a.caution)+"</p></div>"
+   +'<div><h2>Nasıl yapılır</h2><ol class="ps-steps">'+steps(a).map(s=>"<li>"+esc(s)+"</li>").join("")+"</ol></div></div>"
+   +'<h2 style="margin-top:12px">Çocuklara soralım</h2><ul class="ps-q">'+QUESTIONS[a.cat].map(q=>"<li>"+esc(q)+"</li>").join("")+"</ul>"
+   +'<div class="ps-boxes"><div class="ps-draw">Çocuğun çalışması</div><div class="ps-notes">Öğretmen notu<i></i><i></i><i></i><i></i></div></div></div>';
+}
+function printWeekHTML(mon){
+  let rows="",warns=[];
+  for(let i=0;i<5;i++){
+    const d=addDays(mon,i),s=iso(d),r=info(s);
+    const head="<b>"+DAYS[i]+"</b><br>"+d.getDate()+" "+MONTHS[d.getMonth()];
+    if(r.k==="day"){
+      const hs=hits(r.act);
+      if(hs.length)warns.push(DAYS[i]+": "+hs.map(hitText).join("; "));
+      rows+="<tr><td>"+head+"</td><td><b>"+esc(r.act.e)+" "+esc(r.act.n)+"</b><br><small>"+esc(r.act.cat)+" · "+r.act.dur+" dk · "+esc(r.act.place)+"</small></td><td>"+esc(mats(r.act).join(", "))+"</td><td>"+(hs.length?'<span class="ps-warnt">⚠️ '+esc(hs.map(hitText).join("; "))+"</span>":"")+"</td></tr>";
+    }else{
+      rows+="<tr><td>"+head+"</td><td colspan=\"3\">"+(r.k==="holiday"?"Tatil günü":"Program yok")+"</td></tr>";
+    }
+  }
+  const items=weekMats(mon);
+  return psHead("Haftalık plan: "+weekRange(mon))
+   +'<table class="ps-table"><thead><tr><th style="width:24mm">Gün</th><th>Etkinlik</th><th style="width:48mm">Malzemeler</th><th style="width:40mm">Alerji / Not</th></tr></thead><tbody>'+rows+"</tbody></table>"
+   +'<h2 style="margin-top:12px">Haftanın malzeme listesi</h2>'
+   +(items.length?'<ul class="ps-check ps-two">'+items.map(m=>"<li>"+esc(m.name)+" <small>("+m.days.join(", ")+")</small></li>").join("")+"</ul>":"<p>Bu hafta için malzeme yok.</p>")
+   +'<div class="ps-boxes" style="grid-template-columns:1fr"><div class="ps-notes" style="height:34mm">Haftalık not<i></i><i></i><i></i></div></div>';
+}
+function printMatsHTML(mon){
+  const items=weekMats(mon);
+  return psHead("Malzeme listesi: "+weekRange(mon))
+   +(items.length?'<ul class="ps-check ps-big">'+items.map(m=>"<li>"+esc(m.name)+" <small>("+m.days.join(", ")+")</small></li>").join("")+"</ul>":"<p>Bu hafta için malzeme yok.</p>");
+}
+function printClassHTML(){
+  const rows=P.students.map((s,i)=>"<tr><td>"+(i+1)+"</td><td><b>"+esc(s.n)+"</b></td><td>"+(s.b?esc(fmtD(s.b))+"<br><small>"+esc(ageText(s.b))+"</small>":"")+"</td><td>"+esc(s.v)+(s.t?"<br>"+esc(s.t):"")+"</td><td>"+esc(alList(s))+"</td><td>"+esc(s.note)+"</td></tr>").join("");
+  return psHead("Sınıf listesi")
+   +"<p>"+P.students.length+" öğrenci · Yazdırma tarihi: "+esc(fmtD(todayISO()))+"</p>"
+   +'<table class="ps-table"><thead><tr><th style="width:9mm">No</th><th>Ad soyad</th><th style="width:28mm">Doğum tarihi</th><th style="width:40mm">Veli / telefon</th><th style="width:38mm">Alerji</th><th>Not</th></tr></thead><tbody>'+(rows||'<tr><td colspan="6">Henüz öğrenci eklenmedi.</td></tr>')+"</tbody></table>";
+}
+function printAllergyHTML(){
+  const L=P.students.filter(s=>s.al.length||s.ao);
+  return psHead("Alerji listesi")
+   +"<p>Yazdırma tarihi: "+esc(fmtD(todayISO()))+". Gıda ve boya içeren etkinliklerde, yemek ve ikram sırasında bu listeye bakın.</p>"
+   +(L.length?'<ul class="ps-al">'+L.map(s=>"<li><b>"+esc(s.n)+"</b>"+(s.b?" <small>("+esc(ageText(s.b))+")</small>":"")+" — "+esc(alList(s))+(s.note?"<br><small>"+esc(s.note)+"</small>":"")+(s.v||s.t?"<br><small>Veli: "+esc(s.v)+" "+esc(s.t)+"</small>":"")+"</li>").join("")+"</ul>":"<p>Kayıtlı alerji bilgisi yok.</p>");
+}
+function printHtml(html){
+  $("#printSheet").innerHTML=html;
+  setTimeout(()=>{try{window.print()}catch(e){toast("Yazdırma bu pencerede açılamadı. Sayfayı yeni sekmede açın.")}},60);
+}
+function plainText(a,date){
+  const hs=hits(a);
+  const L=[a.n];
+  if(date)L.push(fmtLong(parse(date)));
+  L.push(a.cat+" · "+a.dur+" dk · "+a.place+" · "+a.energy,"");
+  if(hs.length)L.push("ALERJİ UYARISI: "+hs.map(hitText).join("; "),"");
+  L.push("Malzemeler: "+mats(a).join(", "),"","Nasıl yapılır:");
+  steps(a).forEach((s,i)=>L.push((i+1)+". "+s));
+  L.push("","Kazanım: "+a.skill,"Dikkat: "+a.caution,"","Çocuklara soralım:");
+  QUESTIONS[a.cat].forEach(q=>L.push("- "+q));
+  return L.join("\n");
+}
+function copyText(txt,okMsg){
+  const ok=okMsg||"Metin kopyalandı";
+  const fallback=()=>{
+    try{const t=document.createElement("textarea");t.value=txt;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();const r=document.execCommand("copy");t.remove();return r}catch(e){return false}
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(()=>toast(ok),()=>toast(fallback()?ok:"Kopyalanamadı. Yazdır düğmesini deneyin."));
+  }else toast(fallback()?ok:"Kopyalanamadı. Yazdır düğmesini deneyin.");
+}
+
+/* ---------- Kaydetme işlemleri ---------- */
+const val=id=>{const e=document.getElementById(id);return e?e.value.trim():""};
+const checkedAl=()=>Array.prototype.map.call(document.querySelectorAll("#sheetBody [data-al]:checked"),x=>x.dataset.al);
+function saveAct(id){
+  const name=val("a_n");
+  if(!name){toast("Etkinlik adını yazın");return}
+  const o=sanitizeAct({id:id||0,n:name,cat:val("a_cat"),dur:val("a_dur"),place:val("a_place"),energy:val("a_energy"),e:val("a_e"),mat:val("a_mat"),how:val("a_how"),skill:val("a_skill"),caution:val("a_caution"),al:checkedAl()});
+  if(id&&id<=100){P.edits[id]=o}
+  else if(id){const i=P.custom.findIndex(x=>x.id===id);if(i>=0)P.custom[i]=o}
+  else{o.id=Math.max.apply(null,[100].concat(P.custom.map(c=>c.id)))+1;P.custom.push(o);id=o.id}
+  save();rebuild();render();openModal({type:"act",id:id});toast("Etkinlik kaydedildi");
+}
+function saveStu(id){
+  const name=val("s_n");
+  if(!name){toast("Öğrencinin adını yazın");return}
+  const o=sanStudent({id:id||P.sid,n:name,b:val("s_b"),v:val("s_v"),t:val("s_t"),al:checkedAl(),ao:val("s_ao"),note:val("s_note")});
+  if(id){const i=P.students.findIndex(x=>x.id===id);if(i>=0)P.students[i]=o}
+  else{P.students.push(o);P.sid=o.id+1}
+  P.students.sort((a,b)=>a.n.localeCompare(b.n,"tr"));
+  save();closeModal();render();toast("Öğrenci kaydedildi");
+}
+
+/* ---------- Olaylar ---------- */
+const armed={};
+function twice(a,t,fn){
+  if(!armed[a]){armed[a]=true;const old=t.textContent;t.textContent="Emin misiniz? Tekrar dokunun";setTimeout(()=>{armed[a]=false;if(t.isConnected)t.textContent=old},4000);return}
+  armed[a]=false;fn();
+}
+document.addEventListener("click",e=>{
+  if(e.target===$("#modal")){closeModal();return}
+  const t=e.target.closest("[data-a]");if(!t)return;
+  const a=t.dataset.a,d=t.dataset.date,id=Number(t.dataset.id);
+  switch(a){
+    case"tab":S.tab=t.dataset.t;render();window.scrollTo(0,0);break;
+    case"settings":openModal({type:"settings"});break;
+    case"close":closeModal();break;
+    case"prevDay":S.date=iso(addDays(parse(S.date),-1));render();break;
+    case"nextDay":S.date=iso(addDays(parse(S.date),1));render();break;
+    case"today":S.date=todayISO();render();break;
+    case"prevWeek":S.wk=iso(addDays(parse(S.wk),-7));render();break;
+    case"nextWeek":S.wk=iso(addDays(parse(S.wk),7));render();break;
+    case"thisWeek":S.wk=todayISO();render();break;
+    case"prevMonth":S.mon={y:S.mon.m===0?S.mon.y-1:S.mon.y,m:(S.mon.m+11)%12};render();break;
+    case"nextMonth":S.mon={y:S.mon.m===11?S.mon.y+1:S.mon.y,m:(S.mon.m+1)%12};render();break;
+    case"thisMonth":{const n=new Date();S.mon={y:n.getFullYear(),m:n.getMonth()};render();break}
+    case"openDay":openModal({type:"day",date:d});break;
+    case"openAct":openModal({type:"act",id:id});break;
+    case"goDate":closeModal();S.date=d;S.tab="bugun";render();window.scrollTo(0,0);break;
+    case"cat":S.cat=t.dataset.c;drawList();break;
+    case"print":{const x=getAct(id);if(x)printHtml(printHTML(x,d));break}
+    case"copy":{const x=getAct(id);if(x)copyText(plainText(x,d));break}
+    case"printWeek":printHtml(printWeekHTML(parse(d)));break;
+    case"printMats":printHtml(printMatsHTML(parse(d)));break;
+    case"printClass":printHtml(printClassHTML());break;
+    case"printAllergy":printHtml(printAllergyHTML());break;
+    case"done":{const i=P.done.indexOf(d);if(i>=0){P.done.splice(i,1);toast("İşaret kaldırıldı")}else{P.done.push(d);toast("Harika, etkinlik tamamlandı")}save();refreshAll();break}
+    case"holiday":{const i=P.holidays.indexOf(d);if(i>=0){P.holidays.splice(i,1);toast("Tatil kaldırıldı")}else{P.holidays.push(d);toast("Tatil yapıldı; etkinlikler kaydı")}rebuild();save();refreshAll();break}
+    case"swap":{const r=info(d);openModal({type:"swap",date:d,mode:r.k==="day"&&/Bahçe/.test(r.act.place)?"ic":"bahce"});break}
+    case"swapMode":openModal({type:"swap",date:d,mode:t.dataset.mode});break;
+    case"doSwap":{const other=swapAct(d,id);save();closeModal();render();toast(other?"Değişti. Önceki etkinlik "+fmtShort(other)+" gününe geçti.":"Etkinlik değişti.");break}
+    case"newAct":openModal({type:"edit",id:0});break;
+    case"editAct":openModal({type:"edit",id:id});break;
+    case"saveAct":saveAct(id);break;
+    case"delAct":twice(a,t,()=>{P.custom=P.custom.filter(c=>c.id!==id);for(const k in P.swap){if(P.swap[k]===id)delete P.swap[k]}save();rebuild();closeModal();render();toast("Etkinlik silindi")});break;
+    case"resetAct":twice(a,t,()=>{delete P.edits[id];save();render();openModal({type:"act",id:id});toast("Varsayılana dönüldü")});break;
+    case"newStu":openModal({type:"stu",id:0});break;
+    case"editStu":openModal({type:"stu",id:id});break;
+    case"saveStu":saveStu(id);break;
+    case"delStu":twice(a,t,()=>{P.students=P.students.filter(s=>s.id!==id);save();closeModal();render();toast("Öğrenci silindi")});break;
+    case"saveStart":{const v=$("#startInput").value;if(!DATE_RE.test(v)){toast("Geçerli bir tarih seçin");break}P.start=v;rebuild();save();toast("Başlangıç tarihi kaydedildi");refreshAll();break}
+    case"clearHolidays":twice(a,t,()=>{P.holidays=[];rebuild();save();toast("Tatiller temizlendi");refreshAll()});break;
+    case"resetDone":twice(a,t,()=>{P.done=[];save();toast("İlerleme sıfırlandı");refreshAll()});break;
+    case"copyBackup":copyText(JSON.stringify(P),"Yedek kopyalandı");break;
+    case"importBackup":twice(a,t,()=>{
+      let j=null;try{j=JSON.parse($("#backupBox").value)}catch(err){}
+      if(!j||typeof j!=="object"){toast("Yedek okunamadı. Kopyaladığınız yedeği yapıştırın.");return}
+      P=loadFrom(j);rebuild();save();toast("Yedek yüklendi");refreshAll();
+    });break;
+  }
+});
+document.addEventListener("change",e=>{
+  const t=e.target;
+  if(t&&t.dataset&&t.dataset.a==="got"){const k=t.dataset.k;if(t.checked)P.got[k]=true;else delete P.got[k];save()}
+});
+document.addEventListener("input",e=>{
+  const id=e.target.id;
+  if(id==="q"){S.q=e.target.value;drawList()}
+  else if(id==="clsName"){P.cls=e.target.value.slice(0,60);save()}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#modal").hidden)closeModal()});
+
+/* ---------- Açılış ekranı ---------- */
+(function(){
+  const words=["Dilara","Öğretmenin","Etkinlikleri"],pal=["#FF6F61","#FFC933","#4FB3F0","#5DBB63","#B39BFF","#FF8FA3"];
+  let i=0,h="";
+  words.forEach((w,wi)=>{
+    h+='<div class="line l'+(wi+1)+'">';
+    for(const ch of w){h+='<div class="blk" style="--i:'+i+";--c:"+pal[i%pal.length]+";--r:"+(((i*37)%9)-4)+'deg">'+ch+"</div>";i++}
+    h+="</div>";
+  });
+  $("#blocks").innerHTML=h;
+  let entered=false;
+  function enter(){
+    if(entered)return;entered=true;
+    rebuild();
+    const hash=(location.hash||"").replace("#","");
+    if(["bugun","hafta","ay","liste","sinif"].indexOf(hash)>=0)S.tab=hash;
+    $("#app").hidden=false;render();
+    const sp=$("#splash");sp.classList.add("out");
+    setTimeout(()=>{sp.hidden=true;$("#view").focus({preventScroll:true})},520);
+  }
+  $("#splash").addEventListener("click",enter);
+  $("#splash").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();enter()}});
+  const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setTimeout(enter,reduce?2500:7500);
+})();
+})();
+
+</script>
+</body>
+</html>
