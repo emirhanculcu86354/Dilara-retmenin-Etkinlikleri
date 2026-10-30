@@ -82,8 +82,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .brand small{display:block;color:var(--muted);font-weight:700;font-size:.8rem;line-height:1.1}
 .icon{width:44px;height:44px;border-radius:14px;border:2.5px solid var(--line);background:var(--card);box-shadow:2px 2px 0 var(--line);font:800 1.4rem/1 var(--head);display:grid;place-items:center;padding:0}
 .icon:active{transform:translate(2px,2px);box-shadow:none}
-#tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--card);border-top:2.5px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
-#tabs button{display:flex;flex-direction:column;align-items:center;gap:0;padding:5px 1px;border:2px solid transparent;border-radius:14px;background:none;font:700 .68rem/1.15 var(--body);text-align:center}
+#tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--card);border-top:2.5px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
+#tabs button{display:flex;flex-direction:column;align-items:center;gap:0;padding:5px 1px;border:2px solid transparent;border-radius:14px;background:none;font:700 .62rem/1.15 var(--body);text-align:center}
 #tabs button span.e{font-size:1.35rem;line-height:1.2}
 #tabs button.on{background:var(--sun);border-color:var(--line);color:#1F2A55}
 main{max-width:1040px;margin:0 auto;padding:18px 16px 120px}
@@ -285,6 +285,78 @@ fieldset.al{border:2.5px solid var(--line);border-radius:14px;padding:8px 12px 1
   .ps-al{margin:10px 0 0;padding-left:22px}
   .ps-al li{font-size:13pt;margin:0 0 10px}
 }
+
+/* ---------- Özel günler, afiş, plan, şablon ---------- */
+#tabs .lg{display:none}
+@media (min-width:860px){#tabs .lg{display:inline}#tabs .sm{display:none}}
+a.btn{text-decoration:none}
+.banner{margin:0 0 12px;padding:8px 12px;border:2.5px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--sun) 30%,var(--card));font-weight:800;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bchip{display:inline-block;padding:1px 10px;border:2px solid var(--line);border-radius:999px;background:#fff;color:#1F2A55;font-size:.84rem;opacity:.75}
+.bchip.on{opacity:1;background:var(--sun)}
+.bchip small{font-weight:700}
+.pad{padding:14px 16px;margin-bottom:12px}
+.pad p{margin:0 0 8px}
+.mh{margin:18px 0 8px;font:800 1.2rem var(--head)}
+.evs{display:grid;gap:10px;grid-template-columns:1fr}
+@media (min-width:860px){.evs{grid-template-columns:1fr 1fr}}
+.ev{padding:12px 14px;display:grid;gap:6px;border-left:12px solid var(--cat);opacity:.82}
+.ev.on{opacity:1}
+.evt{display:flex;flex-direction:column}
+.evt b{font:800 1.05rem/1.2 var(--head)}
+.evd{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.evd .inp{width:auto}
+.links{margin:6px 0 0;padding-left:20px}
+.links li{margin:0 0 4px}
+.links a{color:inherit;font-weight:800}
+.cell .star{position:absolute;right:4px;bottom:2px;font-size:.8rem;color:#C99700}
+@page poster{size:A4 landscape;margin:7mm}
+@media print{
+  .pp{page:poster;width:283mm;height:195mm;display:grid;grid-template-rows:19mm 26mm 1fr 34mm;gap:2.5mm;font-size:7pt;line-height:1.25}
+  .pp *{box-sizing:border-box}
+  .pp-head{background:linear-gradient(90deg,#FFE0EA,#FFF3C4,#D9F0FF);border:1.5px solid #1F2A55;border-radius:5mm;display:flex;align-items:center;justify-content:center;text-align:center}
+  .pp-head h1{margin:0;font:800 20pt/1.05 "Baloo 2","Arial Rounded MT Bold",Arial,sans-serif;color:#D63A72}
+  .pp-head p{margin:.5mm 0 0;font-weight:800;font-size:8.5pt}
+  .pp-row1{display:grid;grid-template-columns:1fr 1.1fr 1.1fr .8fr .8fr;gap:2.5mm;min-height:0}
+  .pp-box{border:1.5px solid #1F2A55;border-radius:3.5mm;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-height:0}
+  .pp-box>h2{margin:0;padding:.8mm 2.5mm;font:800 8pt/1.2 "Baloo 2","Arial Rounded MT Bold",Arial,sans-serif;color:#fff;background:var(--c);border:0}
+  .pp-box>div,.pp-box>ul{padding:1.2mm 2.5mm;margin:0;list-style:none}
+  .pp-box li::before{content:"• "}
+  .pp-main{display:grid;grid-template-columns:60mm 1fr 56mm;gap:2.5mm;min-height:0}
+  .pp-flow li{display:grid;grid-template-columns:19mm 1fr;gap:1.5mm;padding:.7mm 0;border-bottom:.3mm dotted #8890b0}
+  .pp-flow li::before,.pp-th li::before{content:""}
+  .pp-flow b{font-size:6.5pt;color:#D63A72}
+  .pp-week{display:grid!important;grid-template-columns:repeat(5,1fr);gap:1.5mm;padding:1.5mm!important}
+  .pp-day{border:1px solid #1F2A55;border-radius:2.5mm;overflow:hidden;display:flex;flex-direction:column;font-size:6.5pt;background:#fff}
+  .pp-day h3{margin:0;padding:1mm;text-align:center;font:800 7.5pt/1.1 "Baloo 2","Arial Rounded MT Bold",Arial,sans-serif;background:var(--c);color:#1F2A55}
+  .pp-day .sp{background:#FFE3E0;color:#6B1209;font-weight:800;text-align:center;padding:.5mm;font-size:6pt}
+  .pp-day .em{text-align:center;font-size:22pt;line-height:1.15;padding-top:1.5mm}
+  .pp-day .nm{text-align:center;font-weight:800;font-size:8pt;padding:0 1mm;line-height:1.15}
+  .pp-day .ct{text-align:center;font-size:6pt;color:#4a5580;padding:.5mm 1mm}
+  .pp-day ul{margin:0;padding:0 1.5mm;list-style:none}
+  .pp-day li::before{content:"• "}
+  .pp-day .cd{margin-top:auto;padding:1mm;font-size:5.5pt;color:#4a5580;text-align:center;border-top:.3mm dotted #8890b0}
+  .pp-th li{display:grid;grid-template-columns:13mm 1fr;gap:1.5mm;padding:.7mm 1mm;border-radius:1mm}
+  .pp-th li.cur{background:#FFE9A6;font-weight:800}
+  .pp-th b{color:#B87900}
+  .pp-row4{display:grid;grid-template-columns:1.1fr 1fr 1.1fr .9fr;gap:2.5mm;min-height:0}
+  .pl{font-size:8.6pt;line-height:1.3}
+  .pl table{width:100%;border-collapse:collapse;margin:0 0 5px}
+  .pl th,.pl td{border:1.5px solid #1F2A55;padding:2px 5px;vertical-align:top;text-align:left}
+  .pl th{background:#DDEBF7;width:38mm;font-weight:800}
+  .pl th.sec{background:#FFC933;width:auto;font-family:"Baloo 2","Arial Rounded MT Bold",Arial,sans-serif;font-size:9.5pt}
+  .pl ul{list-style:none;margin:0;padding:0}
+  .pl ol{margin:0;padding-left:15px}
+  .pl p{margin:3px 0 0}
+  .pl small{font-weight:600}
+  .pl .ps-title{font-size:16pt}
+  .mini2{font-size:7.5pt;margin:0 0 5px}
+  .tp{font-size:11pt}
+  .tp-p{margin:0 0 8px;font-weight:700}
+  .tp-frame{border:3px dashed #1F2A55;border-radius:6mm;height:215mm;display:grid;place-items:center}
+  .tp-big{font-size:90pt;opacity:.25}
+  .tp-rows svg{width:100%;height:36mm;display:block;margin-bottom:3mm}
+  .tp-shapes{width:100%;height:215mm;display:block}
+}
 </style>
 </head>
 <body>
@@ -341,7 +413,8 @@ fieldset.al{border:2.5px solid var(--line);border-radius:14px;padding:8px 12px 1
       <button type="button" data-a="tab" data-t="bugun"><span class="e">🌞</span><span>Bugün</span></button>
       <button type="button" data-a="tab" data-t="hafta"><span class="e">📅</span><span>Hafta</span></button>
       <button type="button" data-a="tab" data-t="ay"><span class="e">🗓️</span><span>Ay</span></button>
-      <button type="button" data-a="tab" data-t="liste"><span class="e">📚</span><span>Tüm etkinlikler</span></button>
+      <button type="button" data-a="tab" data-t="liste"><span class="e">📚</span><span class="lg">Tüm etkinlikler</span><span class="sm">Etkinlikler</span></button>
+      <button type="button" data-a="tab" data-t="ozel"><span class="e">🎉</span><span>Özel günler</span></button>
       <button type="button" data-a="tab" data-t="sinif"><span class="e">🧒</span><span>Sınıf</span></button>
     </nav>
     <button class="icon" type="button" data-a="settings" aria-label="Ayarlar">⚙️</button>
@@ -363,7 +436,7 @@ fieldset.al{border:2.5px solid var(--line);border-radius:14px;padding:8px 12px 1
 "use strict";
 const DATA=[{"id":1,"n":"Parmakla Yağmur Damlaları","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Parmak boyası (zehirsiz), mavi karton","how":"Çocuk parmağını mavi boyaya batırıp kartonda damla izleri bırakır; “şıp şıp” sesleri taklit edilir.","skill":"İnce kas, renk tanıma, serbest ifade","caution":"Boya ağza götürülmesin; zehirsiz boya kullanın.","e":"🌧️","al":["boya"]},{"id":2,"n":"Sünger Baskı Resmi","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Sünger parçaları, guaj boya, tepsi, kâğıt","how":"Sünger boyaya batırılıp kâğıda bastırılır; farklı renklerle desen oluşturulur.","skill":"El-göz koordinasyonu, renk ve şekil farkındalığı","caution":"Önlük giydirin; zehirsiz boya kullanın.","e":"🧽","al":["boya"]},{"id":3,"n":"Yırtılmış Kâğıtlarla Kolaj","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Renkli kâğıtlar, çocuk yapıştırıcısı, fon kartonu","how":"Çocuklar kâğıtları parmaklarıyla yırtar ve kartona yapıştırarak kendi resmini oluşturur.","skill":"İnce kas gelişimi, yaratıcılık","caution":"Zehirsiz, suda çözünen yapıştırıcı kullanın.","e":"🗞️","al":["boya"]},{"id":4,"n":"Oyun Hamuru Atölyesi","cat":"Sanat","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Oyun hamuru, plastik kalıplar, merdane","how":"Hamur yuvarlanır, ezilir, kalıplarla kesilir; “yılan”, “top”, “kurabiye” yapılır.","skill":"El kası, hayal gücü","caution":"Hamur ağza alınmasın; küçük kalıplara dikkat.","e":"🍪","al":["gluten"]},{"id":5,"n":"Pamuktan Bulutlar","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Mavi fon kartonu, pamuk, yapıştırıcı","how":"Pamuk parçaları mavi kartona yapıştırılarak gökyüzü ve bulutlar yapılır.","skill":"İnce kas, gökyüzü ve hava kavramı","caution":"Pamuk ağza alınmasın.","e":"☁️","al":["boya"]},{"id":6,"n":"El İzinden Balık","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Guaj boya, fırça, beyaz kâğıt, kâğıt havlu","how":"Çocuğun eline boya sürülüp kâğıda basılır; el izi balığa veya kuşa dönüştürülür.","skill":"Beden farkındalığı, yaratıcılık","caution":"Zehirsiz boya; sonrasında el yıkama.","e":"🐟","al":["boya"]},{"id":7,"n":"Müzikle Büyük Karalama","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Orta","mat":"Büyük kâğıt rulosu, mum boyalar, müzik","how":"Yere serilen kâğıtta müziğe göre çizgiler çizilir; hızlı müzikte hızlı, yavaş müzikte yavaş çizilir.","skill":"Hız kavramı, serbest çizim, ritim","caution":"Mum boyalar ağza alınmasın.","e":"🖍️","al":[]},{"id":8,"n":"Yaprak Frotaj","cat":"Sanat","dur":15,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Yapraklar, ince kâğıt, mum boya","how":"Yaprak kâğıdın altına konur; mum boya yan tarafıyla sürülünce yaprağın izi ortaya çıkar.","skill":"Doğa gözlemi, ince kas","caution":"Yaprakları temiz yerden toplayın.","e":"🍂","al":[]},{"id":9,"n":"Renk Karıştırma Sihri","cat":"Sanat","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Kırmızı/sarı/mavi gıda boyası, şeffaf bardaklar, damlalık","how":"Kırmızı ve sarı karıştırılıp turuncu elde edilir; çocuklar renklerin değiştiğini izler.","skill":"Renk bilgisi, neden-sonuç","caution":"Sıvılar içilmesin; zemini kuru tutun.","e":"🧪","al":["boya"]},{"id":10,"n":"Kâğıt Tabak Hayvan Yüzü","cat":"Sanat","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Kâğıt tabak, renkli kâğıt, yapıştırıcı, hazır göz çıkartması","how":"Tabak kedi veya aslan yüzüne dönüştürülür; göz, kulak, bıyık yapıştırılır.","skill":"Yüz bölümleri, yaratıcılık","caution":"Küçük parçalar ağza alınmasın.","e":"🐱","al":["boya"]},{"id":11,"n":"Ritim Çalgıları Orkestrası","cat":"Müzik ve Ritim","dur":15,"place":"Sınıf","energy":"Orta","mat":"Mini davul, marakas, tef, çıngırak","how":"Çocuklar çalgıları seçer; öğretmenin işaretiyle çalıp durur.","skill":"Ritim, dinleme, kurallara uyma","caution":"Ses seviyesini kontrol edin.","e":"🥁","al":[]},{"id":12,"n":"Kendi Marakasını Yap","cat":"Müzik ve Ritim","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Küçük plastik şişe, pirinç veya mercimek, bant","how":"Şişeye pirinç doldurulur (kapağı öğretmen yapıştırır); çocuklar süsler ve çalar.","skill":"Ses-şekil ilişkisi, yaratıcılık","caution":"Kapağı mutlaka yapıştırıp bantlayın; içindekiler yutulmasın.","e":"🎶","al":[]},{"id":13,"n":"Hızlı-Yavaş Yürüyüş","cat":"Müzik ve Ritim","dur":10,"place":"Salon/Sınıf","energy":"Hareketli","mat":"Müzik çalar","how":"Müzik hızlandığında hızlı, yavaşladığında yavaş yürünür.","skill":"Hız kavramı, dinleme, denge","caution":"Çarpışmayı önlemek için geniş alan açın.","e":"🚶","al":[]},{"id":14,"n":"Müzik Durunca Heykel Ol","cat":"Müzik ve Ritim","dur":10,"place":"Salon/Sınıf","energy":"Hareketli","mat":"Müzik çalar","how":"Müzik çalarken dans edilir, müzik durunca heykel gibi donulur.","skill":"Dikkat, denge, kendini kontrol","caution":"Geniş alan açın.","e":"🗿","al":[]},{"id":15,"n":"Parmak Oyunu Şarkıları","cat":"Müzik ve Ritim","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Yok","how":"“Parmak Ailesi” gibi parmak hareketli şarkılar söylenir.","skill":"Dil gelişimi, ince kas, hafıza","caution":"Yetişkin gözetiminde yapılır.","e":"🖐️","al":[]},{"id":16,"n":"Mutfak Orkestrası","cat":"Müzik ve Ritim","dur":15,"place":"Sınıf","energy":"Orta","mat":"Plastik kaplar, tahta kaşıklar, tencere kapağı","how":"Ters çevrilen kaplar davul olur; farklı sesler denenir.","skill":"Ses farkı, ritim","caution":"Cam ve keskin kenarlı malzeme kullanmayın.","e":"🍳","al":[]},{"id":17,"n":"Eşarp Dansı","cat":"Müzik ve Ritim","dur":15,"place":"Salon/Sınıf","energy":"Hareketli","mat":"Hafif eşarplar, müzik","how":"Eşarplar müziğe göre havaya atılır, sallanır, yere bırakılır.","skill":"Büyük kas, ritim, ifade","caution":"Eşarp boyna dolanmasın.","e":"💃","al":[]},{"id":18,"n":"Bu Ses Ne?","cat":"Müzik ve Ritim","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Zil, kaşık, su bardağı, kâğıt","how":"Çocuk gözünü kapatır, çıkan sesin ne olduğunu tahmin eder.","skill":"İşitsel algı, dikkat","caution":"Yetişkin gözetiminde yapılır.","e":"👂","al":[]},{"id":19,"n":"Hayvan Seslerinden Şarkı","cat":"Müzik ve Ritim","dur":10,"place":"Sınıf","energy":"Orta","mat":"Hayvan resim kartları","how":"Kart gösterilir, çocuklar hayvanın sesini ve hareketini taklit eder; şarkıya eklenir.","skill":"Dil gelişimi, taklit","caution":"Yetişkin gözetiminde yapılır.","e":"🐮","al":[]},{"id":20,"n":"Sınıf Korosu","cat":"Müzik ve Ritim","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Yok","how":"Bilinen kısa şarkılar el hareketleriyle birlikte söylenir.","skill":"Konuşma, hafıza, grup uyumu","caution":"Yetişkin gözetiminde yapılır.","e":"🎤","al":[]},{"id":21,"n":"Minderli Engel Parkuru","cat":"Hareket ve Oyun","dur":20,"place":"Salon","energy":"Hareketli","mat":"Minder, yastık, tünel","how":"Çocuklar engellerin üzerinden geçer, altından sürünür, yanından dolanır.","skill":"Büyük kas, denge, yön kavramı","caution":"Minderler kaymasın; yakın gözetim.","e":"🏃","al":[]},{"id":22,"n":"Balon Oyunu","cat":"Hareket ve Oyun","dur":10,"place":"Salon","energy":"Hareketli","mat":"Büyük balon veya hafif plastik top","how":"Balon yere düşürülmeden havada tutulmaya çalışılır.","skill":"El-göz koordinasyonu","caution":"Patlak balon parçaları ağza alınmasın; hafif plastik top tercih edilebilir.","e":"🎈","al":["lateks"]},{"id":23,"n":"Çizgi Üzerinde Yürüyüş","cat":"Hareket ve Oyun","dur":10,"place":"Salon","energy":"Orta","mat":"Koli bandı","how":"Yerdeki çizgide ileri, yan ve ayak ucunda yürünür.","skill":"Denge, vücut kontrolü","caution":"Yetişkin gözetiminde yapılır.","e":"🤸","al":[]},{"id":24,"n":"Kutuya Top At","cat":"Hareket ve Oyun","dur":15,"place":"Salon/Bahçe","energy":"Hareketli","mat":"Yumuşak toplar, kova veya kutu","how":"Çocuklar hedefe top atar; mesafe yavaş yavaş artırılır.","skill":"El-göz koordinasyonu, sayma","caution":"Yetişkin gözetiminde yapılır.","e":"🏀","al":[]},{"id":25,"n":"Hayvan Yürüyüşleri","cat":"Hareket ve Oyun","dur":10,"place":"Salon/Bahçe","energy":"Hareketli","mat":"Yok","how":"Çocuklar tavşan gibi zıplar, ördek gibi yürür, fil gibi ağır adımlarla ilerler.","skill":"Büyük kas, hayal gücü","caution":"Yetişkin gözetiminde yapılır.","e":"🐰","al":[]},{"id":26,"n":"Çemberden Çembere","cat":"Hareket ve Oyun","dur":15,"place":"Salon/Bahçe","energy":"Hareketli","mat":"Yere konan çemberler (hula-hop)","how":"Çemberlere sırayla zıplanır; renk söylenince o çembere gidilir.","skill":"Zıplama, renk bilgisi","caution":"Yetişkin gözetiminde yapılır.","e":"⭕","al":[]},{"id":27,"n":"Yastık Dağı Tırmanışı","cat":"Hareket ve Oyun","dur":15,"place":"Salon","energy":"Hareketli","mat":"Büyük yastıklar, minder","how":"Yastıklardan oluşan alçak tepeye tırmanılır, kayılır.","skill":"Tırmanma, denge, cesaret","caution":"Yığını alçak tutun; zemini minderle kaplayın.","e":"⛰️","al":[]},{"id":28,"n":"Öğretmen Der Ki","cat":"Hareket ve Oyun","dur":10,"place":"Sınıf","energy":"Orta","mat":"Yok","how":"“Elini başına koy”, “ayağını yere vur” gibi basit komutlar uygulanır.","skill":"Dinleme, yönerge izleme, beden bölümleri","caution":"Yetişkin gözetiminde yapılır.","e":"🙋","al":[]},{"id":29,"n":"Sabun Köpüğü Avı","cat":"Hareket ve Oyun","dur":15,"place":"Bahçe","energy":"Hareketli","mat":"Baloncuk sıvısı, üfleme çubuğu","how":"Öğretmen baloncuk üfler; çocuklar yakalar, patlatır.","skill":"Takip, el-göz koordinasyonu","caution":"Gözlere kaçmasın; kaygan zemine dikkat.","e":"🌬️","al":["sabun"]},{"id":30,"n":"Ayna Oyunu","cat":"Hareket ve Oyun","dur":10,"place":"Sınıf","energy":"Orta","mat":"Yok","how":"Öğretmen bir hareket yapar, çocuklar ayna gibi taklit eder.","skill":"Taklit, dikkat, beden farkındalığı","caution":"Yetişkin gözetiminde yapılır.","e":"👯","al":[]},{"id":31,"n":"Su Aktarma Oyunu","cat":"Duyusal Oyun","dur":20,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Leğen, kepçe, bardaklar, havlu","how":"Bardaktan bardağa su aktarılır; kepçe ve süzgeçle denenir.","skill":"Doldurma-boşaltma, el koordinasyonu","caution":"Kayma riski; zemini silin, derin su kullanmayın.","e":"💧","al":[]},{"id":32,"n":"Pirinç Duyu Kutusu","cat":"Duyusal Oyun","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Pirinç, geniş kap, kaşık, küçük kaplar","how":"Pirinç içinde elle ve kaşıkla oyun oynanır; doldurma-boşaltma yapılır.","skill":"Dokunma duyusu, ince kas","caution":"Ağza atılmasın; dökülen pirinç kaydırır.","e":"🍚","al":["pirinc"]},{"id":33,"n":"Köpüklü Oyuncak Yıkama","cat":"Duyusal Oyun","dur":20,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Leğen, çocuk sabunu köpüğü, plastik oyuncaklar","how":"Plastik oyuncaklar köpüklü suda yıkanır, kurulanır.","skill":"Temizlik alışkanlığı, duyusal deneyim","caution":"Köpük göze ve ağza kaçmasın.","e":"🛁","al":["sabun"]},{"id":34,"n":"Kum Havuzu Keşfi","cat":"Duyusal Oyun","dur":20,"place":"Bahçe","energy":"Sakin","mat":"Kum, kova, kürek, kalıplar","how":"Kumdan kale ve kurabiyeler yapılır; kuru ve nemli kum karşılaştırılır.","skill":"Duyusal gelişim, hayal gücü","caution":"Kum göze ve ağza gitmesin.","e":"🏖️","al":[]},{"id":35,"n":"Gizemli Torba","cat":"Duyusal Oyun","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Kumaş torba, tanıdık nesneler","how":"Torbaya elini sokan çocuk dokunarak nesneyi tahmin eder.","skill":"Dokunma duyusu, kelime dağarcığı","caution":"Sivri veya çok küçük nesne koymayın.","e":"👜","al":[]},{"id":36,"n":"Mısır Nişastası Hamuru","cat":"Duyusal Oyun","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Mısır nişastası, su, tepsi","how":"Nişasta ve su karıştırılır; hamurun hem sıvı hem katı hali keşfedilir.","skill":"Duyusal keşif, neden-sonuç","caution":"Ağza götürülmesin; zemin kayabilir.","e":"🥣","al":["misir"]},{"id":37,"n":"Koku Kavanozları","cat":"Duyusal Oyun","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Kapaklı kavanoz, pamuk, nane, limon, tarçın","how":"Çocuk kokuyu koklar ve neye benzediğini söyler.","skill":"Koku duyusu, kelime dağarcığı","caution":"Alerjisi olan çocuk var mı kontrol edin; yenmesin.","e":"👃","al":["koku"]},{"id":38,"n":"Dokulu Patika","cat":"Duyusal Oyun","dur":15,"place":"Salon","energy":"Orta","mat":"Halı parçası, kumaş, sünger, plastik mat","how":"Çıplak ayakla farklı yüzeylerde yürünür; yumuşak-sert söylenir.","skill":"Dokunma, zıt kavramlar","caution":"Zeminin kaymaz olmasına dikkat.","e":"🦶","al":[]},{"id":39,"n":"Buz Eritme Deneyi","cat":"Duyusal Oyun","dur":15,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Buz küpleri, tuz, ılık su, plastik oyuncak","how":"Buzlara dokunulur, üzerine tuz ve ılık su dökülerek erimesi izlenir.","skill":"Soğuk-sıcak, neden-sonuç","caution":"Temas kısa tutulsun; buz ağza alınmasın.","e":"🧊","al":[]},{"id":40,"n":"Fener ve Gölge","cat":"Duyusal Oyun","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Fener, oyuncaklar, beyaz duvar/perde","how":"Karartılan sınıfta oyuncak ve ellerle gölge yapılır.","skill":"Işık-gölge, hayal gücü","caution":"Fener gözlere tutulmasın.","e":"🔦","al":[]},{"id":41,"n":"Fasulye Ekimi","cat":"Fen ve Doğa","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Fasulye, pamuk, şeffaf bardak, su","how":"Fasulye ıslak pamuğa konur; her gün büyümesi izlenir.","skill":"Doğa bilinci, gözlem, sorumluluk","caution":"Tohumlar ağza alınmasın.","e":"🌱","al":["baklagil"]},{"id":42,"n":"Batar mı, Yüzer mi?","cat":"Fen ve Doğa","dur":15,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Leğen, su, top, taş, kaşık, mantar","how":"Çocuk tahmin eder, nesne suya bırakılır, sonuç konuşulur.","skill":"Tahmin, gözlem, neden-sonuç","caution":"Küçük nesneler yutulmasın.","e":"⚓","al":[]},{"id":43,"n":"Mıknatıs Keşfi","cat":"Fen ve Doğa","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Büyük mıknatıs, metal ve plastik nesneler","how":"Mıknatısın çektiği ve çekmediği nesneler ayrılır.","skill":"Gözlem, sınıflandırma","caution":"Küçük mıknatıs yutulabilir; yalnızca büyük mıknatıs kullanın.","e":"🧲","al":[]},{"id":44,"n":"Doğa Yürüyüşü ve Toplama","cat":"Fen ve Doğa","dur":25,"place":"Bahçe","energy":"Hareketli","mat":"Küçük torba veya sepet","how":"Bahçede yaprak, çiçek, çubuk toplanır; renk ve şekil farkı konuşulur.","skill":"Doğa gözlemi, kelime dağarcığı","caution":"Zararlı bitki ve böceklere dikkat.","e":"🌳","al":["polen"]},{"id":45,"n":"Çiçeklerimizi Sulayalım","cat":"Fen ve Doğa","dur":15,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Saksı, küçük sulama kabı","how":"Çocuklar sırayla bitkileri sular.","skill":"Sorumluluk, canlıları koruma","caution":"Yetişkin gözetiminde yapılır.","e":"🌷","al":[]},{"id":46,"n":"Bugün Hava Nasıl?","cat":"Fen ve Doğa","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Hava durumu panosu, güneş/bulut/yağmur kartları","how":"Pencereden bakılır, hava durumu kartı panoya asılır.","skill":"Gözlem, hava durumu kavramları","caution":"Yetişkin gözetiminde yapılır.","e":"⛅","al":[]},{"id":47,"n":"Böcek Dedektifleri","cat":"Fen ve Doğa","dur":20,"place":"Bahçe","energy":"Orta","mat":"Büyüteç","how":"Bahçede karınca ve kelebek aranır; izlenir, dokunulmaz.","skill":"Merak, dikkat","caution":"Arı vb. riskine karşı dokunmayın.","e":"🐞","al":[]},{"id":48,"n":"Rengi Değişen Çiçek","cat":"Fen ve Doğa","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Beyaz karanfil, gıda boyası, su, bardak","how":"Karanfil boyalı suya konur; ertesi gün çiçeğin rengi değişmiş olur.","skill":"Gözlem, zaman kavramı","caution":"Boyalı su içilmesin.","e":"🌸","al":["boya","polen"]},{"id":49,"n":"Nehir ve Baraj","cat":"Fen ve Doğa","dur":20,"place":"Bahçe","energy":"Hareketli","mat":"Kum, su, kova, küçük oluk","how":"Kumda nehir yatağı açılır, su dökülerek akması izlenir.","skill":"Neden-sonuç, duyusal keşif","caution":"Islanmaya karşı yedek kıyafet bulundurun.","e":"🏞️","al":[]},{"id":50,"n":"Hayvan ve Yuvaları","cat":"Fen ve Doğa","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Hayvan ve yuva kartları","how":"Kuş-yuva, balık-akvaryum, köpek-kulübe eşleştirilir.","skill":"Eşleştirme, canlı bilgisi","caution":"Yetişkin gözetiminde yapılır.","e":"🐦","al":[]},{"id":51,"n":"Resimli Kitap Saati","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Resimli çocuk kitabı","how":"Öğretmen okur, çocuklara “Bu ne?” diye sorar.","skill":"Dinleme, kelime dağarcığı","caution":"Yetişkin gözetiminde yapılır.","e":"📖","al":[]},{"id":52,"n":"Çorap Kukla Tiyatrosu","cat":"Dil ve Hikaye","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Eski çoraplar, sabit göz çıkartmaları","how":"Çorap kuklalar konuşturulur, çocuklar da kuklayla konuşur.","skill":"Konuşma cesareti, hayal gücü","caution":"Küçük gözler iyice sabitlenmeli.","e":"🧦","al":[]},{"id":53,"n":"Keçe Pano Hikayesi","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Keçe pano, keçeden şekiller","how":"Hikaye anlatılırken şekiller panoya yerleştirilir.","skill":"Dinleme, sıralama","caution":"Yetişkin gözetiminde yapılır.","e":"🧶","al":[]},{"id":54,"n":"Resim Kartı Eşleştirme","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Çift resim kartları","how":"Aynı iki resim bulunup eşleştirilir ve isimleri söylenir.","skill":"Kelime, görsel algı","caution":"Yetişkin gözetiminde yapılır.","e":"🃏","al":[]},{"id":55,"n":"Kutudan Ne Çıktı?","cat":"Dil ve Hikaye","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Karton kutu, tanıdık oyuncaklar","how":"Çocuk kutudan nesne çıkarır, adını ve rengini söyler.","skill":"Kelime, merak","caution":"Yetişkin gözetiminde yapılır.","e":"🎁","al":[]},{"id":56,"n":"Tekerleme Saati","cat":"Dil ve Hikaye","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Yok","how":"Kısa tekerlemeler birlikte tekrar edilir.","skill":"Telaffuz, hafıza","caution":"Yetişkin gözetiminde yapılır.","e":"🗣️","al":[]},{"id":57,"n":"Hikaye Küpü","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Orta","mat":"Resimli büyük küp (karton kutu)","how":"Küp atılır, gelen resimle bir cümle veya hikaye söylenir.","skill":"Hayal gücü, cümle kurma","caution":"Yetişkin gözetiminde yapılır.","e":"🎲","al":[]},{"id":58,"n":"Duygu Yüzleri","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Mutlu, üzgün, kızgın yüz kartları","how":"Kartlar gösterilir; “Ne zaman mutlu oluyorsun?” konuşulur.","skill":"Duygu tanıma, ifade","caution":"Yetişkin gözetiminde yapılır.","e":"😊","al":[]},{"id":59,"n":"Sabah Çemberi","cat":"Dil ve Hikaye","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Takvim, günün kartı","how":"Günaydın şarkısı söylenir, hava durumu ve günün adı konuşulur.","skill":"Gün kavramı, grup bilinci","caution":"Yetişkin gözetiminde yapılır.","e":"🌞","al":[]},{"id":60,"n":"Hikayeyi Birlikte Tamamlayalım","cat":"Dil ve Hikaye","dur":15,"place":"Sınıf","energy":"Orta","mat":"Yok","how":"Öğretmen “Bir varmış bir yokmuş…” diye başlar; çocuklar sorulara cevap verir.","skill":"Hayal gücü, ifade","caution":"Yetişkin gözetiminde yapılır.","e":"📚","al":[]},{"id":61,"n":"Renklere Göre Ayır","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Renkli toplar veya bloklar, 3 kova","how":"Nesneler renklerine göre kovalara ayrılır.","skill":"Sınıflandırma, renk bilgisi","caution":"Yetişkin gözetiminde yapılır.","e":"🔴","al":[]},{"id":62,"n":"Büyük ve Küçük","cat":"Matematik Öncesi","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Büyük/küçük toplar, kapaklar, kutular","how":"Büyük ve küçük nesneler ayrı yerlere konur.","skill":"Boyut kavramı","caution":"Yetişkin gözetiminde yapılır.","e":"🐘","al":[]},{"id":63,"n":"Blok Kulesi","cat":"Matematik Öncesi","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Büyük plastik veya ahşap bloklar","how":"Kule yapılır, kaç blok olduğu sayılır, sonra yıkılır.","skill":"Denge, sayma, el-göz","caution":"Yetişkin gözetiminde yapılır.","e":"🧱","al":[]},{"id":64,"n":"Parmaklarla 1-2-3","cat":"Matematik Öncesi","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Yok","how":"Parmakla bir, iki, üç gösterilir; sayı şarkısı söylenir.","skill":"Sayı kavramı","caution":"Yetişkin gözetiminde yapılır.","e":"☝️","al":[]},{"id":65,"n":"Şekil Avı","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Orta","mat":"Karton daire, kare, üçgen","how":"Sınıfta daireye veya kareye benzeyen eşyalar aranır.","skill":"Şekil tanıma, gözlem","caution":"Yetişkin gözetiminde yapılır.","e":"🔷","al":[]},{"id":66,"n":"Çorap Eşleştirme","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Farklı renkli çoraplar","how":"Aynı olan çoraplar eşleştirilir.","skill":"Eşleştirme, görsel algı","caution":"Yetişkin gözetiminde yapılır.","e":"🔗","al":[]},{"id":67,"n":"Uzun ve Kısa","cat":"Matematik Öncesi","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Farklı boyda ip, çubuk, şerit","how":"Uzun ve kısa nesneler karşılaştırılır.","skill":"Karşılaştırma","caution":"İp boğulma riski; kısa ve gözetim altında kullanın.","e":"📏","al":[]},{"id":68,"n":"Kutu ve Kapak","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Farklı boyda kutu ve kapaklar","how":"Kapaklar doğru kutuyla eşleştirilir.","skill":"Boyut, şekil, deneme-yanılma","caution":"Yetişkin gözetiminde yapılır.","e":"📦","al":[]},{"id":69,"n":"Basit Yapboz","cat":"Matematik Öncesi","dur":20,"place":"Sınıf","energy":"Sakin","mat":"4-6 parçalı iri yapboz","how":"Parçalar birleştirilir.","skill":"Problem çözme, görsel algı","caution":"Büyük parçalı yapboz seçin.","e":"🧩","al":[]},{"id":70,"n":"Altında, Üstünde, Yanında","cat":"Matematik Öncesi","dur":15,"place":"Sınıf","energy":"Orta","mat":"Kutu, oyuncak","how":"Oyuncak kutunun altına, üstüne veya yanına konur.","skill":"Konum kavramı","caution":"Yetişkin gözetiminde yapılır.","e":"📍","al":[]},{"id":71,"n":"Market Oyunu","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"Boş kutular, oyuncak para, sepet","how":"Satıcı ve müşteri rolleri oynanır.","skill":"Sosyal beceri, konuşma","caution":"Yetişkin gözetiminde yapılır.","e":"🛒","al":[]},{"id":72,"n":"Doktor Muayenehanesi","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"Oyuncak doktor seti, bebekler","how":"Oyuncak hastalar muayene edilir.","skill":"Empati, rol yapma","caution":"Gerçek tıbbi malzeme kullanmayın.","e":"🩺","al":[]},{"id":73,"n":"Çay Partisi","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Oyuncak tabak ve bardaklar, bebekler","how":"Misafirlere çay ikram edilir.","skill":"Paylaşma, nezaket","caution":"Yetişkin gözetiminde yapılır.","e":"☕","al":[]},{"id":74,"n":"Bebek Bakımı","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Bebek, battaniye, biberon","how":"Bebek uyutulur, beslenir, giydirilir.","skill":"Şefkat, günlük yaşam","caution":"Yetişkin gözetiminde yapılır.","e":"👶","al":[]},{"id":75,"n":"Kuaför Oyunu","cat":"Rol Yapma","dur":15,"place":"Sınıf","energy":"Orta","mat":"Tarak, oyuncak saç tokası","how":"Çocuklar bebek ya da arkadaşlarının saçını tarar.","skill":"Rol yapma, ince kas","caution":"Gerçek makas veya sivri tarak kullanmayın.","e":"💇","al":[]},{"id":76,"n":"Çiftlik Oyunu","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"Oyuncak hayvanlar, ahır kutusu","how":"Hayvanlar beslenir, sesleri taklit edilir.","skill":"Hayal gücü, kelime dağarcığı","caution":"Yetişkin gözetiminde yapılır.","e":"🐄","al":[]},{"id":77,"n":"Meslek Giysileri Günü","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"İtfaiyeci, aşçı, polis kıyafetleri","how":"Çocuklar giyip rol yapar; “Ne iş yapıyorum?” konuşulur.","skill":"Meslek bilgisi, hayal gücü","caution":"Yetişkin gözetiminde yapılır.","e":"🚒","al":[]},{"id":78,"n":"Sınıfta Piknik","cat":"Rol Yapma","dur":20,"place":"Sınıf/Bahçe","energy":"Sakin","mat":"Örtü, oyuncak yiyecekler, sepet","how":"Piknik örtüsü serilir, yemekler paylaşılır.","skill":"Paylaşma, sosyal oyun","caution":"Yetişkin gözetiminde yapılır.","e":"🧺","al":[]},{"id":79,"n":"Battaniye Çadır","cat":"Rol Yapma","dur":20,"place":"Sınıf","energy":"Orta","mat":"Battaniye, sandalye, fener","how":"Battaniyeden çadır yapılır; içinde kamp hikayesi anlatılır.","skill":"Hayal gücü, iş birliği","caution":"Sandalyeler devrilmesin.","e":"⛺","al":[]},{"id":80,"n":"Minder Yolunda Araba Sürüş","cat":"Rol Yapma","dur":15,"place":"Salon","energy":"Orta","mat":"Minder, oyuncak arabalar","how":"Minderlerden yol yapılır; trafik ışıkları öğretilir.","skill":"Kurallar, hayal gücü","caution":"Yetişkin gözetiminde yapılır.","e":"🚗","al":[]},{"id":81,"n":"Muz Dilimleme","cat":"Günlük Yaşam ve Mutfak","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Muz, plastik bıçak, tabak","how":"Çocuklar plastik bıçakla muzu keser ve yer.","skill":"İnce kas, öz bakım","caution":"Alerji kontrolü; yakın gözetim.","e":"🍌","al":["meyve"]},{"id":82,"n":"Kendi Sandviçini Yap","cat":"Günlük Yaşam ve Mutfak","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Ekmek, peynir, plastik bıçak","how":"Ekmeğe peynir sürülür, dilimlenir.","skill":"Öz bakım, ince kas","caution":"Alerji kontrolü; el hijyeni.","e":"🥪","al":["gluten","sut"]},{"id":83,"n":"Meyve Salatası","cat":"Günlük Yaşam ve Mutfak","dur":25,"place":"Sınıf","energy":"Sakin","mat":"Muz, elma, çilek, kâse, kaşık","how":"Öğretmen meyveleri küçük parçalar halinde keser; çocuklar karıştırır.","skill":"Beslenme, paylaşma","caution":"Üzüm gibi yuvarlak meyveleri uzunlamasına kesin; alerji kontrolü.","e":"🍓","al":["meyve"]},{"id":84,"n":"Hamur Yoğurma","cat":"Günlük Yaşam ve Mutfak","dur":25,"place":"Sınıf","energy":"Sakin","mat":"Un, su, tuz, merdane","how":"Hamur yoğrulur, yuvarlanır, açılır.","skill":"Duyusal gelişim, ince kas","caution":"Çiğ hamur yenmez; gluten alerjisi kontrolü.","e":"🍞","al":["gluten"]},{"id":85,"n":"El Yıkama Şarkısı","cat":"Günlük Yaşam ve Mutfak","dur":10,"place":"Lavabo","energy":"Orta","mat":"Sabun, havlu","how":"El yıkama adımları şarkıyla öğretilir.","skill":"Hijyen, sıralama","caution":"Zemin kayabilir.","e":"🧼","al":[]},{"id":86,"n":"Giyinme Pratiği","cat":"Günlük Yaşam ve Mutfak","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Önlük, mont, düğmeli ve fermuarlı kıyafet","how":"Çocuk kıyafet giymeyi ve fermuar çekmeyi dener.","skill":"Öz bakım, bağımsızlık","caution":"Yetişkin gözetiminde yapılır.","e":"🧥","al":[]},{"id":87,"n":"Masayı Hazırlayalım","cat":"Günlük Yaşam ve Mutfak","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Plastik tabak, peçete, kaşık","how":"Çocuklar masaya tabak ve peçete koyar.","skill":"Sorumluluk, sayma","caution":"Yetişkin gözetiminde yapılır.","e":"🍽️","al":[]},{"id":88,"n":"Toplama Şarkısı","cat":"Günlük Yaşam ve Mutfak","dur":10,"place":"Sınıf","energy":"Orta","mat":"Oyuncak kutuları","how":"Şarkı eşliğinde oyuncaklar kutusuna toplanır.","skill":"Düzen, sorumluluk","caution":"Yetişkin gözetiminde yapılır.","e":"🧸","al":[]},{"id":89,"n":"Yoğurtlu Meyve Bardağı","cat":"Günlük Yaşam ve Mutfak","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Yoğurt, meyve parçaları, plastik bardak","how":"Bardağa yoğurt ve meyve katmanları konur.","skill":"Sıralama, beslenme","caution":"Süt ürünü alerjisi kontrolü.","e":"🥛","al":["sut","meyve"]},{"id":90,"n":"Meyve Suyu Servisi","cat":"Günlük Yaşam ve Mutfak","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Küçük sürahi, plastik bardaklar, su","how":"Sürahiden bardağa su dökülür.","skill":"Dökme becerisi, nezaket","caution":"Silme bezi hazır olsun.","e":"🧃","al":[]},{"id":91,"n":"Mandal Güneşi","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Sarı karton daire, çamaşır mandalı","how":"Mandallar karton çevresine takılır, güneş ışınları olur.","skill":"El kasları","caution":"Mandal parmağı sıkıştırmasın.","e":"☀️","al":[]},{"id":92,"n":"Makarna Dizme","cat":"İnce Kas Becerileri","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Kalın makarna, kalın bağcık","how":"Makarnalar ipe dizilir.","skill":"İnce kas, el-göz koordinasyonu","caution":"İp kısa olsun (yaklaşık 30 cm); makarna ağza alınmasın.","e":"🍝","al":["gluten"]},{"id":93,"n":"Kâğıt Buruşturma ve Yırtma","cat":"İnce Kas Becerileri","dur":10,"place":"Sınıf","energy":"Sakin","mat":"Eski gazete veya kâğıt","how":"Kâğıtlar buruşturulup kutuya atılır.","skill":"El kası","caution":"Yetişkin gözetiminde yapılır.","e":"📰","al":[]},{"id":94,"n":"Maşa ile Pompon Taşıma","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Büyük pomponlar, çocuk maşası, kaseler","how":"Pomponlar maşayla bir kaseden diğerine taşınır.","skill":"Pens tutuş, ince kas","caution":"Pomponlar ağza alınmasın.","e":"🥢","al":[]},{"id":95,"n":"Delikli Karton Dikiş","cat":"İnce Kas Becerileri","dur":20,"place":"Sınıf","energy":"Sakin","mat":"Delikli kalın karton, kalın bağcık","how":"Bağcık deliklerden geçirilir.","skill":"El-göz koordinasyonu, odaklanma","caution":"Uçlu iğne kullanmayın.","e":"🧵","al":[]},{"id":96,"n":"Kapak Çevirme","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Farklı şişe ve kapaklar","how":"Kapaklar doğru şişelere vidalanır.","skill":"Bilek kası, eşleştirme","caution":"Küçük kapaklar yutulabilir; büyük kapak seçin.","e":"🍾","al":[]},{"id":97,"n":"Etiket Soyma ve Yapıştırma","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Büyük çıkartmalar, kâğıt","how":"Çıkartmalar soyulup kâğıda yapıştırılır.","skill":"Parmak kasları","caution":"Çıkartma ağza alınmasın.","e":"⭐","al":[]},{"id":98,"n":"Kâğıt Şeridi Kesme","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Çocuk makası (ucu yuvarlak), kâğıt şeritler","how":"Öğretmen çizgiler çizer; çocuk makasla kısa şeritleri keser.","skill":"Makas hazırlığı, el-göz","caution":"Makas yakın gözetimde kullanılır.","e":"✂️","al":[]},{"id":99,"n":"Düğme ve Fermuar Panosu","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Bezden yapılmış beceri panosu","how":"Düğme iliklenir, fermuar çekilir, bağcık bağlanır.","skill":"Öz bakım, ince kas","caution":"Yetişkin gözetiminde yapılır.","e":"🔘","al":[]},{"id":100,"n":"Delikten At","cat":"İnce Kas Becerileri","dur":15,"place":"Sınıf","energy":"Sakin","mat":"Delikli karton kutu, büyük kapaklar veya pomponlar","how":"Çocuk nesneleri delikten kutuya atar.","skill":"El-göz koordinasyonu, sayma","caution":"Küçük nesneler ağza alınmasın.","e":"🎯","al":[]}];
 const ORDER=[1,61,21,31,81,41,71,91,51,11,22,82,12,52,62,42,2,32,72,92,83,63,43,33,13,23,53,93,3,73,44,34,74,84,4,24,94,14,64,54,75,35,15,85,95,55,65,5,45,25,56,26,96,46,36,6,86,76,66,16,97,37,27,87,57,17,47,7,77,67,58,48,28,8,88,38,18,78,68,98,9,69,19,59,29,39,99,49,89,79,100,90,20,30,40,10,70,80,60,50];
-const KEY="dilara.etkinlik.v1";
+const KEY="Dilara.etkinlik.v1";
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const MONTHS=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
@@ -393,6 +466,187 @@ const QUESTIONS={
  "İnce Kas Becerileri":["Parmaklarınla neler yaptın?","Hangisi zordu, hangisi kolaydı?","Bir daha denemek ister misin?"]
 };
 const BASE={};DATA.forEach(a=>BASE[a.id]=a);
+/* ---------- MEB takvimi, özel günler, kodlar ---------- */
+const SCN=["Sanat","Müzik ve Ritim","Hareket ve Oyun","Duyusal Oyun","Fen ve Doğa","Dil ve Hikaye","Matematik Öncesi","Rol Yapma","Günlük Yaşam ve Mutfak","İnce Kas Becerileri"];
+const MEBCAL={start:"2026-09-14",end:"2027-06-25",
+ breaks:[["2026-11-16","2026-11-20","Dönem ara tatili"],["2027-01-25","2027-02-05","Yarıyıl tatili"],["2027-03-08","2027-03-12","Dönem ara tatili"]],
+ days:{"2026-10-29":"Cumhuriyet Bayramı","2027-01-01":"Yılbaşı","2027-04-23":"23 Nisan Ulusal Egemenlik ve Çocuk Bayramı","2027-05-01":"Emek ve Dayanışma Günü","2027-05-19":"19 Mayıs Atatürk’ü Anma, Gençlik ve Spor Bayramı"}};
+/* [id, ad, kural, tür(g/h/b), önerilen(1/0), etkinlik adı, simge, kategori no, süre, mekan, enerji, malzeme, yapılış, kazanım, dikkat, alerjen] */
+const EVR=[
+[1,"İlköğretim Haftası",["wm",9,3],"h",1,"Okulumuzu Tanıyoruz","🏫",5,15,"Sınıf/Bahçe","Orta","Okul bölümlerinin fotoğrafları veya kartları, kâğıt, mum boya","Çocuklarla okulun bölümleri (sınıf, bahçe, lavabo) birlikte gezilir. Her çocuk en sevdiği yeri mum boyayla çizer. Çizimler sınıf panosunda sergilenir.","Okula uyum, çevreyi tanıma, ifade","",[]],
+[2,"Öğrenciler Günü",["wfri",9,3],"g",1,"Ben Bir Öğrenciyim","🎒",7,15,"Sınıf","Orta","Çanta, oyuncak defter ve kalem, önlük","Çocuklar sırayla öğrenci ve öğretmen rollerini oynar. Öğretmen “Okulda neler yapıyoruz?” diye sorar. Gün sonunda herkes alkışlanır.","Rol oynama, okul kurallarını tanıma, özgüven","",[]],
+[3,"Gaziler Günü",["d",9,19],"g",0,"Bayrağıma Selam","🇹🇷",5,15,"Sınıf","Sakin","Küçük Türk bayrakları, kâğıt, mum boya","Öğretmen bayrağın anlamını çocuk diliyle anlatır. Çocuklar bayrağı inceler, renklerini söyler ve resmini boyar. Bayrağa saygı kısaca birlikte gösterilir.","Bayrak sevgisi, renk tanıma, saygı","",[]],
+[4,"15 Temmuz Demokrasi ve Milli Birlik Günü",["sy2"],"g",0,"Birlik Ağacı","🌳",0,20,"Sınıf","Sakin","Büyük kâğıt, parmak boyası","Çocuklar el izlerini büyük bir kâğıda birlikte basarak birlik ağacı yapar. Birlikte çalışmanın ve yardımlaşmanın güzel olduğu basitçe anlatılır.","İş birliği, aidiyet, ince kas","Boya zehirsiz olmalı.",["boya"]],
+[5,"Dünya Okul Sütü Günü",["d",9,28],"g",1,"Süt Dostumuz","🥛",8,15,"Sınıf","Sakin","Süt, plastik bardaklar, süt ürünü kartları","Çocuklar süt ürünlerini (süt, yoğurt, peynir) kartlardan tanır. Sütten yapılan bir ürün birlikte tadılır. “Süt bana ne yapar?” sorusuna cevap aranır.","Sağlıklı beslenme, tanıma, duyu","Süt ürünü alerjisi olan çocuğa verilmez.",["sut"]],
+[6,"Mevlid-i Nebi Haftası",["dy"],"h",0,"Güzel Davranışlar","💛",5,15,"Sınıf","Sakin","Resimli kitap, kâğıt, mum boya","Öğretmen güzel davranışları (paylaşmak, selam vermek, yardım etmek) kısa örneklerle anlatır. Çocuklar bir güzel davranışı resmeder.","Değerler, ifade, nezaket","",[]],
+[7,"Hayvanları Koruma Günü",["d",10,4],"g",1,"Hayvan Dostlarımız","🐶",4,15,"Sınıf","Orta","Oyuncak hayvanlar, boş mama kabı, kâğıt, mum boya","Çocuklar oyuncak hayvanlara su ve mama verme oyunu oynar. Hayvanlara nazik davranmanın yolları konuşulur. Her çocuk sevdiği hayvanı çizer.","Canlılara sevgi, empati, sorumluluk","",[]],
+[8,"Ahilik Kültürü Haftası",["r",10,8,10,12],"h",0,"Dürüst Esnaf Oyunu","🛍️",7,20,"Sınıf","Orta","Oyuncak market malzemeleri, oyuncak para","Çocuklar esnaf ve müşteri olur. Doğru söylemek, paylaşmak ve nazik olmak oyunun içinde örneklenir.","Dürüstlük, paylaşma, nezaket","",[]],
+[9,"Birleşmiş Milletler Günü",["d",10,24],"g",0,"Dünya Çocukları","🌍",5,15,"Sınıf","Sakin","Dünya küresi veya resmi, farklı ülkelerin bayrak kartları","Çocuklar küre üzerinde farklı ülkeleri gösterir. Farklı ülkelerdeki çocukların da oynadığı öğrenilir. Birlikte kâğıttan barış güvercini yapılır.","Farklılıklara saygı, barış, merak","",[]],
+[10,"Cumhuriyet Bayramı",["d",10,29],"b",1,"Cumhuriyet Bayramı Kutlaması","🇹🇷",1,20,"Sınıf/Salon","Orta","Bayraklar, kırmızı ve beyaz kâğıtlar, müzik çalar","Sınıf kırmızı-beyaz süslerle hazırlanır. Çocuklar bayraklarla şarkılara ve marşa eşlik eder. Cumhuriyet’in ülkemizin doğum günü olduğu söylenir.","Ulusal bilinç, şarkı söyleme, ritim","",[]],
+[11,"Kızılay Haftası",["r",10,29,11,4],"h",1,"Yardım Çantası Oyunu","🧰",7,20,"Sınıf","Orta","Oyuncak ilk yardım çantası, oyuncak bebekler, oyuncak bandaj","Çocuklar yaralı oyuncakları sararak yardım eden kahraman rolünü oynar. Yardımlaşmanın güzel olduğu konuşulur. Gerçek ilaç veya tıbbi malzeme kullanılmaz.","Yardımlaşma, empati, rol oynama","Gerçek tıbbi malzeme kullanmayın.",[]],
+[12,"Organ Bağışı ve Nakli Haftası",["r",11,3,11,9],"h",0,"Kalp Paylaşıyoruz","❤️",7,15,"Sınıf","Sakin","Kâğıttan kalpler, mum boya","Çocuklar kâğıt kalpleri boyayıp sevdikleri bir arkadaşına verir. Paylaşmanın ve yardım etmenin iyi hissettirdiği konuşulur.","Paylaşma, sevgi, sosyal duygusal gelişim","",[]],
+[13,"Lösemili Çocuklar Haftası",["r",11,2,11,8],"h",0,"Dostluk Halkası","🎗️",7,15,"Sınıf","Orta","Müzik çalar, renkli kurdeleler","Çocuklar el ele tutuşup dostluk şarkısı söyler. Hasta olan arkadaşlara iyi dilekler çizilir.","Empati, dostluk, iyi dilek","Hastalık konuları ayrıntıya girmeden, dostluk diliyle ele alınır.",[]],
+[14,"Atatürk Haftası",["r",11,10,11,16],"h",1,"Atatürk’ü Tanıyoruz","🌹",5,15,"Sınıf","Sakin","Atatürk fotoğrafları, resimli çocuk kitabı, kâğıt, mum boya","Atatürk’ün çocukları çok sevdiği sade biçimde anlatılır. Fotoğraflar birlikte incelenir. Çocuklar Atatürk için bir çiçek ya da bayrak resmi yapar.","Atatürk sevgisi, dinleme, ifade","",[]],
+[15,"Dünya Diyabet Günü",["d",11,14],"g",0,"Sağlıklı Seçimler","🍎",8,15,"Sınıf","Sakin","Meyve ve sebze kartları, sağlıksız yiyecek kartları","Çocuklar sağlıklı ve sağlıksız yiyecek kartlarını ayırır. Meyve ve sebzenin vücudumuza iyi geldiği konuşulur.","Sağlıklı beslenme, sınıflandırma","",[]],
+[16,"Afet Eğitimi Hazırlık Günü",["d",11,12],"g",1,"Çömel, Kapan, Tutun","🛡️",2,15,"Sınıf","Orta","Minderler, yastıklar","Öğretmen güvenli bir köşeyi gösterir. Çocuklar “çömel, kapan, tutun” hareketini oyun gibi dener. Sakin kalmak ve öğretmeni dinlemek vurgulanır.","Güvenlik, yönerge izleme, sakin kalma","Korkutucu anlatımlardan kaçının; kısa ve oyun diliyle yürütün.",[]],
+[17,"Dünya Felsefe Günü",["d",11,20],"g",0,"Neden? Soruları","❓",5,15,"Sınıf","Sakin","Resimli kartlar","Öğretmen “Gökyüzü neden mavi?” gibi basit sorular sorar. Çocuklar tahminlerini söyler; doğru ya da yanlış denmez.","Merak, düşünme, konuşma","",[]],
+[18,"Dünya Çocuk Hakları Günü",["d",11,20],"g",1,"Çocukların Hakları","🧒",5,15,"Sınıf","Sakin","Hak kartları (oyun, sevgi, sağlık, beslenme), kâğıt","Her kartta bir hak gösterilir: oynamak, sevilmek, sağlıklı beslenmek. Çocuklar “Bana ne iyi gelir?” sorusunu yanıtlar. Sonra el ele dostluk çemberi yapılır.","Haklarını tanıma, empati, ifade","",[]],
+[19,"Ağız ve Diş Sağlığı Haftası",["r",11,21,11,27],"h",1,"Dişlerimizi Fırçalıyoruz","🦷",8,15,"Sınıf","Orta","Büyük karton diş modeli, çocuk diş fırçası, ayna","Çocuklar karton dişe fırçalama hareketini gösterir. Fırçalama adımları şarkıyla taklit edilir. Şekerli yiyeceklerin dişlere zararı basitçe konuşulur.","Öz bakım, hijyen, sağlıklı yaşam","",[]],
+[20,"Öğretmenler Günü",["d",11,24],"g",1,"Öğretmenime Hediye","🍎",0,20,"Sınıf","Sakin","Renkli kartonlar, mum boya, yapıştırıcı, çıkartmalar","Çocuklar öğretmenleri için kart hazırlar. Kartın üstüne el izi ya da çizim eklenir. Öğretmene teşekkür şarkısı söylenir.","Teşekkür, yaratıcılık, ince kas","",["boya"]],
+[21,"Dünya Engelliler Günü",["d",12,3],"g",1,"Farklıyız, Birlikte Oynuyoruz","🤝",7,15,"Sınıf","Orta","Yumuşak toplar, minderler","Çocuklar el ele oyun oynar; hareket etmenin farklı yolları (yürümek, emeklemek, oturarak oynamak) taklit edilir. Herkesin birlikte oynayabileceği bir oyun seçilir.","Farklılıklara saygı, empati, iş birliği","Hiçbir çocuğu örnek göstermeyin; oyun diliyle yürütün.",[]],
+[22,"Türk Kadınına Seçme ve Seçilme Hakkının Verilişi",["d",12,5],"g",0,"Seçim Oyunu","🗳️",7,15,"Sınıf","Sakin","Resimli kartlar, kutu, büyük düğme veya jeton","Çocuklar sevdikleri meyveyi kutuya jeton atarak seçer. Herkesin söz hakkı olduğu konuşulur.","Seçim yapma, saygı, sıra bekleme","Küçük parçalar: yakından izleyin.",[]],
+[23,"İnsan Hakları ve Demokrasi Haftası",["wc",12,10],"h",0,"Söz Hakkı Çemberi","🎤",5,15,"Sınıf","Sakin","Konuşma nesnesi olarak peluş oyuncak","Çocuklar çemberde peluşu elden ele geçirir; peluş kimdeyse o konuşur. Dinlemek ve sıra beklemek vurgulanır.","Dinleme, sıra bekleme, ifade","",[]],
+[24,"Tutum, Yatırım ve Türk Malları Haftası",["r",12,12,12,18],"h",1,"Kumbaramıza Atıyoruz","🐷",9,15,"Sınıf","Sakin","Delikli karton kumbara, büyük düğmeler veya jeton","Çocuklar kumbaraya düğme atar ve kaç tane olduğunu birlikte sayar. Biriktirmenin ve israf etmemenin güzel olduğu konuşulur.","Sayma, biriktirme, ince kas","Küçük parçalar ağza alınmasın.",[]],
+[25,"Enerji Tasarrufu Haftası",["wm",1,2],"h",1,"Işığı Kapatıyoruz","💡",4,15,"Sınıf","Orta","Fener, resimli kartlar","Çocuklar “Odadan çıkarken ışığı kim kapatır?” oyununu oynar. Musluğu açık bırakmama ve ışığı kapatma davranışları taklit edilir.","Tasarruf, çevre bilinci, sorumluluk","",[]],
+[26,"Vergi Haftası",["wl",2],"h",0,"Paylaşma Sepeti","🧺",6,15,"Sınıf","Sakin","Sepet, oyuncak meyveler","Herkes sepete bir oyuncak meyve koyar ve sepet sınıfın ortak malı olur. Ortak eşyalara özen göstermek konuşulur.","Paylaşma, ortak eşyaya özen, sayma","",[]],
+[27,"Sivil Savunma Günü",["d",2,28],"g",0,"Güvenli Köşemiz","🛡️",2,15,"Sınıf","Orta","Minderler","Çocuklar sınıftaki güvenli köşeyi bulma oyunu oynar. Öğretmenin sözünü dinlemek ve sakin kalmak vurgulanır.","Güvenlik, dinleme, sakin kalma","Korkutucu anlatımlardan kaçının.",[]],
+[28,"Yeşilay Haftası",["wc",3,1],"h",1,"Sağlıklı Seçimlerim","🥕",8,15,"Sınıf","Sakin","Meyve ve sebze parçaları, resimli kartlar","Çocuklar sağlıklı yiyecek ve içecekleri (su, meyve, sebze) seçer. Temiz hava için pencere açılır ve birlikte kısa bir hareket oyunu yapılır.","Sağlıklı yaşam, seçim yapma","Alerji kontrolü; boğulma riskine karşı meyveleri küçük kesin.",["meyve"]],
+[29,"Girişimcilik Haftası",["wm",3,1],"h",0,"Küçük Üreticiler","🧁",0,20,"Sınıf","Sakin","Oyun hamuru, tepsi","Çocuklar oyun hamuruyla bir ürün yapıp tezgâhta sergiler. Üretmenin güzel olduğu konuşulur.","Yaratıcılık, üretme, ince kas","Hamur ağza alınmasın.",["gluten"]],
+[30,"Dünya Kadınlar Günü",["d",3,8],"g",0,"Sevdiğim Kadına Çiçek","🌷",0,15,"Sınıf","Sakin","Kâğıt, mum boya, yapıştırıcı","Çocuklar annelerine, büyük annelerine veya sevdikleri kadınlara çiçek kartı yapar.","Sevgi, ince kas, ifade","",["boya"]],
+[31,"Bilim ve Teknoloji Haftası",["r",3,8,3,14],"h",1,"Küçük Bilim İnsanları","🔬",4,20,"Sınıf","Sakin","Büyüteç, su, leğen, farklı nesneler","Çocuklar büyüteçle nesneleri inceler. Batan ve yüzen nesneleri önce tahmin eder, sonra dener. “Ne gördük?” sorusuyla paylaşım yapılır.","Gözlem, merak, tahmin","Küçük nesneler yutulmasın.",[]],
+[32,"İstiklâl Marşı’nın Kabulü ve Mehmet Akif Ersoy’u Anma Günü",["d",3,12],"g",1,"Bayrağım ve Marşım","🇹🇷",1,15,"Sınıf","Sakin","Küçük bayraklar, müzik çalar","Çocuklar bayrağı inceler; marşın bir bölümü dinlenir ve saygıyla ayakta durulur. Bayrak boyama yapılır.","Saygı, dinleme, bayrak sevgisi","",[]],
+[33,"Tüketiciyi Koruma Haftası",["r",3,15,3,21],"h",0,"Market Alışverişi","🛒",7,20,"Sınıf","Orta","Boş kutular, oyuncak para, sepet","Çocuklar market oyununda ürünleri seçer ve ödeme yapar. Bozuk görünen ürünü almamak konuşulur.","Seçim yapma, rol oynama","",[]],
+[34,"Şehitler Günü",["d",3,18],"g",0,"Vatan Sevgisi","🇹🇷",5,15,"Sınıf","Sakin","Bayrak, resimli kitap","Bayrak boyanır; vatanı sevmek ve saygı göstermek kısa ve sakin biçimde anlatılır.","Saygı, bayrak sevgisi, dinleme","Kayıp ve ölüm konularına ayrıntıya girmeden, yalnızca saygı diliyle değinin.",[]],
+[35,"Yaşlılar Haftası",["r",3,18,3,24],"h",1,"Büyüklerimizi Seviyoruz","👵",7,20,"Sınıf","Orta","Oyuncak gözlük, eşarp, büyükanne ve büyükbaba figürleri","Çocuklar büyükanne ve büyükbaba ile oyun oynar. Büyüklere saygı ve yardım etme (çanta taşımak gibi) canlandırılır. Çocuklar büyükleri için kart hazırlar.","Saygı, empati, rol oynama","",["boya"]],
+[36,"Türk Dünyası ve Toplulukları Haftası",["wc",3,21],"h",0,"Bahar Çiçekleri","🌼",0,20,"Sınıf","Sakin","Renkli kâğıtlar, yapıştırıcı, fon kartonu","Çocuklar renkli kâğıtlardan bahar çiçeği yapıp panoya yapıştırır. Bahar şarkıyla karşılanır.","Mevsim, yaratıcılık, ince kas","",["boya"]],
+[37,"Orman Haftası",["r",3,21,3,26],"h",1,"Fidan Dikiyoruz","🌳",4,20,"Bahçe","Orta","Saksı, toprak, tohum veya fidan, küçük sulama kabı","Çocuklar saksıya toprak koyup tohum eker ve sular. Ağaçların bize neler verdiği konuşulur.","Doğa sevgisi, gözlem, sorumluluk","Toprak ağza alınmasın; sonrasında el yıkayın.",["polen"]],
+[38,"Dünya Tiyatrolar Günü",["d",3,27],"g",1,"Kukla Tiyatrosu","🎭",5,20,"Sınıf","Sakin","Çorap veya çubuk kuklalar, örtüden perde","Öğretmen kuklalarla kısa bir hikâye oynar. Çocuklar kuklalarla konuşmayı dener ve alkışlar.","Dinleme, konuşma, hayal gücü","",[]],
+[39,"Kütüphaneler Haftası",["wl",3],"h",1,"Kitap Köşemiz","📚",5,15,"Sınıf","Sakin","Resimli kitaplar, minderler","Çocuklar kitap köşesinde kitap seçer, sayfaları çevirir ve resimleri inceler. Kitaba özen gösterme kuralı konuşulur.","Kitap sevgisi, dinleme, özen","",[]],
+[40,"Kanser Haftası",["r",4,1,4,7],"h",0,"Güneşten Korunuyoruz","☀️",4,15,"Sınıf/Bahçe","Orta","Şapka, oyuncak güneş gözlüğü","Çocuklar şapka takma oyununu oynar. Güneşli günde gölgede durmak ve su içmek konuşulur.","Sağlık, korunma, dikkat","Konu ayrıntıya girmeden, korunma diliyle ele alınır.",[]],
+[41,"Dünya Otizm Farkındalık Günü",["d",4,2],"g",0,"Mavi Köşe","💙",3,15,"Sınıf","Sakin","Mavi renkli nesneler, yumuşak müzik","Mavi nesneler incelenir; sessiz ve sesli müzik dinleme oyunu oynanır. Her çocuğun sevdiği şeylerin farklı olduğu söylenir.","Farklılığa saygı, duyusal farkındalık","Hiçbir çocuk etiketlenmez.",[]],
+[42,"Kişisel Verileri Koruma Günü",["d",4,7],"g",0,"Bu Benim, Bu Senin","🙋",7,15,"Sınıf","Sakin","Çocukların kendi eşyaları (çanta, mendil)","Çocuklar kendi eşyalarını bulur ve arkadaşlarının eşyasına izinsiz dokunmamayı oyunla öğrenir. “Adımı kimlere söylerim?” sorusu basitçe konuşulur.","Kendini tanıma, sınır, saygı","",[]],
+[43,"Dünya Sağlık Günü ve Haftası",["r",4,7,4,13],"h",1,"Ellerimizi Yıkıyoruz","🧼",8,15,"Sınıf","Orta","Sabun, havlu, lavabo","Çocuklar el yıkama adımlarını şarkıyla öğrenir ve uygular. Hapşırırken dirsekle ağzı kapatma hareketi oyun gibi taklit edilir.","Hijyen, öz bakım, sağlık","Zemin kayabilir; silin.",["sabun"]],
+[44,"Turizm Haftası",["r",4,15,4,22],"h",0,"Valiz Hazırlıyoruz","🧳",7,20,"Sınıf","Orta","Küçük valiz, kıyafetler, oyuncak tren","Çocuklar tatile gidiyormuş gibi valiz hazırlar ve oyuncak trenle yolculuk yapar.","Rol yapma, sıralama","",[]],
+[45,"Ulusal Egemenlik ve Çocuk Bayramı",["d",4,23],"b",1,"23 Nisan Çocuk Şenliği","🎈",1,20,"Sınıf/Salon","Hareketli","Bayraklar, kâğıt süsler, müzik çalar","Çocuklar bayraklarla dans eder, çocuk şarkılarını söyler. Bugünün çocukların bayramı olduğu vurgulanır ve her çocuk alkışlanır.","Bayram sevinci, şarkı, ritim","Balon yerine kâğıt süs tercih edin.",[]],
+[46,"Dünya Fikri Mülkiyet Günü",["d",4,26],"g",0,"Benim Eserim","🖼️",0,15,"Sınıf","Sakin","Kâğıt, mum boya","Çocuk resmine kendi işaretini koyar; “Bu benim eserim” denir ve resmi sergilenir.","Sahiplik, özgünlük, ifade","",[]],
+[47,"Kût’ül Amâre Zaferi",["d",4,29],"g",0,"Dayanışma Hikâyesi","📖",5,15,"Sınıf","Sakin","Resimli hikâye kitabı","Kısa bir hikâye ile birlikte çalışmanın ve cesaretin güzel olduğu anlatılır.","Dinleme, değerler","Savaş ayrıntılarına girilmez.",[]],
+[48,"Bilişim Haftası",["wm",5,1],"h",0,"Robot Olduk","🤖",6,15,"Sınıf","Orta","Ok kartları, yere yapıştırılmış işaretler","Çocuklar robot olup ok kartlarına göre ileri, sağa, sola yürür.","Yön, sıralama, yönerge izleme","",[]],
+[49,"Trafik ve İlkyardım Haftası",["wm",5,1],"h",1,"Kırmızı Dur, Yeşil Geç","🚦",2,15,"Sınıf/Salon","Hareketli","Kırmızı ve yeşil kartlar, minder yolu, oyuncak arabalar","Çocuklar trafik ışığı oyununda kırmızıda durur, yeşilde yürür. Yolda el ele yürümenin kuralı konuşulur.","Trafik kuralları, dikkat, yönerge izleme","",[]],
+[50,"İş Sağlığı ve Güvenliği Haftası",["r",5,4,5,10],"h",0,"Güvenli Oyun Kuralları","🦺",2,15,"Sınıf/Bahçe","Orta","Yok","Sınıf ve bahçede güvenli oyun kuralları (koşmamak, itmemek) birlikte konuşulur ve oyun gibi canlandırılır.","Güvenlik, kurallara uyma","",[]],
+[51,"Vakıflar Haftası",["wm",5,2],"h",0,"Yardım Kutusu","📦",7,15,"Sınıf","Sakin","Karton kutu, kullanılmayan oyuncaklar","Çocuklar kullanmadıkları oyuncakları yardım kutusuna koyar. Paylaşmanın güzel olduğu konuşulur.","Paylaşma, yardımlaşma","",[]],
+[52,"Anneler Günü",["sun",5,2],"g",1,"Anneme Sevgi Kartı","💐",0,20,"Sınıf","Sakin","Karton, parmak boyası, kâğıt çiçekler","Çocuklar parmak boyasıyla çiçek yapar. Kartın içine öğretmen “Seni seviyorum anne” yazar. Kart annelere hediye edilmek üzere paketlenir.","Sevgi, ince kas, özgün ürün","",["boya"]],
+[53,"Engelliler Haftası",["r",5,10,5,16],"h",1,"Farklılıklarımız Güzel","🌈",3,15,"Sınıf","Sakin","Farklı dokulu nesneler, işaret dili “merhaba” kartı","Çocuklar gözleri kapalı doku keşfeder. Öğretmen “merhaba” işaretini gösterir ve çocuklar birlikte dener.","Duyusal farkındalık, empati","Hiçbir çocuğu örnek göstermeyin.",[]],
+[54,"Müzeler Haftası",["r",5,18,5,24],"h",1,"Sınıf Müzemiz","🖼️",0,20,"Sınıf","Sakin","Çocukların resimleri, askı ipi, mandal","Çocukların resimleri müze gibi asılır. Çocuklar ziyaretçi olup eserleri sessizce gezer.","Sanat eserine bakma, saygı, ifade","İp boğulma riski; yüksekte ve çocuklardan uzak asın.",[]],
+[55,"Atatürk’ü Anma, Gençlik ve Spor Bayramı",["d",5,19],"b",1,"19 Mayıs Spor Şenliği","🏅",2,20,"Sınıf/Bahçe","Hareketli","Bayraklar, yumuşak toplar, minder","Çocuklar bayraklarla yürür ve basit spor oyunları (top taşıma, zıplama) yapar. Atatürk’ün çocukları ve sporu sevdiği kısaca söylenir.","Hareket, bayram sevinci, dayanıklılık","",[]],
+[56,"Etik Günü",["d",5,25],"g",0,"Doğru Sözlü Kukla","🧸",5,15,"Sınıf","Sakin","Kukla","Kukla doğruyu söylemenin güzel olduğu kısa bir hikâye anlatır. Çocuklar kuklaya cevap verir.","Dürüstlük, dinleme, konuşma","",[]],
+[57,"İstanbul’un Fethi",["d",5,29],"g",0,"Kâğıt Gemiler","⛵",4,15,"Sınıf","Sakin","Kâğıt, su dolu leğen","Çocuklar kâğıt gemiyi suya bırakır ve yüzüşünü izler. İstanbul’un güzel bir şehir olduğu konuşulur.","Gözlem, merak","Su zemini kayganlaştırabilir.",[]],
+[58,"Çevre Koruma Haftası",["wm",6,2],"h",1,"Temiz Dünya","🌍",4,20,"Sınıf/Bahçe","Orta","Atık kutuları, temiz kâğıt ve büyük plastik kapaklar","Çocuklar temiz atıkları kâğıt ve plastik kutularına ayırır. Çöpü çöp kutusuna atma kuralı konuşulur.","Sınıflandırma, çevre bilinci","Yalnızca temiz ve büyük atıklar kullanın.",[]],
+[59,"Babalar Günü",["sun",6,3],"g",1,"Babama Sevgi Kartı","👔",0,20,"Sınıf","Sakin","Kâğıt, parmak boyası, mum boya","Çocuklar baba kravatı şeklinde kart süsler ve parmak boyasıyla desen yapar.","Sevgi, ince kas, özgün ürün","",["boya"]],
+[60,"Zafer Bayramı",["d",8,30],"b",0,"Bayrak Sallıyoruz","🇹🇷",1,15,"Sınıf","Orta","Küçük bayraklar, müzik çalar","Çocuklar bayraklarla müziğe eşlik eder. Bayramların sevinç günü olduğu söylenir.","Bayram sevinci, ritim","",[]],
+[61,"Mahalli Kurtuluş Günleri ile Atatürk Günleri ve Tarihi Günler",["na"],"g",0,"Yerel Günümüz","🏘️",5,15,"Sınıf","Sakin","Resimli kartlar","Bulunduğumuz yerin güzel yerleri resimlerle gösterilir ve çocuklar sevdikleri bir yeri anlatır.","Çevreyi tanıma, ifade","",[]]
+];
+const EVENTS=EVR.map(r=>({id:r[0],name:r[1],r:r[2],kind:r[3],p:r[4]}));
+const EVBYID={};EVENTS.forEach(e=>EVBYID[e.id]=e);
+const SPACT={};
+EVR.forEach(r=>{SPACT[r[0]]={id:1000+r[0],n:r[5],e:r[6],cat:SCN[r[7]],dur:r[8],place:r[9],energy:r[10],mat:r[11],how:r[12],skill:r[13],caution:r[14]||"Yetişkin gözetiminde yapılır.",al:r[15],ozel:r[0]}});
+let spMap=new Map();
+
+/* MEB Okul Öncesi Eğitim Programı (36-48 ay) kodları: tymm.meb.gov.tr örnek planlarından */
+const CT={
+ "TADB.1.b":"Seçilen materyalleri dinler / izler.",
+ "TAOB.1.a":"Yetişkin rehberliğinde, kendisine sunulan görsel okuma materyallerini inceler.",
+ "TAKB.1.a":"Yetişkin rehberliğinde konuşacağı konuyu seçer.",
+ "MAB.1.a":"1 ile 5 arasında ileriye doğru birer ritmik sayar.",
+ "MAB.2.a":"Bir bütünü oluşturan parçaları gösterir.",
+ "FAB.1.b":"Gözlemlediği nesne / olay / olguların betimsel / fiziksel özelliklerini söyler.",
+ "HSAB.1.a":"Basit yönergeler doğrultusunda yer değiştirme hareketleri yapar.",
+ "HSAB.1.b":"Etkinliğin durumuna uygun denge hareketleri yapar.",
+ "HSAB.2.a":"Farklı büyüklükteki nesneleri kavrar / bırakır.",
+ "SNAB.4.c":"Sanat etkinliklerine aktif olarak katılır.",
+ "SNAB.4.ç":"Sanat etkinliklerinde özgün ürünler oluşturur.",
+ "MDB.1.b":"Müzik eserini dinler.",
+ "MSB.2.a":"Şarkıyı grupla / tek başına söyler.",
+ "E1.1":"Merak","E2.5":"Oyunseverlik","E3.2":"Odaklanma","E3.3":"Yaratıcılık",
+ "SDB1.1":"Kendini Tanıma (Öz Farkındalık)","SDB1.2":"Kendini Düzenleme (Öz Düzenleme)","SDB2.1":"İletişim","SDB2.3":"Sosyal Farkındalık","SDB3.1":"Uyum",
+ "D3.4":"Çalışmalarda aktif rol almak","D4.2":"Arkadaşları ile etkili iletişim kurmak","D12.1":"Düşünce, duygu ve davranışlarında kontrollü olmak (Sabır)","D14.1":"Nezaketli olmak (Saygı)","D16.1":"Kendine karşı görevlerini yerine getirmek (Sorumluluk)","D18.2":"Yaşadığı ortamın temizliğine dikkat etmek (Temizlik)",
+ "OB4":"Görsel Okuryazarlık"
+};
+const CODES=[
+ ["SNAB.4.c","SNAB.4.ç","E3.3","SDB1.1","D3.4","OB4"],
+ ["MDB.1.b","MSB.2.a","E2.5","SDB3.1","D12.1"],
+ ["HSAB.1.a","HSAB.1.b","HSAB.2.a","E2.5","SDB1.2","D12.1"],
+ ["FAB.1.b","E1.1","SDB1.1","D18.2"],
+ ["FAB.1.b","E1.1","SDB2.1","D18.2"],
+ ["TADB.1.b","TAOB.1.a","TAKB.1.a","E1.1","SDB2.1","D14.1","OB4"],
+ ["MAB.1.a","MAB.2.a","E3.2","SDB1.2","D12.1"],
+ ["TAKB.1.a","E2.5","SDB2.1","SDB2.3","D4.2"],
+ ["HSAB.2.a","E3.2","SDB1.2","D16.1","D18.2"],
+ ["HSAB.2.a","E3.2","SDB1.2","D12.1"]
+];
+const ETYPE=["Sanat (Büyük Grup Etkinliği)","Müzik (Büyük Grup Etkinliği)","Hareket ve Sağlık (Büyük Grup Etkinliği)","Fen, Duyusal Keşif (Küçük Grup Etkinliği)","Fen (Büyük Grup Etkinliği)","Türkçe (Büyük Grup Etkinliği)","Matematik (Küçük Grup Etkinliği)","Oyun, Drama (Büyük Grup Etkinliği)","Öz Bakım, Hareket ve Sağlık (Bireysel Etkinlik)","Sanat, İnce Motor (Bireysel Etkinlik)"];
+const codesFor=a=>CODES[Math.max(0,SCN.indexOf(a.cat))];
+const codeGroup=k=>/^(TA|MA|FA|SA|HS|SN|MD|MS)/.test(k)?0:/^E/.test(k)?1:/^SDB/.test(k)?2:/^D/.test(k)?3:4;
+
+/* ---------- Tarih kuralları ---------- */
+function syOf(d){return d.getMonth()>=8?d.getFullYear():d.getFullYear()-1}
+function nthMonday(y,m,n){const f=new Date(y,m-1,1,12),dw=(f.getDay()+6)%7;return new Date(y,m-1,1+((7-dw)%7)+7*(n-1),12)}
+function lastMonday(y,m){const l=new Date(y,m,0,12),dw=(l.getDay()+6)%7;return new Date(y,m-1,l.getDate()-dw,12)}
+function nthSunday(y,m,n){const f=new Date(y,m-1,1,12);return new Date(y,m-1,1+((7-f.getDay())%7)+7*(n-1),12)}
+function schoolStart(y){return y===2026?new Date(2026,8,14,12):nthMonday(y,9,2)}
+function evRange(r,y){
+  const t=r[0],D=(m,d)=>new Date(y,m-1,d,12);
+  if(t==="d")return[D(r[1],r[2]),D(r[1],r[2])];
+  if(t==="r")return[D(r[1],r[2]),D(r[3],r[4])];
+  if(t==="wm"){const s=nthMonday(y,r[1],r[2]);return[s,addDays(s,6)]}
+  if(t==="wl"){const s=lastMonday(y,r[1]);return[s,addDays(s,6)]}
+  if(t==="wc"){const s=mondayOf(D(r[1],r[2]));return[s,addDays(s,6)]}
+  if(t==="wfri"){const f=addDays(nthMonday(y,r[1],r[2]),4);return[f,f]}
+  if(t==="sun"){const s=nthSunday(y,r[1],r[2]);return[s,s]}
+  if(t==="sy2"){const m=addDays(mondayOf(schoolStart(y)),7);return[m,addDays(m,4)]}
+  return null;
+}
+function evDates(ev,sy){
+  const r=ev.r,t=r[0];
+  if(t==="na")return null;
+  if(t==="dy"){const m=P.evDate[ev.id];if(!m||syOf(parse(m))!==sy)return null;const s=mondayOf(parse(m));return[s,addDays(s,6)]}
+  const mo=t==="sy2"?9:r[1];
+  return evRange(r,(t==="sy2"||mo>=9)?sy:sy+1);
+}
+const evOn=id=>{const v=P.evOn[id];return v===undefined?!!EVBYID[id].p:!!v};
+function fmtRange(s,e){
+  if(+s===+e)return s.getDate()+" "+MONTHS[s.getMonth()]+" "+s.getFullYear();
+  if(s.getMonth()===e.getMonth())return s.getDate()+" – "+e.getDate()+" "+MONTHS[e.getMonth()];
+  return s.getDate()+" "+MONTHS[s.getMonth()]+" – "+e.getDate()+" "+MONTHS[e.getMonth()];
+}
+function mebOff(s){
+  if(!P.meb)return"";
+  if(MEBCAL.days[s])return MEBCAL.days[s];
+  for(const b of MEBCAL.breaks){if(s>=b[0]&&s<=b[1])return b[2]}
+  return"";
+}
+const outsideMeb=s=>P.meb&&(s<MEBCAL.start||s>MEBCAL.end);
+function computeSpecial(){
+  const map=new Map(),startD=parse(P.start),sy0=syOf(startD),items=[];
+  for(let sy=sy0;sy<=sy0+8;sy++){
+    EVENTS.forEach(ev=>{
+      if(!evOn(ev.id))return;
+      const r=evDates(ev,sy);if(!r)return;
+      items.push({ev:ev,s:r[0],e:r[1],pri:ev.kind==="b"?0:(+r[0]===+r[1]?1:2)});
+    });
+  }
+  items.sort((a,b)=>a.pri-b.pri||a.s-b.s);
+  const hol=new Set(P.holidays);
+  const ok=d=>{const s=iso(d);return dow(d)<5&&!hol.has(s)&&!mebOff(s)&&!outsideMeb(s)&&d>=startD};
+  items.forEach(it=>{
+    const c=[];
+    for(let d=it.s;d<=it.e;d=addDays(d,1)){if(ok(d))c.push(d)}
+    if(!c.length||+it.s===+it.e){
+      let p=addDays(it.s,-1),n=0;while(n<6&&!ok(p)){p=addDays(p,-1);n++}
+      if(ok(p))c.push(p);
+      let q=addDays(it.e,1);n=0;while(n<6&&!ok(q)){q=addDays(q,1);n++}
+      if(ok(q))c.push(q);
+    }
+    for(const d of c){const s=iso(d);if(!map.has(s)){map.set(s,it.ev.id);break}}
+  });
+  return map;
+}
+function spDates(id,sy){
+  const lo=sy+"-09-01",hi=(sy+1)+"-08-31",out=[];
+  spMap.forEach((v,k)=>{if(v===id&&k>=lo&&k<=hi)out.push(k)});
+  return out.sort();
+}
+const searchURL=q=>"https://www.google.com/search?q="+encodeURIComponent("site:anneninokulu.com "+q);
+
 
 /* ---------- Tarih yardımcıları ---------- */
 const pad=n=>String(n).padStart(2,"0");
@@ -430,7 +684,7 @@ function sanStudent(s){
     t:String(s.t||"").slice(0,30),al:Array.isArray(s.al)?s.al.filter(k=>ALN[k]):[],ao:String(s.ao||"").slice(0,160),note:String(s.note||"").slice(0,300)};
 }
 function loadFrom(j){
-  const Q={start:"2026-10-26",holidays:[],done:[],students:[],custom:[],edits:{},swap:{},got:{},cls:"",sid:1};
+  const Q={start:"2026-10-26",holidays:[],done:[],students:[],custom:[],edits:{},swap:{},got:{},cls:"",sid:1,meb:true,evOn:{},evDate:{},poster:{}};
   if(!j||typeof j!=="object")return Q;
   if(typeof j.start==="string"&&DATE_RE.test(j.start))Q.start=j.start;
   if(Array.isArray(j.holidays))Q.holidays=j.holidays.filter(x=>typeof x==="string"&&DATE_RE.test(x));
@@ -441,6 +695,10 @@ function loadFrom(j){
   if(j.swap&&typeof j.swap==="object")for(const k in j.swap){const v=Number(j.swap[k]);if(/^\d+$/.test(k)&&Number.isFinite(v))Q.swap[k]=v}
   if(j.got&&typeof j.got==="object")for(const k in j.got){if(j.got[k]===true)Q.got[k]=true}
   if(typeof j.cls==="string")Q.cls=j.cls.slice(0,60);
+  if(typeof j.meb==="boolean")Q.meb=j.meb;
+  if(j.evOn&&typeof j.evOn==="object")for(const k in j.evOn){if(/^\d+$/.test(k)&&typeof j.evOn[k]==="boolean")Q.evOn[k]=j.evOn[k]}
+  if(j.evDate&&typeof j.evDate==="object")for(const k in j.evDate){if(/^\d+$/.test(k)&&typeof j.evDate[k]==="string"&&DATE_RE.test(j.evDate[k]))Q.evDate[k]=j.evDate[k]}
+  if(j.poster&&typeof j.poster==="object"){["title","age","flow","vision","mission","approach","extras","themes","assess","note"].forEach(k=>{if(typeof j.poster[k]==="string")Q.poster[k]=j.poster[k].slice(0,1500)})}
   let mx=1;Q.students.forEach((s,i)=>{if(!s.id)s.id=i+1;mx=Math.max(mx,s.id+1)});
   Q.sid=Math.max(Number(j.sid)||1,mx);
   return Q;
@@ -451,6 +709,7 @@ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}};
 
 /* ---------- Etkinlikler ---------- */
 function getAct(id){
+  if(id>=1000)return SPACT[id-1000]||null;
   const c=P.custom.find(x=>x.id===id);if(c)return c;
   const b=BASE[id];if(!b)return null;
   const e=P.edits[id];
@@ -462,12 +721,14 @@ const total=()=>ORDER.length+P.custom.length;
 
 /* ---------- Program hesabı ---------- */
 let idxMap=new Map(),dates=[];
+const isOff=s=>{const d=parse(s);return dow(d)>=5||P.holidays.indexOf(s)>=0||!!mebOff(s)||outsideMeb(s)};
 function rebuild(){
   idxMap=new Map();dates=[];
-  const hol=new Set(P.holidays);let d=parse(P.start),n=0;
+  spMap=computeSpecial();
+  let d=parse(P.start),n=0;
   for(let i=0;i<3000;i++){
     const s=iso(d);
-    if(dow(d)<5&&!hol.has(s)){idxMap.set(s,n);dates[n]=s;n++}
+    if(!isOff(s)&&!spMap.has(s)){idxMap.set(s,n);dates[n]=s;n++}
     d=addDays(d,1);
   }
 }
@@ -479,8 +740,11 @@ function actIdAt(i){
 function info(s){
   const d=parse(s);
   if(dow(d)>=5)return{k:"weekend"};
-  if(P.holidays.includes(s))return{k:"holiday"};
+  if(P.holidays.indexOf(s)>=0)return{k:"holiday",why:"Tatil günü",own:true};
+  const why=mebOff(s);if(why)return{k:"holiday",why:why};
+  if(outsideMeb(s))return{k:"summer",before:s<MEBCAL.start};
   if(d<parse(P.start))return{k:"before"};
+  if(spMap.has(s)){const ev=EVBYID[spMap.get(s)];return{k:"day",act:getAct(1000+ev.id),special:ev,idx:null,no:null,round:null,week:null,swapped:false}}
   const i=idxMap.get(s);
   if(i===undefined)return{k:"far"};
   const N=total(),p=i%N,id=actIdAt(i);
@@ -496,7 +760,7 @@ function firstDate(id){
   return null;
 }
 function swapAct(date,newId){
-  const r=info(date);if(r.k!=="day")return null;
+  const r=info(date);if(r.k!=="day"||r.idx===null)return null;
   const N=total(),ids=allIds(),i=r.idx,cur=actIdAt(i),round=Math.floor(i/N);
   let i2=-1;
   for(let k=round*N;k<round*N+N;k++){if(k!==i&&actIdAt(k)===newId){i2=k;break}}
@@ -524,7 +788,7 @@ function hits(a){
 const hitText=h=>h.name+" ("+h.why.join(", ")+")";
 
 /* ---------- Durum ---------- */
-const S={tab:"bugun",date:todayISO(),wk:todayISO(),mon:{y:new Date().getFullYear(),m:new Date().getMonth()},q:"",cat:"Tümü"};
+const S={tab:"bugun",date:todayISO(),wk:todayISO(),mon:{y:new Date().getFullYear(),m:new Date().getMonth()},q:"",cat:"Tümü",sy:syOf(new Date())};
 let modalCtx=null;
 
 /* ---------- Etkinlik parçaları ---------- */
@@ -539,20 +803,25 @@ function mats(a){
 }
 function actCard(a,ctx){
   ctx=ctx||{};
-  const c=CI[a.cat],hs=hits(a);
+  const c=CI[a.cat],hs=hits(a),isSp=a.id>=1000,ev=isSp?EVBYID[a.id-1000]:null;
   let when="";
-  if(ctx.date)when='<p class="when">'+esc(fmtLong(parse(ctx.date)))+" · Gün "+ctx.no+" / "+total()+" · Hafta "+ctx.week+(ctx.round>1?" · "+ctx.round+". tur":"")+"</p>";
+  if(ctx.date&&ctx.special)when='<p class="when">'+esc(fmtLong(parse(ctx.date)))+" · Özel gün: "+esc(ctx.special.name)+"</p>";
+  else if(ctx.date)when='<p class="when">'+esc(fmtLong(parse(ctx.date)))+" · Gün "+ctx.no+" / "+total()+" · Hafta "+ctx.week+(ctx.round>1?" · "+ctx.round+". tur":"")+"</p>";
+  else if(isSp){const r=evDates(ev,ctx.sy||S.sy);when='<p class="when">Özel gün: '+esc(ev.name)+(r?" · "+esc(fmtRange(r[0],r[1])):"")+"</p>"}
   else if(ctx.first)when='<p class="when">Programda ilk kez: '+esc(fmtShort(ctx.first))+"</p>";
   const done=ctx.date&&P.done.indexOf(ctx.date)>=0;
   let tags="";
+  if(isSp)tags+='<span class="chip w">🎉 Özel gün</span>';
   if(ctx.swapped)tags+='<span class="chip w">↔ Değiştirildi</span>';
-  if(a.id>100)tags+='<span class="chip w">Yeni</span>';
+  if(a.id>100&&!isSp)tags+='<span class="chip w">Yeni</span>';
   else if(P.edits[a.id])tags+='<span class="chip w">Düzenlendi</span>';
   let btns='<button class="btn primary" type="button" data-a="print" data-id="'+a.id+'" data-date="'+(ctx.date||"")+'">🖨️ Etkinliği yazdır</button>';
   if(ctx.date)btns+='<button class="btn '+(done?"ok":"")+'" type="button" data-a="done" data-date="'+ctx.date+'">'+(done?"✓ Yaptık":"Yaptık")+"</button>";
+  btns+='<button class="btn" type="button" data-a="plan" data-id="'+a.id+'" data-date="'+(ctx.date||"")+'">📄 Günlük plan (MEB)</button>';
+  btns+='<button class="btn" type="button" data-a="res" data-id="'+a.id+'">🧩 Kalıp ve kaynaklar</button>';
   btns+='<button class="btn" type="button" data-a="copy" data-id="'+a.id+'" data-date="'+(ctx.date||"")+'">📋 Metni kopyala</button>';
-  if(ctx.date)btns+='<button class="btn" type="button" data-a="swap" data-date="'+ctx.date+'">🌦️ Hava durumuna göre değiştir</button>';
-  btns+='<button class="btn" type="button" data-a="editAct" data-id="'+a.id+'">✏️ Düzenle</button>';
+  if(ctx.date&&!isSp&&!ctx.special)btns+='<button class="btn" type="button" data-a="swap" data-date="'+ctx.date+'">🌦️ Hava durumuna göre değiştir</button>';
+  if(!isSp)btns+='<button class="btn" type="button" data-a="editAct" data-id="'+a.id+'">✏️ Düzenle</button>';
   if(ctx.date)btns+='<button class="btn warn" type="button" data-a="holiday" data-date="'+ctx.date+'">Tatil yap</button>';
   if(ctx.first)btns+='<button class="btn" type="button" data-a="goDate" data-date="'+ctx.first+'">Gününe git</button>';
   return '<article class="card hero" style="--cat:'+c.c+'">'
@@ -572,7 +841,8 @@ function stateCard(r,s){
   const nx=nextSchool(s),ni=nx?info(nx):null;
   const nxTxt=ni&&ni.k==="day"?"Sıradaki etkinlik: "+fmtShort(nx)+" · "+ni.act.n:"";
   let e="🌿",t="Hafta sonu, kreş yok",p=nxTxt,b="";
-  if(r.k==="holiday"){e="🏖️";t="Tatil günü";p="Bu gün programa sayılmıyor; etkinlikler bir gün kaydı."+(nxTxt?" "+nxTxt:"");b='<button class="btn warn" type="button" data-a="holiday" data-date="'+s+'">Tatili kaldır</button>'}
+  if(r.k==="holiday"){e="🏖️";t=r.why||"Tatil günü";p="Bu gün programa sayılmıyor; etkinlikler bir gün kaydı."+(nxTxt?" "+nxTxt:"");if(r.own)b='<button class="btn warn" type="button" data-a="holiday" data-date="'+s+'">Tatili kaldır</button>'}
+  else if(r.k==="summer"){e="🌞";t=r.before?"Eğitim yılı "+fmtLong(parse(MEBCAL.start))+" tarihinde başlıyor":"Eğitim yılı "+fmtLong(parse(MEBCAL.end))+" tarihinde sona erdi";p=r.before?nxTxt:"MEB takvimini Ayarlar’dan kapatırsanız program yaz boyunca da devam eder."}
   else if(r.k==="before"){e="🌱";t="Program "+fmtLong(parse(P.start))+" tarihinde başlıyor";p=nxTxt;b='<button class="btn" type="button" data-a="settings">Başlangıç tarihini değiştir</button>'}
   else if(r.k==="far"){e="🔭";t="Bu tarih için program yok";p="Başlangıç tarihinden çok uzak bir günü açtınız."}
   if(nx&&r.k!=="far")b+='<button class="btn primary" type="button" data-a="goDate" data-date="'+nx+'">Etkinliğe git</button>';
@@ -580,7 +850,7 @@ function stateCard(r,s){
 }
 function dayHTML(s){
   const r=info(s);
-  return r.k==="day"?actCard(r.act,{date:s,no:r.no,week:r.week,round:r.round,swapped:r.swapped}):stateCard(r,s);
+  return r.k==="day"?actCard(r.act,{date:s,no:r.no,week:r.week,round:r.round,swapped:r.swapped,special:r.special}):stateCard(r,s);
 }
 
 /* ---------- Haftalık malzeme ---------- */
@@ -610,7 +880,7 @@ function progress(){
 }
 function viewToday(){
   const t=todayISO();
-  return bar("prevDay",fmtLong(parse(S.date)),"nextDay",S.date===t?"Bugün":"",S.date===t?"":"today","Bugün")+dayHTML(S.date)+progress();
+  return bar("prevDay",fmtLong(parse(S.date)),"nextDay",S.date===t?"Bugün":"",S.date===t?"":"today","Bugün")+bannerHTML(S.date,S.date)+dayHTML(S.date)+progress();
 }
 function weekRange(mon){
   const fri=addDays(mon,4);
@@ -619,15 +889,15 @@ function weekRange(mon){
 function viewWeek(){
   const mon=mondayOf(parse(S.wk)),t=todayISO(),wk=iso(mon);
   const isThis=wk===iso(mondayOf(parse(t)));
-  let h=bar("prevWeek",weekRange(mon),"nextWeek","",isThis?"":"thisWeek","Bu hafta");
+  let h=bar("prevWeek",weekRange(mon),"nextWeek","",isThis?"":"thisWeek","Bu hafta")+bannerHTML(wk,iso(addDays(mon,4)));
   h+='<div class="rows">';
   for(let i=0;i<5;i++){
     const d=addDays(mon,i),s=iso(d),r=info(s);let mid;
     if(r.k==="day"){
       const c=CI[r.act.cat],nh=hits(r.act).length;
-      mid='<span class="em" aria-hidden="true">'+esc(r.act.e)+'</span><span class="rt"><b>'+esc(r.act.n)+'</b><span><span class="chip" style="--cat:'+c.c+'">'+c.e+" "+esc(r.act.cat)+'</span> <span class="mini">'+r.act.dur+" dk · "+esc(r.act.place)+"</span>"+(nh?' <span class="chip red">⚠️ alerji: '+nh+"</span>":"")+(r.swapped?' <span class="chip w">↔</span>':"")+"</span></span>";
+      mid='<span class="em" aria-hidden="true">'+esc(r.act.e)+'</span><span class="rt"><b>'+esc(r.act.n)+'</b><span><span class="chip" style="--cat:'+c.c+'">'+c.e+" "+esc(r.act.cat)+'</span> <span class="mini">'+r.act.dur+" dk · "+esc(r.act.place)+"</span>"+(r.special?' <span class="chip w">🎉 Özel gün</span>':"")+(nh?' <span class="chip red">⚠️ alerji: '+nh+"</span>":"")+(r.swapped?' <span class="chip w">↔</span>':"")+"</span></span>";
     }else{
-      mid='<span class="em" aria-hidden="true">'+(r.k==="holiday"?"🏖️":"🌱")+'</span><span class="rt"><b>'+(r.k==="holiday"?"Tatil günü":r.k==="before"?"Program başlamadı":"Program dışı")+"</b></span>";
+      mid='<span class="em" aria-hidden="true">'+(r.k==="holiday"?"🏖️":"🌱")+'</span><span class="rt"><b>'+esc(r.k==="holiday"?(r.why||"Tatil günü"):r.k==="before"?"Program başlamadı":r.k==="summer"?"Eğitim yılı dışında":"Program dışı")+"</b></span>";
     }
     h+='<button class="row'+(s===t?" today":"")+'" type="button" data-a="openDay" data-date="'+s+'"><span class="dt"><small>'+DS[i]+"</small><b>"+d.getDate()+"</b></span>"+mid+(P.done.indexOf(s)>=0?'<span class="tick" aria-label="Yapıldı">✓</span>':"")+"</button>";
   }
@@ -638,7 +908,7 @@ function viewWeek(){
     h+="<ul>"+items.map(m=>'<li><label class="ck"><input type="checkbox" data-a="got" data-k="'+esc(wk+"|"+m.key)+'"'+(P.got[wk+"|"+m.key]?" checked":"")+"><span>"+esc(m.name)+"</span> <small>"+m.days.join(", ")+"</small></label></li>").join("")+"</ul>";
   }else h+='<p class="mini">Bu hafta için malzeme listesi yok.</p>';
   h+="</div>";
-  h+='<div class="btnrow"><button class="btn primary" type="button" data-a="printWeek" data-date="'+wk+'">🖨️ Haftalık planı yazdır</button><button class="btn" type="button" data-a="printMats" data-date="'+wk+'">🖨️ Malzeme listesini yazdır</button></div>';
+  h+='<div class="btnrow"><button class="btn primary" type="button" data-a="printPoster" data-date="'+wk+'">🖨️ Haftalık plan afişi</button><button class="btn" type="button" data-a="editPoster">✏️ Afiş yazıları ve günlük akış</button><button class="btn" type="button" data-a="printWeek" data-date="'+wk+'">🖨️ Sade haftalık liste</button><button class="btn" type="button" data-a="printMats" data-date="'+wk+'">🖨️ Malzeme listesi</button><button class="btn" type="button" data-a="res" data-id="0">🧩 Kalıp ve kaynaklar</button></div>';
   return h;
 }
 function viewMonth(){
@@ -652,7 +922,7 @@ function viewMonth(){
     const d=new Date(y,m,day,12),s=iso(d),r=info(s),isT=s===t;
     if(r.k==="weekend"){h+='<div class="cell we'+(isT?" today":"")+'"><b>'+day+"</b></div>";continue}
     let cls="cell",inner="<b>"+day+"</b>",st="";
-    if(r.k==="day"){const c=CI[r.act.cat];st=' style="--cat:'+c.c+'"';inner+='<span class="em" aria-hidden="true">'+esc(r.act.e)+'</span><span class="nm">'+esc(r.act.n)+"</span>"}
+    if(r.k==="day"){const c=CI[r.act.cat];st=' style="--cat:'+c.c+'"';inner+='<span class="em" aria-hidden="true">'+esc(r.act.e)+'</span><span class="nm">'+esc(r.act.n)+"</span>"+(r.special?'<span class="star" aria-label="Özel gün">★</span>':"")}
     else if(r.k==="holiday"){cls+=" ho";inner+='<span class="nm">Tatil</span>'}
     else cls+=" bf";
     if(isT)cls+=" today";
@@ -696,7 +966,7 @@ function viewClass(){
 }
 function render(){
   const v=$("#view");
-  v.innerHTML=S.tab==="bugun"?viewToday():S.tab==="hafta"?viewWeek():S.tab==="ay"?viewMonth():S.tab==="sinif"?viewClass():viewList();
+  v.innerHTML=S.tab==="bugun"?viewToday():S.tab==="hafta"?viewWeek():S.tab==="ay"?viewMonth():S.tab==="sinif"?viewClass():S.tab==="ozel"?viewSpecial():viewList();
   document.querySelectorAll("#tabs [data-t]").forEach(b=>{const on=b.dataset.t===S.tab;b.classList.toggle("on",on);b.setAttribute("aria-current",on?"page":"false")});
   if(S.tab==="liste")drawList();
 }
@@ -735,7 +1005,7 @@ function studentFormHTML(id){
    +'<div class="btnrow" style="margin:4px 0 0"><button class="btn ok" type="button" data-a="saveStu" data-id="'+(id||0)+'">Kaydet</button><button class="btn" type="button" data-a="close">Vazgeç</button>'+(id?'<button class="btn" type="button" data-a="delStu" data-id="'+id+'">Öğrenciyi sil</button>':"")+"</div></div>";
 }
 function swapHTML(date,mode){
-  const r=info(date);if(r.k!=="day")return stateCard(r,date);
+  const r=info(date);if(r.k!=="day"||r.idx===null)return stateCard(r.k==="day"?{k:"far"}:r,date);
   const cur=r.act;
   const cands=allActs().filter(a=>a.id!==cur.id&&(mode==="bahce"?/Bahçe/.test(a.place):!/Bahçe/.test(a.place)));
   const score=a=>(a.cat===cur.cat?0:2)+(a.energy===cur.energy?0:1);
@@ -753,6 +1023,7 @@ function swapHTML(date,mode){
 function settingsHTML(){
   return '<h2 class="st">Ayarlar</h2>'
    +'<div class="field"><label for="startInput">Program başlangıç tarihi</label><input class="inp" type="date" id="startInput" value="'+P.start+'" style="max-width:260px"><p>Program bu tarihten itibaren her iş gününe bir etkinlik koyar.</p><div><button class="btn ok" type="button" data-a="saveStart">Kaydet</button></div></div>'
+   +'<div class="field"><label>MEB çalışma takvimi</label><p>'+(P.meb?"Açık: 14 Eylül 2026 – 25 Haziran 2027 arası; ara tatiller, yarıyıl tatili ve resmî tatiller (29 Ekim, 1 Ocak, 23 Nisan, 19 Mayıs) otomatik atlanır. Dini bayramları aşağıdan elle tatil yapın.":"Kapalı: yalnızca hafta sonları ve sizin işaretlediğiniz tatiller atlanır.")+'</p><div><button class="btn" type="button" data-a="toggleMeb">'+(P.meb?"MEB takvimini kapat":"MEB takvimini aç")+"</button></div></div>"
    +'<div class="field"><label>Tatil günleri</label><p>'+P.holidays.length+" gün tatil işaretli.</p><div><button class=\"btn\" type=\"button\" data-a=\"clearHolidays\">Tatilleri temizle</button></div></div>"
    +'<div class="field"><label>İlerleme</label><p>'+P.done.length+" etkinlik tamamlandı olarak işaretli.</p><div><button class=\"btn\" type=\"button\" data-a=\"resetDone\">İlerlemeyi sıfırla</button></div></div>"
    +'<div class="field"><label for="backupBox">Yedek (telefon ve bilgisayar arasında taşımak için)</label><p>Yedek; öğrenci listesini, düzenlediğiniz etkinlikleri, tatilleri ve ilerlemeyi içerir. Öğrenci bilgisi içerdiği için güvenli saklayın.</p><textarea class="inp ta" id="backupBox" placeholder="Başka cihazdan kopyaladığınız yedeği buraya yapıştırın"></textarea><div class="btnrow" style="margin:6px 0 0"><button class="btn" type="button" data-a="copyBackup">📋 Yedeği kopyala</button><button class="btn" type="button" data-a="importBackup">Yedeği yükle</button></div></div>'
@@ -764,11 +1035,13 @@ function modalHTML(){
   if(!modalCtx)return"";
   const m=modalCtx;
   if(m.type==="day")return dayHTML(m.date);
-  if(m.type==="act"){const a=getAct(m.id);return a?actCard(a,{first:firstDate(a.id)}):""}
+  if(m.type==="act"){const a=getAct(m.id);if(!a)return"";return a.id>=1000?actCard(a,{sy:S.sy}):actCard(a,{first:firstDate(a.id)})}
   if(m.type==="settings")return settingsHTML();
   if(m.type==="edit")return actFormHTML(m.id);
   if(m.type==="stu")return studentFormHTML(m.id);
   if(m.type==="swap")return swapHTML(m.date,m.mode);
+  if(m.type==="res")return resHTML(m.id);
+  if(m.type==="poster")return posterFormHTML();
   return"";
 }
 function openModal(ctx){modalCtx=ctx;$("#sheetBody").innerHTML=modalHTML();$("#modal").hidden=false;document.body.classList.add("lock");$(".sheet").scrollTop=0}
@@ -830,6 +1103,169 @@ function printAllergyHTML(){
    +"<p>Yazdırma tarihi: "+esc(fmtD(todayISO()))+". Gıda ve boya içeren etkinliklerde, yemek ve ikram sırasında bu listeye bakın.</p>"
    +(L.length?'<ul class="ps-al">'+L.map(s=>"<li><b>"+esc(s.n)+"</b>"+(s.b?" <small>("+esc(ageText(s.b))+")</small>":"")+" — "+esc(alList(s))+(s.note?"<br><small>"+esc(s.note)+"</small>":"")+(s.v||s.t?"<br><small>Veli: "+esc(s.v)+" "+esc(s.t)+"</small>":"")+"</li>").join("")+"</ul>":"<p>Kayıtlı alerji bilgisi yok.</p>");
 }
+/* ---------- Özel günler ekranı ---------- */
+function eventsIn(s0,s1){
+  const d0=parse(s0),d1=parse(s1),sy=syOf(d0),out=[];
+  EVENTS.forEach(ev=>{
+    const r=evDates(ev,sy);if(!r)return;
+    if(r[0]<=d1&&r[1]>=d0)out.push({ev:ev,r:r,on:evOn(ev.id)});
+  });
+  return out;
+}
+function bannerHTML(s0,s1){
+  const L=eventsIn(s0,s1);if(!L.length)return"";
+  return '<div class="banner">🎉 '+L.slice(0,4).map(x=>'<span class="bchip'+(x.on?" on":"")+'">'+esc(x.ev.name)+" <small>("+esc(fmtRange(x.r[0],x.r[1]))+")</small></span>").join(" ")+(L.length>4?' <span class="mini">+'+(L.length-4)+" daha</span>":"")+"</div>";
+}
+function evCard(ev,r,sy){
+  const on=evOn(ev.id),a=SPACT[ev.id],c=CI[a.cat],sched=spDates(ev.id,sy);
+  const dt=r?fmtRange(r[0],r[1]):(ev.r[0]==="dy"?"Tarihi Diyanet belirler":"Tarihi yerelde belirlenir");
+  let h='<div class="card ev'+(on?" on":"")+'" style="--cat:'+c.c+'"><div class="evt"><b>'+esc(ev.name)+'</b><span class="mini">'+esc(dt)+(ev.kind==="h"?" · hafta":ev.kind==="b"?" · bayram":" · gün")+"</span></div>";
+  h+='<div class="mini">'+esc(a.e)+" "+esc(a.n)+" · "+a.dur+" dk</div>";
+  if(on&&sched.length)h+='<div class="chips"><span class="chip">📅 Programda: '+esc(fmtShort(sched[0]))+"</span></div>";
+  else if(on&&r)h+='<div class="mini">Okul günü bulunamadı (tatil ya da hafta sonu).</div>';
+  if(ev.r[0]==="dy")h+='<div class="evd"><label class="mini" for="evd'+ev.id+'">Bu yılın tarihi:</label><input class="inp" type="date" id="evd'+ev.id+'" value="'+esc(P.evDate[ev.id]||"")+'"><button class="btn" type="button" data-a="saveEvDate" data-id="'+ev.id+'">Kaydet</button></div>';
+  h+='<div class="btnrow" style="margin:6px 0 0"><button class="btn '+(on?"ok":"")+'" type="button" data-a="evToggle" data-id="'+ev.id+'">'+(on?"✓ Programda":"Programa ekle")+'</button><button class="btn" type="button" data-a="openAct" data-id="'+(1000+ev.id)+'">Etkinliği gör</button><a class="btn" href="'+searchURL(ev.name)+'" target="_blank" rel="noopener noreferrer">🔎 Hazır plan ara</a></div></div>';
+  return h;
+}
+function viewSpecial(){
+  const sy=S.sy,rec=EVENTS.filter(e=>e.p).length,onN=EVENTS.filter(e=>evOn(e.id)).length;
+  let h=bar("prevSY",sy+" – "+(sy+1)+" eğitim yılı","nextSY","Belirli Gün ve Haftalar Çizelgesi","","");
+  h+='<div class="card pad"><p>Kaynak: MEB Eğitim Kurumları Sosyal Etkinlikler Yönetmeliği, Belirli Gün ve Haftalar Çizelgesi (61 madde). Okul öncesi programına göre belirli gün ve haftalar, ilgili ayda öğretmen tarafından ele alınması planlanırsa günlük planlara girer; bu yüzden her biri için “Programa ekle” seçeneği var.</p><p class="mini">Okul öncesine uygun bulduğum '+rec+' gün ve hafta varsayılan olarak açık; şu an '+onN+' tanesi programda. Programa eklenen gün, o günün normal etkinliğinin yerine geçer; normal program ertesi güne kayar, böylece hiçbir etkinlik atlanmaz.</p><div class="btnrow" style="margin:8px 0 0"><button class="btn" type="button" data-a="evAll" data-v="rec">Önerilenlere dön</button><button class="btn" type="button" data-a="evAll" data-v="on">Tümünü aç</button><button class="btn" type="button" data-a="evAll" data-v="off">Tümünü kapat</button></div></div>';
+  const g={};
+  EVENTS.forEach(ev=>{const r=evDates(ev,sy),m=r?r[0].getMonth()+1:0;(g[m]=g[m]||[]).push({ev:ev,r:r})});
+  [9,10,11,12,1,2,3,4,5,6,7,8,0].forEach(m=>{
+    const L=g[m];if(!L)return;
+    L.sort((a,b)=>(a.r?+a.r[0]:0)-(b.r?+b.r[0]:0));
+    h+='<h3 class="mh">'+(m?MONTHS[m-1]:"Tarihi değişken")+'</h3><div class="evs">'+L.map(x=>evCard(x.ev,x.r,sy)).join("")+"</div>";
+  });
+  return h;
+}
+
+/* ---------- Kaynaklar ve şablonlar ---------- */
+const LINK=(u,t)=>'<li><a href="'+u+'" target="_blank" rel="noopener noreferrer">'+esc(t)+"</a></li>";
+function resHTML(id){
+  const a=id?getAct(id):null;
+  let h='<h2 class="st">Kalıplar ve kaynaklar</h2><p class="mini" style="margin:0 0 10px">Yayınlanan sayfa başka sitelerden kendiliğinden veri çekemez. Bu yüzden resmî plan formatını ben bulup uygulamaya yerleştirdim; aşağıdaki bağlantılar ilgili sayfaları yeni sekmede açar.</p>';
+  if(a){
+    h+='<div class="field"><label>Bu etkinlik için: '+esc(a.e)+" "+esc(a.n)+'</label><div class="btnrow" style="margin:6px 0 0"><button class="btn primary" type="button" data-a="plan" data-id="'+a.id+'" data-date="">📄 Günlük plan (MEB formatı)</button><button class="btn" type="button" data-a="tpl" data-k="cizim" data-id="'+a.id+'">🖍️ Çizim sayfası</button><a class="btn" href="'+searchURL(a.n)+'" target="_blank" rel="noopener noreferrer">🔎 Hazır plan ara</a></div></div>';
+  }
+  h+='<div class="field"><label>Boş şablonlar (yazdırılabilir)</label><div class="btnrow" style="margin:6px 0 0"><button class="btn" type="button" data-a="tpl" data-k="cizim" data-id="0">🖍️ Çizim sayfası</button><button class="btn" type="button" data-a="tpl" data-k="cizgi" data-id="0">〰️ Çizgi izleme</button><button class="btn" type="button" data-a="tpl" data-k="sekil" data-id="0">✂️ Şekil kes-yapıştır</button><button class="btn" type="button" data-a="tpl" data-k="esle" data-id="0">🎨 Renk eşleştirme</button><button class="btn" type="button" data-a="tpl" data-k="sayi" data-id="0">🔢 1-5 sayma</button></div><p>Şablonlar bu uygulamaya özgü, sade ve 3 yaş için tasarlanmıştır.</p></div>';
+  h+='<div class="field"><label>Resmî kaynaklar (MEB)</label><ul class="links">'
+   +LINK("https://tymm.meb.gov.tr/ogretim-programlari/okul-oncesi/1","Okul öncesi programı, 36-48 ay (Türkiye Yüzyılı Maarif Modeli)")
+   +LINK("https://tymm.meb.gov.tr/okul-oncesi/unite/482","36-48 ay günlük plan örneği (resmî)")
+   +LINK("https://tymm.meb.gov.tr/okul-oncesi/unite/443","36-48 ay Eylül ayı planı (resmî aylık plan örneği)")
+   +LINK("https://tegm.meb.gov.tr/meb_iys_dosyalar/2024_09/20104013_2024programokuloncesionayli.pdf","Okul öncesi eğitim programı (PDF, 2024 baskısı; ekleri arasında günlük plan formatı ve belirli gün ve haftalar var)")
+   +"</ul></div>";
+  h+='<div class="field"><label>Hazır planlar ve şablonlar (Annenin Okulu)</label><ul class="links">'
+   +LINK("https://www.anneninokulu.com/?genelicerik=gunluk-planlar","Günlük planlar (ücretsiz)")
+   +LINK("https://www.anneninokulu.com/?genelicerik=maarif-programi","Maarif programı: aylık plan, kontrol çizelgeleri, öğretmen dosyası")
+   +LINK("https://www.anneninokulu.com/maarif-modeli-okul-oncesi-aylik-plan-kontrol-cizelgesi/","Aylık plan kontrol çizelgesi")
+   +LINK("https://www.anneninokulu.com/","Ana sayfa")
+   +'</ul><p>Listelerde yalnızca 4 ve 5 yaş planları gördüm; 3 yaş (36-48 ay) için resmî örnek plan en güvenilir kaynaktır. Dosyalar sitenin kendisine aittir; uygulamaya kopyalamadım, yalnızca bağlantı veriyorum.</p></div>';
+  return h;
+}
+function posterFormHTML(){
+  const ta=(id,l,k,rows)=>fld(l,'<textarea class="inp ta" id="'+id+'" rows="'+(rows||3)+'">'+esc(pv(k))+"</textarea>",id);
+  return '<h2 class="st">Afiş yazıları ve günlük akış</h2><p class="mini" style="margin:0 0 10px">Haftalık plan afişinin sabit bölümleri burada düzenlenir. Orta kısımdaki haftalık etkinlikler programdan otomatik gelir.</p><div class="form">'
+   +fld("Başlık (kurum ya da sınıf adı)",'<input class="inp" id="po_title" type="text" maxlength="80" value="'+esc(pv("title")||P.cls||"")+'" placeholder="Dilara Öğretmenin Sınıfı">',"po_title")
+   +fld("Yaş grubu",'<input class="inp" id="po_age" type="text" maxlength="60" value="'+esc(pv("age"))+'">',"po_age")
+   +ta("po_flow","Günlük eğitim akışı (her satır: saat | etkinlik)","flow",9)
+   +ta("po_vision","Vizyon","vision",2)+ta("po_mission","Misyon","mission",3)
+   +ta("po_approach","Eğitim yaklaşımı (her satıra bir madde)","approach",5)
+   +ta("po_extras","Ek etkinlikler (her satıra bir madde)","extras",4)
+   +ta("po_themes","Aylık temalar (her satır: ay | tema)","themes",10)
+   +ta("po_assess","Değerlendirme ve takip (her satıra bir madde)","assess",5)
+   +fld("Alt not",'<input class="inp" id="po_note" type="text" maxlength="200" value="'+esc(pv("note"))+'">',"po_note")
+   +'<div class="btnrow" style="margin:4px 0 0"><button class="btn ok" type="button" data-a="savePoster">Kaydet</button><button class="btn" type="button" data-a="close">Vazgeç</button><button class="btn" type="button" data-a="resetPoster">Varsayılana dön</button></div></div>';
+}
+const PD={
+ title:"",age:"36-48 ay (3 yaş grubu)",
+ vision:"Mutlu, özgüvenli ve meraklı çocuklar yetiştirmek.",
+ mission:"Çocukların bireysel farklılıklarına saygı duyan, oyun temelli ve sevgi dolu bir öğrenme ortamı sunmak.",
+ approach:"Oyun temelli öğrenme\nYaparak ve yaşayarak öğrenme\nBeceri temelli bütüncül gelişim\nDeğerler eğitimi\nAile ve toplum katılımı",
+ extras:"Müzik\nSanat\nHareket\nDrama",
+ flow:"08.00 – 09.00 | Karşılama ve serbest oyun\n09.00 – 09.30 | Kahvaltı, toplanma ve temizlik\n09.30 – 10.00 | Güne başlama çemberi (yoklama, hava, duygular)\n10.00 – 10.40 | Öğrenme merkezlerinde oyun\n10.40 – 11.20 | Günün etkinliği (büyük grup)\n11.20 – 12.00 | Bahçe ve hareket oyunları\n12.00 – 13.00 | Öğle yemeği, toplanma ve temizlik\n13.00 – 14.30 | Dinlenme (uyku ve sakin etkinlikler)\n14.30 – 15.00 | İkindi beslenmesi ve temizlik\n15.00 – 15.45 | Küçük grup ve bireysel etkinlikler\n15.45 – 16.30 | Müzik, drama ve serbest oyun\n16.30 – 17.00 | Değerlendirme çemberi ve çıkış",
+ themes:"Eylül | Okula uyum ve yeni arkadaşlar\nEkim | Sonbahar ve Cumhuriyet\nKasım | Atatürk, ailem ve duygularım\nAralık | Kış, sağlık ve paylaşma\nOcak | Vücudum ve duyularım\nŞubat | Meslekler ve mahallem\nMart | İlkbahar, bitkiler ve doğa\nNisan | Çocuk bayramı ve dünyamız\nMayıs | Hayvanlar ve ailem\nHaziran | Yaz ve yıl sonu şenliği",
+ assess:"Anekdot kayıt formları\nPortfolyo dosyası\nÖğrenme kanıtları (çocuk, program, öğretmen açısından)\nVeli görüşmeleri ve aile katılımı\nDönem sonu gelişim değerlendirmesi",
+ note:"Plan, Türkiye Yüzyılı Maarif Modeli Okul Öncesi Eğitim Programı (36-48 ay) yapısına göre hazırlanmıştır."
+};
+const pv=k=>{const v=P.poster[k];return(v!==undefined&&v!=="")?v:PD[k]};
+const lines=k=>pv(k).split("\n").map(x=>x.trim()).filter(Boolean);
+const pair=l=>{const i=l.indexOf("|");return i>=0?[l.slice(0,i).trim(),l.slice(i+1).trim()]:["",l]};
+function savePoster(){
+  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():""};
+  const o={title:g("po_title").slice(0,80),age:g("po_age").slice(0,60),flow:g("po_flow").slice(0,1500),vision:g("po_vision").slice(0,200),mission:g("po_mission").slice(0,300),approach:g("po_approach").slice(0,600),extras:g("po_extras").slice(0,400),themes:g("po_themes").slice(0,1200),assess:g("po_assess").slice(0,700),note:g("po_note").slice(0,200)};
+  P.poster=o;save();closeModal();toast("Afiş yazıları kaydedildi");
+}
+function posterHTML(mon){
+  const fri=addDays(mon,4),title=pv("title")||P.cls||"Dilara Öğretmenin Sınıfı",sy=syOf(mon);
+  const monthName=MONTHS[mon.getMonth()];
+  let cols="";
+  for(let i=0;i<5;i++){
+    const d=addDays(mon,i),s=iso(d),r=info(s),hd=DAYS[i]+" "+d.getDate()+" "+MONTHS[d.getMonth()].slice(0,3);
+    if(r.k==="day"){
+      const a=r.act,c=CI[a.cat];
+      const bl=a.skill.split(",").map(x=>cap(x.trim())).filter(Boolean).slice(0,3);
+      const cd=codesFor(a).filter(k=>codeGroup(k)===0).slice(0,3).join(" · ");
+      cols+='<div class="pp-day" style="--c:'+c.c+'"><h3>'+esc(hd)+"</h3>"+(r.special?'<div class="sp">🎉 '+esc(r.special.name)+"</div>":"")+'<div class="em">'+esc(a.e)+'</div><div class="nm">'+esc(a.n)+'</div><div class="ct">'+esc(a.cat)+" · "+a.dur+" dk</div><ul>"+bl.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>"+(cd?'<div class="cd">'+esc(cd)+"</div>":"")+"</div>";
+    }else{
+      const why=r.k==="holiday"?(r.why||"Tatil"):r.k==="before"?"Program başlamadı":r.k==="summer"?"Eğitim yılı dışında":"Program yok";
+      cols+='<div class="pp-day" style="--c:#E6E6E6"><h3>'+esc(hd)+'</h3><div class="em">🌿</div><div class="nm">'+esc(why)+"</div></div>";
+    }
+  }
+  const flow=lines("flow").map(pair);
+  const themes=lines("themes").map(pair);
+  const evs=eventsIn(iso(mon),iso(fri));
+  return '<div class="pp"><div class="pp-head"><div><h1>'+esc(title)+"</h1><p>OKUL ÖNCESİ EĞİTİM PLANI · "+sy+" – "+(sy+1)+" Eğitim Öğretim Yılı</p></div></div>"
+   +'<div class="pp-row1"><div class="pp-box" style="--c:#F2A33A"><h2>Vizyonumuz</h2><div>'+esc(pv("vision"))+'</div></div><div class="pp-box" style="--c:#4FB06A"><h2>Misyonumuz</h2><div>'+esc(pv("mission"))+'</div></div><div class="pp-box" style="--c:#8A63D2"><h2>Eğitim yaklaşımımız</h2><ul>'+lines("approach").map(x=>"<li>"+esc(x)+"</li>").join("")+'</ul></div><div class="pp-box" style="--c:#F08A3C"><h2>Yaş grubu</h2><div><b>'+esc(pv("age"))+'</b><br>Sınıf: '+esc(P.cls||"—")+'</div></div><div class="pp-box" style="--c:#3FA7E0"><h2>Ek etkinlikler</h2><ul>'+lines("extras").map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul></div></div>"
+   +'<div class="pp-main"><div class="pp-box" style="--c:#E0457B"><h2>Günlük eğitim akışı</h2><ul class="pp-flow">'+flow.map(f=>"<li><b>"+esc(f[0])+"</b><span>"+esc(f[1])+"</span></li>").join("")+'</ul></div>'
+   +'<div class="pp-box" style="--c:#4FB06A"><h2>Haftalık etkinlik planı · '+esc(weekRange(mon))+'</h2><div class="pp-week">'+cols+'</div></div>'
+   +'<div class="pp-box" style="--c:#E9A100"><h2>Aylık eğitim temaları</h2><ul class="pp-th">'+themes.map(t=>'<li'+(t[0]===monthName?' class="cur"':"")+"><b>"+esc(t[0])+"</b><span>"+esc(t[1])+"</span></li>").join("")+"</ul></div></div>"
+   +'<div class="pp-row4"><div class="pp-box" style="--c:#3FA7E0"><h2>Alan becerileri (MEB programı)</h2><div>Türkçe · Matematik · Fen · Sosyal · Sanat · Müzik · Hareket ve Sağlık<br>Eğilimler · Sosyal-Duygusal Öğrenme · Değerler · Okuryazarlık</div></div>'
+   +'<div class="pp-box" style="--c:#E0457B"><h2>Bu haftanın özel günleri</h2>'+(evs.length?"<ul>"+evs.slice(0,5).map(x=>"<li>"+esc(x.ev.name)+" ("+esc(fmtRange(x.r[0],x.r[1]))+")</li>").join("")+"</ul>":"<div>Bu hafta çizelgede özel gün yok.</div>")+"</div>"
+   +'<div class="pp-box" style="--c:#8A63D2"><h2>Değerlendirme ve takip</h2><ul>'+lines("assess").map(x=>"<li>"+esc(x)+"</li>").join("")+'</ul></div><div class="pp-box" style="--c:#4FB06A"><h2>Not</h2><div>'+esc(pv("note"))+"</div></div></div></div>";
+}
+
+/* ---------- MEB günlük plan formatı ---------- */
+function planHTML(a,date){
+  const hs=hits(a),ci=Math.max(0,SCN.indexOf(a.cat)),codes=codesFor(a);
+  const grp=g=>codes.filter(k=>codeGroup(k)===g).map(k=>"<li><b>"+k+"</b> "+esc(CT[k])+"</li>").join("");
+  const ev=a.id>=1000?EVBYID[a.id-1000]:null;
+  return '<div class="pl"><div class="ps-top"><div class="ps-brand">🌈 Dilara Öğretmenin Etkinlikleri</div><div>Günlük Plan</div></div>'
+   +'<h1 class="ps-title">'+esc(a.n)+"</h1>"
+   +'<table><tr><th>Okul / sınıf</th><td>'+esc(P.cls||"")+'</td><th>Yaş grubu</th><td>'+esc(pv("age"))+'</td></tr><tr><th>Tarih</th><td>'+(date?esc(fmtLong(parse(date))):"")+'</td><th>Öğretmen</th><td></td></tr>'+(ev?'<tr><th>Belirli gün ve hafta</th><td colspan="3">'+esc(ev.name)+"</td></tr>":"")+"</table>"
+   +(hs.length?'<p class="ps-warn" style="margin:0 0 5px">⚠️ Alerji uyarısı: '+esc(hs.map(hitText).join("; "))+"</p>":"")
+   +'<table><tr><th class="sec" colspan="2">Alan becerileri ve öğrenme çıktıları</th></tr><tr><td colspan="2"><ul>'+grp(0)+'</ul></td></tr><tr><th class="sec" colspan="2">Eğilimler</th></tr><tr><td colspan="2"><ul>'+grp(1)+'</ul></td></tr><tr><th class="sec" colspan="2">Programlar arası bileşenler</th></tr><tr><th>Sosyal-duygusal öğrenme becerileri</th><td><ul>'+grp(2)+'</ul></td></tr><tr><th>Değerler</th><td><ul>'+grp(3)+'</ul></td></tr><tr><th>Okuryazarlık becerileri</th><td><ul>'+grp(4)+"</ul></td></tr></table>"
+   +'<p class="mini2">Kodlar 36-48 ay programından seçilmiş önerilerdir; etkinliğe göre programdaki Ek-1 tablosundan kontrol edin ve gerekirse değiştirin.</p>'
+   +'<table><tr><th class="sec" colspan="2">İçerik çerçevesi</th></tr><tr><th>Kavramlar</th><td>&nbsp;</td></tr><tr><th>Sözcükler</th><td>&nbsp;</td></tr><tr><th>Materyaller</th><td>'+esc(mats(a).join(", "))+'</td></tr><tr><th>Eğitim / öğrenme ortamları</th><td>'+esc(a.place)+"</td></tr></table>"
+   +'<table><tr><th class="sec" colspan="2">Öğrenme kanıtları (ölçme ve değerlendirme)</th></tr><tr><td colspan="2"><ul>'+QUESTIONS[a.cat].map(q=>"<li>"+esc(q)+"</li>").join("")+'</ul><p>Gün sonunda kısa bir değerlendirme çemberi yapılır; çocukların yanıtları doğru ya da yanlış diye ayrılmadan dinlenir. Gözlemler anekdot kayıt formuna ve portfolyoya işlenir.</p></td></tr></table>'
+   +'<table><tr><th class="sec" colspan="2">Öğrenme-öğretme yaşantıları</th></tr><tr><th>Güne başlama zamanı</th><td>Çocuklar günaydın selamıyla karşılanır; yoklama, hava durumu ve kısa bir duygu paylaşım çemberi yapılır. Günün sorumlusu belirlenir.</td></tr><tr><th>Öğrenme merkezlerinde oyun</th><td>Merkezler çocukların ilgisine göre düzenlenir; çocuklar merkezlerini seçer, oyunlarını sürdürür ve oyun bitince materyalleri yerlerine koyar.</td></tr><tr><th>Beslenme, toplanma ve temizlik</th><td>Toplanma sonrası eller yıkanır, beslenilir, atıklar çöp kutusuna atılır ve eller yeniden yıkanır.</td></tr><tr><th>Etkinlik<br><small>'+esc(ETYPE[ci])+"</small></th><td><ol>"+steps(a).map(s=>"<li>"+esc(s)+"</li>").join("")+"</ol></td></tr></table>"
+   +'<table><tr><th class="sec" colspan="2">Farklılaştırma</th></tr><tr><th>Zenginleştirme</th><td>Etkinlik iki farklı malzeme, renk ya da büyüklükle tekrarlanarak çocuklardan benzer ve farklı yönleri söylemeleri istenebilir.</td></tr><tr><th>Destekleme</th><td>Yönerge tek aşamalı ve yavaş verilir; malzeme sayısı azaltılır, gerekirse yetişkin ya da arkadaş desteği sağlanır. Dikkat: '+esc(a.caution)+'</td></tr><tr><th class="sec" colspan="2">Aile / toplum katılımı</th></tr><tr><th>Aile katılımı</th><td>Aileden çocuğuyla evde etkinliği kısaca yeniden oynaması ve gözlemlerini ertesi gün paylaşması istenebilir.</td></tr><tr><th>Toplum katılımı</th><td>Çalışmalar okulun diğer sınıflarına ve ailelere sergilenebilir.</td></tr></table></div>';
+}
+
+/* ---------- Boş şablonlar ---------- */
+function tplHTML(k,a){
+  const head=t=>'<div class="ps-top"><div class="ps-brand">🌈 Dilara Öğretmenin Etkinlikleri</div><div>Ad: ____________ &nbsp; Tarih: ____________</div></div><h1 class="ps-title">'+t+"</h1>";
+  if(k==="cizim")return '<div class="tp">'+head(a?esc(a.e+" "+a.n)+": Çizimini yap":"Çizim sayfası")+'<div class="tp-frame">'+(a?'<div class="tp-big">'+esc(a.e)+"</div>":"")+"</div></div>";
+  if(k==="cizgi"){
+    const rows=[["M5 20 H175",""],["M5 20 Q27 0 50 20 T95 20 T140 20 T175 20",""],["M5 30 L30 10 L55 30 L80 10 L105 30 L130 10 L155 30 L175 10",""],["M5 32 Q25 4 45 32 T85 32 T125 32 T165 32",""],["M5 20 C20 -5 35 45 50 20 S80 -5 95 20 S125 45 140 20 S165 0 175 20",""]];
+    let s=rows.map(r=>'<svg viewBox="0 0 180 40"><path d="'+r[0]+'" fill="none" stroke="#1F2A55" stroke-width="1.6" stroke-dasharray="1 4" stroke-linecap="round"/><circle cx="5" cy="'+(r[0].indexOf("M5 30")===0?30:r[0].indexOf("M5 32")===0?32:20)+'" r="3" fill="#5DBB63"/><text x="171" y="9" font-size="9">🏁</text></svg>').join("");
+    s+='<svg viewBox="0 0 180 40"><circle cx="30" cy="20" r="14" fill="none" stroke="#1F2A55" stroke-width="1.6" stroke-dasharray="1 4"/><circle cx="90" cy="20" r="14" fill="none" stroke="#1F2A55" stroke-width="1.6" stroke-dasharray="1 4"/><circle cx="150" cy="20" r="14" fill="none" stroke="#1F2A55" stroke-width="1.6" stroke-dasharray="1 4"/></svg>';
+    return '<div class="tp">'+head("Çizgiyi takip et")+'<p class="tp-p">Kalemle noktaların üstünden yeşil noktadan bayrağa kadar git.</p><div class="tp-rows">'+s+"</div></div>";
+  }
+  if(k==="sekil")return '<div class="tp">'+head("Şekilleri kes ve yapıştır")+'<p class="tp-p">Kesik çizgilerden kes, boş sayfaya yapıştırarak istediğin resmi yap.</p><svg viewBox="0 0 200 250" class="tp-shapes"><g fill="none" stroke="#1F2A55" stroke-width="1.4" stroke-dasharray="4 3"><circle cx="50" cy="50" r="36"/><rect x="106" y="16" width="76" height="76" rx="3"/><polygon points="50,116 10,196 90,196"/><rect x="106" y="130" width="86" height="48"/><polygon points="150,190 160,216 188,216 165,232 174,250 150,236 126,250 135,232 112,216 140,216" transform="translate(0,-4)"/></g></svg></div>';
+  if(k==="esle"){
+    const cs=["#E53935","#1E88E5","#FDD835","#43A047","#FB8C00","#8E24AA"],nm=["Kırmızı","Mavi","Sarı","Yeşil","Turuncu","Mor"];
+    return '<div class="tp">'+head("Aynı rengi bul ve boya")+'<p class="tp-p">Soldaki renkli daireye bakarak sağdaki boş daireyi aynı renge boya.</p><svg viewBox="0 0 200 250" class="tp-shapes">'+cs.map((c,i)=>'<circle cx="45" cy="'+(28+i*40)+'" r="16" fill="'+c+'" stroke="#1F2A55" stroke-width="1.4"/><line x1="66" y1="'+(28+i*40)+'" x2="124" y2="'+(28+i*40)+'" stroke="#1F2A55" stroke-width="1" stroke-dasharray="1 4"/><circle cx="155" cy="'+(28+i*40)+'" r="16" fill="none" stroke="#1F2A55" stroke-width="1.4"/><text x="45" y="'+(52+i*40)+'" font-size="7" text-anchor="middle">'+nm[i]+"</text>").join("")+"</svg></div>";
+  }
+  if(k==="sayi"){
+    let s="";
+    for(let n=1;n<=5;n++){s+='<g transform="translate(0,'+((n-1)*48)+')"><text x="8" y="34" font-size="30" font-weight="800">'+n+"</text>";for(let j=0;j<n;j++)s+='<circle cx="'+(56+j*30)+'" cy="24" r="11" fill="none" stroke="#1F2A55" stroke-width="1.4"/>';s+="</g>"}
+    return '<div class="tp">'+head("Say ve boya")+'<p class="tp-p">Sayıya bak, o kadar daireyi boya.</p><svg viewBox="0 0 220 250" class="tp-shapes">'+s+"</svg></div>";
+  }
+  return"";
+}
+
 function printHtml(html){
   $("#printSheet").innerHTML=html;
   setTimeout(()=>{try{window.print()}catch(e){toast("Yazdırma bu pencerede açılamadı. Sayfayı yeni sekmede açın.")}},60);
@@ -925,6 +1361,19 @@ document.addEventListener("click",e=>{
     case"editStu":openModal({type:"stu",id:id});break;
     case"saveStu":saveStu(id);break;
     case"delStu":twice(a,t,()=>{P.students=P.students.filter(s=>s.id!==id);save();closeModal();render();toast("Öğrenci silindi")});break;
+    case"evToggle":{P.evOn[id]=!evOn(id);rebuild();save();render();break}
+    case"evAll":{const v=t.dataset.v;if(v==="rec")P.evOn={};else EVENTS.forEach(e=>{P.evOn[e.id]=(v==="on")});rebuild();save();render();break}
+    case"prevSY":S.sy--;render();break;
+    case"nextSY":S.sy++;render();break;
+    case"saveEvDate":{const v=(document.getElementById("evd"+id)||{}).value;if(v&&DATE_RE.test(v))P.evDate[id]=v;else delete P.evDate[id];rebuild();save();toast("Tarih kaydedildi");render();break}
+    case"toggleMeb":{P.meb=!P.meb;rebuild();save();toast(P.meb?"MEB takvimi açıldı":"MEB takvimi kapatıldı");refreshAll();break}
+    case"res":openModal({type:"res",id:id||0});break;
+    case"plan":{const x=getAct(id);if(x)printHtml(planHTML(x,d));break}
+    case"tpl":printHtml(tplHTML(t.dataset.k,id?getAct(id):null));break;
+    case"printPoster":printHtml(posterHTML(parse(d)));break;
+    case"editPoster":openModal({type:"poster"});break;
+    case"savePoster":savePoster();break;
+    case"resetPoster":twice(a,t,()=>{P.poster={};save();openModal({type:"poster"});toast("Varsayılana dönüldü")});break;
     case"saveStart":{const v=$("#startInput").value;if(!DATE_RE.test(v)){toast("Geçerli bir tarih seçin");break}P.start=v;rebuild();save();toast("Başlangıç tarihi kaydedildi");refreshAll();break}
     case"clearHolidays":twice(a,t,()=>{P.holidays=[];rebuild();save();toast("Tatiller temizlendi");refreshAll()});break;
     case"resetDone":twice(a,t,()=>{P.done=[];save();toast("İlerleme sıfırlandı");refreshAll()});break;
@@ -962,7 +1411,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#modal").hidden
     if(entered)return;entered=true;
     rebuild();
     const hash=(location.hash||"").replace("#","");
-    if(["bugun","hafta","ay","liste","sinif"].indexOf(hash)>=0)S.tab=hash;
+    if(["bugun","hafta","ay","liste","ozel","sinif"].indexOf(hash)>=0)S.tab=hash;
     $("#app").hidden=false;render();
     const sp=$("#splash");sp.classList.add("out");
     setTimeout(()=>{sp.hidden=true;$("#view").focus({preventScroll:true})},520);
